@@ -1,0 +1,4 @@
+class Reaction < ApplicationRecord
+
+
+end
