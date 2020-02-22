@@ -37,7 +37,8 @@ class Api::V1::SessionsController < ApplicationController
        
         if user.save
             log_in(user)
-            render json: user, status: 200
+            redirect_to 'http://localhost:3000/api/v1'
+            # render json: user, status: 200
         else
             render json: { message: "Login credentials were incorrect, please try again.", error: true }
         end
