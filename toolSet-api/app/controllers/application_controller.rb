@@ -18,6 +18,9 @@ class ApplicationController < ActionController::API
         !!current_user
     end
     
+    def owner?(resource)
+        resource.user == current_user
+    end
     
         private
     
