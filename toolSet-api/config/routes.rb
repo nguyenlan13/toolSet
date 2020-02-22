@@ -20,7 +20,10 @@ Rails.application.routes.draw do
             get "/login" => "sessions#new", as: "login"
             post "/login" => "sessions#create"
             delete "/logout" => "sessions#destroy"
-
+            
+            # Routes for Google authentication
+            get 'auth/:provider/callback', to: 'sessions#googleAuth'
+            get 'auth/failure', to: redirect('/')
         end
     end
 end
