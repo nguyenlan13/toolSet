@@ -8,6 +8,7 @@ class Api::V1::AttemptsController < ApplicationController
 
     def create
         lesson = Lesson.find(params[:lesson_id])
+        lesson.user = current_user
         attempt = lesson.attempt.build(attempt_params)
         #authorize(attempt)
         if attempt.save

@@ -36,6 +36,7 @@ class Api::V1::LessonsController < ApplicationController
 
     def show
        
+        
     end
 
     def update
