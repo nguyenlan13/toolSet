@@ -8,7 +8,7 @@ export default function categoriesReducer(state=[], action){
 
     switch(action.type){
         case GET_CATEGORIES:
-            return [action.payload]
+            return action.payload
         case ADD_CATEGORY:
             return [...state, action.payload]
         default:
