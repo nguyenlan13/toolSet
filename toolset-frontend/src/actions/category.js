@@ -17,13 +17,13 @@ export const getCategories = categories => {
                 throw response
             }
             let categoriesJson = await response.json()
-    console.log(categoriesJson)
             // function dispatchGetCategories (categories) {
                 dispatch({
                     type: GET_CATEGORIES,
                     payload: categoriesJson
                 })
             // }
+            
             // return dispatchGetCategories( await categoriesJson)
         }catch(error){
             console.log(error)
@@ -32,17 +32,25 @@ export const getCategories = categories => {
 }
 
 
-export const addCategory = category => {
+export const addCategory = (csrf_token, name, id) => {
     return async function (dispatch) {
         try{
+            dispatch({
+                type: ADD_CATEGORY,
+                payload: {
+                    category:{
+                        name: name
+                    }
+                }
+            })
             let response = await fetch(baseURL + "categories",{
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    // 'X-CSRF-TOKEN': csrf_token
+                    'X-CSRF-TOKEN': csrf_token
                 },
-                body: JSON.stringify(dispatch),
+                body: JSON.stringify({category: {name, id}}),
                 credentials: 'include'
             })
             if(!response.ok){
@@ -51,10 +59,10 @@ export const addCategory = category => {
             // let categoryJson = await response.json()
     
             // function dispatchAddCategory (category) {
-                dispatch({
-                    type: ADD_CATEGORY,
-                    payload: category
-                })
+                // dispatch({
+                //     type: ADD_CATEGORY,
+                //     payload: category
+                // })
             // }
             // return dispatchGetCategories( await categoryJson)
         }catch(error){
