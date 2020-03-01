@@ -1,11 +1,11 @@
-import React from "react";
+// import React from "react";
 
-function Topic() {
-  return (
-    <div>
-      <h1>Topics:</h1>
-    </div>
-  );
-}
+// function Topic() {
+//   return (
+//     <div>
+//       <h1>Topics:</h1>
+//     </div>
+//   );
+// }
 
-export default Topic;
+// export default Topic;
