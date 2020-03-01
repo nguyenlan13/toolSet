@@ -1,24 +1,33 @@
 class Api::V1::SessionsController < ApplicationController
-
+    # skip_before_action :verify_authenticity_token
     def new
 
     end
 
+    def debug
+        render json: session
+    end
+
     def auth
+        # byebug
+        cookies["logged_in"] = logged_in?
         render json: {csrf_auth_token: form_authenticity_token}
     end
 
     def create
-        user = User.find_by(email: params[:email])
-        if user && user.authenticate(params[:password])
-            log_in(user)
-            render json: user, status: 200
+        @user = User.find_by(email: params[:email])
+        if @user && @user.authenticate(params[:password])
+            log_in(@user)
+            cookies["logged_in"] = true
+            # byebug
+            # render json: { user: user, message: "sucess!" }, status: 200
+            render json: { message: "success!", user: @user }
         else
             render json: { message: "Login credentials were incorrect, please try again.", error: true }
         end
     end
 
-    def destroy
+    def delete
         session.delete(:user_id)
         render json: {status: 200}
     end
