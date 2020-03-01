@@ -1,7 +1,37 @@
-// import { GET_CSRF_TOKEN } from '../actionTypes'
+import { GET_CSRF_TOKEN } from '../actionTypes'
+import { baseURL } from '../constants/baseURL'
 
-// const auth = () =>{
-//     return async function (dispatch) {
-//         const res = await fetch('')
-//     }
-// }
+export const getToken = () => {
+    return async function (dispatch) {
+        try{
+            const res = await fetch(baseURL + "auth", {
+                credentials: 'include'
+            })
+            if(!res.ok){
+                throw res
+            }
+            const tokenJson = await res.json()
+            const csrf_token = tokenJson.csrf_auth_token
+            console.log(csrf_token)
+            dispatch({
+                type: GET_CSRF_TOKEN,
+                payload: csrf_token
+            });
+           
+            // function dispatchGetToken (csrf_token) {
+            //     const csrf_token = tokenJson.csrf_auth_token
+            //     dispatch({
+            //         type: GET_CSRF_TOKEN,
+            //         payload: csrf_token
+            //     })
+            // }
+            // return dispatchGetToken( await tokenJson)
+        }catch(error){
+            console.log(error)
+        }
+    }
+}
+
+
+
+
