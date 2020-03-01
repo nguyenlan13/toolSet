@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <nav>
       <Link className="nav-link" to="/">
-        <h2 className="title">(Add LOGO)</h2>
+        <h2 className="title">toolSet(Add LOGO)</h2>
       </Link>
         <ul className="nav-links">
             <Link className="nav-link" to="/profile">
