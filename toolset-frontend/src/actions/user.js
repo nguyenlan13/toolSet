@@ -1,8 +1,6 @@
 import { LOG_IN_USER } from '../actionTypes'
 import { SIGN_UP_USER } from '../actionTypes'
 import { baseURL } from '../constants/baseURL'
-// import { Headers } from '../constants/headers'
-
 
 export const login = (csrf_token, email, password) => {
     return async function (dispatch) {
@@ -10,14 +8,10 @@ export const login = (csrf_token, email, password) => {
             dispatch({
                 type: LOG_IN_USER,
                 payload: {
-                    // user:{
                         email: email,
                         password: password
-                    // }
                 }
             });
-            console.log(dispatch)
-            console.log(csrf_token, email, password)
             const res = await fetch(baseURL + "login", {
                 method: "POST",
                 headers: {
@@ -28,7 +22,6 @@ export const login = (csrf_token, email, password) => {
                 body: JSON.stringify({email, password}),
                 credentials: 'include'
             })
-            console.log(res.json())
             if(!res.ok){
                 throw res
             }
@@ -38,6 +31,7 @@ export const login = (csrf_token, email, password) => {
         }
     }
 }
+
 
 export const signup = (csrf_token, email, username, name, password) => {
     return async function (dispatch) {
@@ -53,7 +47,6 @@ export const signup = (csrf_token, email, username, name, password) => {
                     }
                 }
             });
-            // console.log(csrf_token, email, password)
             const res = await fetch(baseURL + "signup", {
                 method: "POST",
                 headers: {
