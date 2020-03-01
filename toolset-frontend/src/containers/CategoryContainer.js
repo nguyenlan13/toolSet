@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getCategories } from '../actions/category'
+import { addCategory } from '../actions/category'
 import CategoryItem  from '../components/Category/CategoryItem'
+import CategoryForm from '../components/Category/CategoryForm'
 // import { 
 //     BrowserRouter as Router,
 //     Link,
@@ -12,44 +14,41 @@ import CategoryItem  from '../components/Category/CategoryItem'
 
 class CategoryContainer extends Component {
 
-    // constructor(props){
-    //     super(props)
-    //     this.state = {
-    //        name: []
-    //     }
-    // }
-
-    async componentDidMount(){
-        await this.props.get_Categories()
-        // this.props.getToken()
-        console.log("hello")
+    componentDidMount(){
+        this.props.get_categories()
     }
 
+
+    submitHandler = async (name) => {
+        await this.props.add_category(name)
+    }
 
     render(){
-        categories.map((category, index) =>{
+        const { categories } = this.props
             return(
                 <div>
-                <h1>Categories:</h1>
-               
-                <CategoryItem name={category.name}/>
+                    <h1>Categories:</h1>
+                        < CategoryForm handleSubmit={this.submitHandler}/>
+                        {categories.map(category => {
+                            return <CategoryItem 
+                            name={category.name} 
+                            key={category.id} 
+                            id={category.id} 
+                            />
+                        })}
                 </div>
             )     
-        })
-    
     }
-  
 }
 
 const mapStateToProps = (state) => {
-    const { categories } = state;
-    return { categories: categories.categories}
- 
+    const { category } = state;
+    return { categories: category}
 }
 
 const mapDispatchToProps = dispatch => ({
-    get_categories: () => dispatch(getCategories())
-
+    get_categories: () => dispatch(getCategories()),
+    add_category: (name) => dispatch(addCategory(name))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryContainer)
