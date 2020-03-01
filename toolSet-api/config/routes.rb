@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     namespace :api do
         namespace :v1 do
         
-            # resources :users
+            resources :users
             resources :categories
             resources :topics
             resources :lessons
@@ -13,13 +13,14 @@ Rails.application.routes.draw do
             resources :comments
             resources :category_topics
           
+            get '/debug' => 'sessions#debug'
         
             get "/auth" => 'sessions#auth'
             get "/signup" => "users#new", as: "signup"
             post "/signup" => "users#create"
             get "/login" => "sessions#new", as: "login"
             post "/login" => "sessions#create"
-            delete "/logout" => "sessions#destroy"
+            delete "/logout" => "sessions#destroy", as: "logout"
             
             # Routes for Google authentication
             get 'auth/:provider/callback', to: 'sessions#googleAuth'
