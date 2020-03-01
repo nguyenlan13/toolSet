@@ -1,25 +1,8 @@
-// import React from "react";
-
-// function Login() {
-//   return (
-//     <div>
-//       <h1>Login:</h1>
-//     </div>
-//   );
-// }
-
-// export default Login;
-
 import React, { useState } from "react";
 
 const LoginForm = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-//   const user = {
-//       user: {
-//           email, password
-//       }
-//   }
   const handleSubmit = event => {
     event.preventDefault();
     // send the inputs to the login thing
@@ -27,7 +10,6 @@ const LoginForm = (props) => {
     setEmail("");
     setPassword("");
 
-//    props.handleSubmit(email, password)
     props.handleSubmit(email, password)
   };
   return (
