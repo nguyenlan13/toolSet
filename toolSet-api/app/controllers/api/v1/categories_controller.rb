@@ -2,11 +2,11 @@ class Api::V1::CategoriesController < ApplicationController
 
     def index
         if params[:topic_id]
-            @categories = Topic.find(params[:topic_id]).categories
+            categories = Topic.find(params[:topic_id]).categories
         else
-            @categories = Category.all
+            categories = Category.all
         end
-        render json: @categories, status: 200
+        render json: categories, status: 200
     end
 
     def create
