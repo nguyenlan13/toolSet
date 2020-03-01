@@ -1,11 +1,14 @@
 class User < ApplicationRecord
+   
     validates :username, presence: true, uniqueness: true
     validates :name, presence: true
     validates :email, presence: true, uniqueness: true
-    validates :password, presence: true, length: { within: 8..21 }, on: :create
+    validates :password, length: { in: 8..20 }, on: :create
+    # validates :password, presence: true, length: { in: 8..21 }, on: :create
+    # validates :password_confirmation, presence: true, on: :create
+    # validates :password, length: { in: 6..20 }, confirmation: true, unless: ->(u){ u.password.blank? }
     has_secure_password
 
-    
     has_many :lessons
     has_many :topics, through: :lessons
     has_many :comments
