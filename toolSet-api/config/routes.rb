@@ -4,9 +4,15 @@ Rails.application.routes.draw do
     namespace :api do
         namespace :v1 do
         
-            resources :users
-            resources :categories
-            resources :topics
+            resources :users do
+                resources: :lessons
+            end
+            resources :categories do
+                resources :topics
+            end
+
+            resources :topics do
+                resources
             resources :lessons
             resources :attempts
             resources :reactions
@@ -16,9 +22,9 @@ Rails.application.routes.draw do
             get '/debug' => 'sessions#debug'
         
             get "/auth" => 'sessions#auth'
-            get "/signup" => "users#new", as: "signup"
+            # get "/signup" => "users#new", as: "signup"
             post "/signup" => "users#create"
-            get "/login" => "sessions#new", as: "login"
+            # get "/login" => "sessions#new", as: "login"
             post "/login" => "sessions#create"
             delete "/logout" => "sessions#destroy", as: "logout"
             
