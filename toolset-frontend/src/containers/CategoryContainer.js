@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+// import { GET_CSRF_TOKEN } from '../actionTypes'
 import { getCategories } from '../actions/category'
 import { addCategory } from '../actions/category'
 import CategoryItem  from '../components/Category/CategoryItem'
@@ -20,7 +21,7 @@ class CategoryContainer extends Component {
 
 
     submitHandler = async (name) => {
-        await this.props.add_category(name)
+        await this.props.add_category(this.props.csrf_token, name)
     }
 
     render(){
@@ -31,9 +32,9 @@ class CategoryContainer extends Component {
                         < CategoryForm handleSubmit={this.submitHandler}/>
                         {categories.map(category => {
                             return <CategoryItem 
-                            name={category.name} 
-                            key={category.id} 
-                            id={category.id} 
+                                name={category.name} 
+                                key={category.id} 
+                                id={category.id} 
                             />
                         })}
                 </div>
@@ -41,14 +42,17 @@ class CategoryContainer extends Component {
     }
 }
 
+
 const mapStateToProps = (state) => {
-    const { category } = state;
-    return { categories: category}
+    const { category, csrf_token } = state;
+    return { categories: category, csrf_token}
 }
 
+
 const mapDispatchToProps = dispatch => ({
+    // get_token: (csrf_token) => dispatch(dispatch => dispatch({type: GET_CSRF_TOKEN, payload: csrf_token})),
     get_categories: () => dispatch(getCategories()),
-    add_category: (name) => dispatch(addCategory(name))
+    add_category: (csrf_token, name) => dispatch(addCategory(csrf_token, name))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryContainer)
