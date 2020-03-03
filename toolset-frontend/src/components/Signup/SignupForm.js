@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 const SignupForm = (props) => {
+    console.log(props)
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
