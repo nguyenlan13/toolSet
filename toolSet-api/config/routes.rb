@@ -5,18 +5,33 @@ Rails.application.routes.draw do
         namespace :v1 do
         
             resources :users do
-                resources: :lessons
+                resources :lessons
+                resources :topics
+                resources :comments
             end
+
             resources :categories do
                 resources :topics
             end
 
             resources :topics do
-                resources
-            resources :lessons
-            resources :attempts
-            resources :reactions
-            resources :comments
+                resources :lessons
+                resources :users
+                resources :categories
+            end
+
+            resources :lessons do
+                resources :attempts
+            end
+
+            resources :attempts do
+                resources :comments
+                resources :reactions
+            end
+
+            resources :comments do
+                resources :reactions
+            end
             resources :category_topics
           
             get '/debug' => 'sessions#debug'
