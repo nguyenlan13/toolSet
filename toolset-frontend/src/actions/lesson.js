@@ -1,0 +1,68 @@
+
+import { 
+    GET_Topic_LESSONS,
+    ADD_LESSON,
+    // GET_TOPIC_LESSONS
+} from '../actionTypes'
+
+// import {getToken} from './authSetup'
+import {baseURL} from '../constants/baseURL'
+
+
+export const getTopicLessons = topicLessons => {
+    return async function (dispatch) {
+        try{
+            let response = await fetch(baseURL + "topics")
+            if(!response.ok){
+                throw response
+            }
+            let topicLessonsJson = await response.json()
+            console.log(topicLessonsJson)
+                dispatch({
+                    type: GET_TOPIC_LESSONS,
+                    payload: topicLessonsJson
+                })
+        }catch(error){
+            console.log(error)
+        }
+    }
+}
+
+
+export const addLesson = (csrf_token, name) => {
+    return async function (dispatch) {
+        try{
+            dispatch({
+                type: ADD_LESSON,
+                payload: {
+                    lesson:{
+                        name: name
+                    }
+                }
+            })
+            let response = await fetch(baseURL + "topics",{
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrf_token
+                },
+                body: JSON.stringify({topic: {name}}),
+                credentials: 'include'
+            })
+            if(!response.ok){
+                throw response
+            }
+        }catch(error){
+            console.log(error)
+        }
+    }
+}
+
+
+// const getTopicLessons = lessons => {
+//     return {
+//         type: GET_TOPIC_LESSONS,
+//         payload: lessons
+//     }
+// }

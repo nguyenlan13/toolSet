@@ -7,7 +7,7 @@ import {
 
 // import {getToken} from './authSetup'
 import {baseURL} from '../constants/baseURL'
-// import {Headers} from '../constants/headers'
+
 
 export const getCategories = categories => {
     return async function (dispatch) {
@@ -32,13 +32,14 @@ export const getCategories = categories => {
 }
 
 
-export const addCategory = (csrf_token, name, id) => {
+export const addCategory = (csrf_token, name) => {
     return async function (dispatch) {
         try{
             dispatch({
                 type: ADD_CATEGORY,
                 payload: {
                     category:{
+                        // category_id: id,
                         name: name
                     }
                 }
@@ -50,21 +51,12 @@ export const addCategory = (csrf_token, name, id) => {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': csrf_token
                 },
-                body: JSON.stringify({category: {name, id}}),
+                body: JSON.stringify({category: {name}}),
                 credentials: 'include'
             })
             if(!response.ok){
                 throw response
             }
-            // let categoryJson = await response.json()
-    
-            // function dispatchAddCategory (category) {
-                // dispatch({
-                //     type: ADD_CATEGORY,
-                //     payload: category
-                // })
-            // }
-            // return dispatchGetCategories( await categoryJson)
         }catch(error){
             console.log(error)
         }
