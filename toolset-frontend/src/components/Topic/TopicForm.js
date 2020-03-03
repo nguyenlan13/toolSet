@@ -1,11 +1,25 @@
-// import React from "react";
+import React, { useState } from "react";
 
-// function Topic() {
-//   return (
-//     <div>
-//       <h1>Topics:</h1>
-//     </div>
-//   );
-// }
+const TopicForm = (props) => {
+  const [name, setName] = useState("");
+  const handleSubmit = event => {
+    event.preventDefault();
+    // send the inputs to the login thing
+    setName("");
 
-// export default Topic;
+    props.handleSubmit(name)
+  };
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        className="mr-sm-2"
+        type="text"
+        placeholder="Topic name"
+        onChange={event => setName(event.target.value)}
+        value={name}
+      />
+      <input type="submit" value="Add Topic"/>
+    </form> 
+  );
+};
+export default TopicForm;
