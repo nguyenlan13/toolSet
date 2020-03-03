@@ -27,7 +27,7 @@ class Api::V1::SessionsController < ApplicationController
         end
     end
 
-    def delete
+    def destroy
         session.delete(:user_id)
         render json: {status: 200}
     end
