@@ -8,7 +8,8 @@ class Api::V1::TopicsController < ApplicationController
         else
             topics = Topic.all
         end
-        render json: topics
+        render json: topics, status: 200
+       
     end
 
     def new
