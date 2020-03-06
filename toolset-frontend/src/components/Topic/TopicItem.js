@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 // import { 
 //     BrowserRouter as Router,
 //     Link,
@@ -13,7 +13,7 @@ const topicItem = ({name, id}) => {
     return(
         <div>
             <p>
-                <Link to={`topics/${id}/lessons`}>
+                <Link to={`/topics/${id}/lessons`}>
                 {name}
                 </Link>
             </p>
