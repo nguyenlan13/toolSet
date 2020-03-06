@@ -1,6 +1,7 @@
 import { 
     LOG_IN_USER,
-    SIGN_UP_USER
+    SIGN_UP_USER,
+    LOGOUT
 } from '../actionTypes'
 
 export default function userReducer(state="", action){
@@ -11,6 +12,8 @@ export default function userReducer(state="", action){
         case SIGN_UP_USER:
             console.log(action.payload)
             return action.payload
+        case LOGOUT:
+            return {...state}
         default:
             return state
     }
