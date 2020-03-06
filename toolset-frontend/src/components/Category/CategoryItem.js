@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 // import { 
 //     BrowserRouter as Router,
 //     Link,
@@ -13,7 +13,7 @@ const categoryItem = ({name, id}) => {
     return(
         <div>
             <p>
-                <Link to={`categories/${id}/topics`}>
+                <Link to={{ pathname: `/categories/${id}/topics`}}>
                 {name}
                 </Link>
             </p>
