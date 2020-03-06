@@ -26,7 +26,8 @@ nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 40%;
+    width: 50%;
+    font-weight: bold
   }
   
   .title {
@@ -46,4 +47,9 @@ nav {
   .search-form {
     text-align: center;
     margin: 5px;
+  }
+
+
+  #logo {
+    width: 350px;
   }
