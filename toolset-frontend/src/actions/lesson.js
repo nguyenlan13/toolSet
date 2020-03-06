@@ -1,8 +1,8 @@
 
 import { 
-    GET_Topic_LESSONS,
+    GET_TOPIC_LESSONS,
     ADD_LESSON,
-    // GET_TOPIC_LESSONS
+    // GET_LESSON_ATTEMPTS
 } from '../actionTypes'
 
 // import {getToken} from './authSetup'
@@ -12,7 +12,7 @@ import {baseURL} from '../constants/baseURL'
 export const getTopicLessons = topicLessons => {
     return async function (dispatch) {
         try{
-            let response = await fetch(baseURL + "topics")
+            let response = await fetch(baseURL + `topics/${id}/lessons`)
             if(!response.ok){
                 throw response
             }
@@ -23,7 +23,7 @@ export const getTopicLessons = topicLessons => {
                     payload: topicLessonsJson
                 })
         }catch(error){
-            console.log(error)
+            console.log(error.message)
         }
     }
 }
@@ -40,7 +40,7 @@ export const addLesson = (csrf_token, name) => {
                     }
                 }
             })
-            let response = await fetch(baseURL + "topics",{
+            let response = await fetch(baseURL + "lessons",{
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',
@@ -54,15 +54,15 @@ export const addLesson = (csrf_token, name) => {
                 throw response
             }
         }catch(error){
-            console.log(error)
+            console.log(error.message)
         }
     }
 }
 
 
-// const getTopicLessons = lessons => {
+// const getLessonAttempts = lessonAttempts => {
 //     return {
-//         type: GET_TOPIC_LESSONS,
-//         payload: lessons
+//         type: GET_LESSON_ATTEMPTS,
+//         payload: lessonAttempts
 //     }
 // }

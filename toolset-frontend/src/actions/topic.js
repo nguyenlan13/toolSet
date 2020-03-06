@@ -1,6 +1,6 @@
 import { 
     GET_TOPICS,
-    ADD_TOPIC,
+    ADD_TOPIC
     // GET_TOPIC_LESSONS
 } from '../actionTypes'
 

@@ -2,7 +2,7 @@
 import { 
     GET_CATEGORIES,
     ADD_CATEGORY,
-    // GET_CATEGORY_TOPICS
+    GET_CATEGORY_TOPICS
 } from '../actionTypes'
 
 // import {getToken} from './authSetup'
@@ -17,14 +17,11 @@ export const getCategories = categories => {
                 throw response
             }
             let categoriesJson = await response.json()
-            // function dispatchGetCategories (categories) {
                 dispatch({
                     type: GET_CATEGORIES,
                     payload: categoriesJson
                 })
-            // }
-            
-            // return dispatchGetCategories( await categoriesJson)
+            // return categoriesJson
         }catch(error){
             console.log(error)
         }
@@ -64,10 +61,10 @@ export const addCategory = (csrf_token, name) => {
 }
 
 
-// const getCategoryTopics = topics => {
-//     return {
-//         type: GET_CATEGORY_TOPICS,
-//         payload: topics
-//     }
-// }
+const getCategoryTopics = categoryTopics => {
+    return {
+        type: GET_CATEGORY_TOPICS,
+        payload: categoryTopics
+    }
+}
 

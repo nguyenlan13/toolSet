@@ -1,5 +1,6 @@
 import { LOG_IN_USER } from '../actionTypes'
 import { SIGN_UP_USER } from '../actionTypes'
+import { LOGOUT } from '../actionTypes'
 import { baseURL } from '../constants/baseURL'
 
 export const login = (csrf_token, email, password) => {
@@ -61,6 +62,32 @@ export const signup = (csrf_token, email, username, name, password) => {
                 throw res
             }
             // return await res.json()
+        }catch(error){
+            console.log(error.message)
+        }
+    }
+}
+
+export const logout = csrf_token => {
+    return async function (dispatch) {
+        try{
+            dispatch({
+                type: LOGOUT
+            });
+            const res = await fetch(baseURL + "logout", {
+                method: "DELETE",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrf_token
+                },
+                // body: JSON.stringify({email, password}),
+                credentials: 'include'
+            })
+            if(!res.ok){
+                throw res
+            }
+            return await res.json()
         }catch(error){
             console.log(error.message)
         }
