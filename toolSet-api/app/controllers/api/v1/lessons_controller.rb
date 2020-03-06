@@ -35,8 +35,9 @@ class Api::V1::LessonsController < ApplicationController
     end
 
     def show
-       
-        
+        lesson = Lesson.find(params[:id])
+        # render json: @category.to_json(include: {:topics})
+        render json: lesson, status: 200
     end
 
     def update

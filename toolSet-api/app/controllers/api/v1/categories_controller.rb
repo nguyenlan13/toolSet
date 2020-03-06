@@ -17,7 +17,7 @@ class Api::V1::CategoriesController < ApplicationController
 
     def show
         category = Category.find(params[:id])
-        # render json: @category.to_json(include: {:items})
+        # render json: @category.to_json(include: {:topics})
         render json: category, status: 200
     end
 
