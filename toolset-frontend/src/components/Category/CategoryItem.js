@@ -3,28 +3,28 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getCategoryTopics } from '../../actions/category'
 import  TopicItem  from '../../components/Topic/TopicItem'
-// import  categoryTopics  from './CategoryTopics'
+
 
 class CategoryItem extends Component {
 
 
-    onClick = async (csrf_token, id) => {
-         await this.props.get_category_topics(csrf_token, id)
+    onClick = async (csrf_token, categoryId) => {
+        await this.props.get_category_topics(csrf_token, categoryId)
     }
 
     render(){
-        const {csrf_token, name, id} = this.props
+        const {csrf_token, categoryName, categoryId} = this.props
         return(
             <div>
                 <p>
-                    <Link onClick={() => this.onClick(csrf_token, id)} to={`/categories/${id}/topics`}>
-                        <ul>{name}</ul>
+                    <Link onClick={() => this.onClick(csrf_token, categoryId)} to={`/categories/${categoryId}/topics`}>
+                        <ul>{categoryName}</ul>
                     </Link>
                     {this.props.topics.map(topic => {
                         return <TopicItem 
-                            topicname={topic.name} 
+                            topicName={topic.name} 
                             key={topic.id} 
-                            id={topic.id} 
+                            topicId={topic.id} 
                         />
                         
                     })}
@@ -42,7 +42,7 @@ const mapStateToProps = (state) => {
 
 
 const mapDispatchToProps = dispatch => ({
-    get_category_topics: (csrf_token, id) => dispatch(getCategoryTopics(csrf_token, id))
+    get_category_topics: (csrf_token, categoryId) => dispatch(getCategoryTopics(csrf_token, categoryId))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(CategoryItem)

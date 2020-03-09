@@ -14,6 +14,8 @@ import LoginContainer from "./containers/LoginContainer";
 import SignupContainer from "./containers/SignupContainer";
 import { getToken } from './actions/authSetup';
 import CategoryItem from './components/Category/CategoryItem'
+import TopicItem from './components/Topic/TopicItem'
+import LessonItem from './components/Lesson/LessonItem'
 import './App.css';
 // import { render } from 'react-dom';
 
@@ -38,11 +40,11 @@ class App extends Component {
                             <Route path="/login" component={LoginContainer} />
                             <Route path="/signup" component={SignupContainer} />
                             <Route path="/categories" component={CategoryContainer} />
-                            <Route path="/categories/:id/topics" component={CategoryItem} />
+                            <Route path="/categories/:categoryId/topics" component={CategoryItem} />
                             <Route path="/topics" component={TopicContainer} />
-                            {/* <Route path="/topics/:id/lessons" component={TopicContainer} /> */}
+                            <Route path="/topics/:topicId/lessons" component={TopicItem} />
                             <Route path="/lessons" component={LessonContainer} />
-                            {/* <Route path="/lessons/:id/attempts" component={LessonContainer} /> */}
+                            <Route path="/lessons/:lessonId/attempts" component={LessonItem} />
                             <Route path="/attempts" component={AttemptContainer} />
                             {/* <Route path="/attempts/:id/comments" component={AttemptContainer} /> */}
                            

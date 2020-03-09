@@ -29,24 +29,24 @@ import  LessonItem  from '../../components/Lesson/LessonItem'
 class TopicItem extends Component {
 
 
-    onClick = (csrf_token, id) => {
-         this.props.get_topic_lessons(csrf_token, id)
+    onClick = async (csrf_token, topicId) => {
+        await this.props.get_topic_lessons(csrf_token, topicId)
     }
 
     render(){
-        const {csrf_token, name, id} = this.props
+        const {csrf_token, topicName, topicId} = this.props
         // if (this.props.category.topics){
             return(
                 <div>
                     <p>
-                        <Link onClick={() => this.onClick(csrf_token, id)} to={`/topics/${id}/lessons`}>
-                            <ul>{name}</ul>
+                        <Link onClick={() => this.onClick(csrf_token, topicId)} to={`/topics/${topicId}/lessons`}>
+                            <ul>{topicName}</ul>
                         </Link>
                         {this.props.lessons.map(lesson => {
                             return <LessonItem 
                                 description={lesson.description} 
                                 key={lesson.id} 
-                                id={lesson.id}
+                                lessonId={lesson.id}
                                 topicId={lesson.topic_id}
                                 userId={lesson.user_id} 
                             />
@@ -54,10 +54,7 @@ class TopicItem extends Component {
                     </p>
                 </div>
             )
-        }
-
-    // }
-      
+        }     
 }
     
 
@@ -68,7 +65,7 @@ const mapStateToProps = (state) => {
 
 
 const mapDispatchToProps = dispatch => ({
-    get_topic_lessons: (csrf_token, id) => dispatch(getTopicLessons(csrf_token, id))
+    get_topic_lessons: (csrf_token, topicId) => dispatch(getTopicLessons(csrf_token, topicId))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(TopicItem)

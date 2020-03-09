@@ -27,18 +27,18 @@ import { connect } from 'react-redux'
 class LessonItem extends Component {
 
 
-    onClick = (csrf_token, id) => {
-        //  this.props.get_lesson_attempts(csrf_token, id)
+    onClick = async (csrf_token, lessonId) => {
+        //  await this.props.get_lesson_attempts(csrf_token, lessonId)
     }
 
     render(){
-        const {csrf_token, name, id} = this.props
+        const {csrf_token, description, lessonId, userId, topicId} = this.props
         // if (this.props.category.topics){
             return(
                 <div>
                     <p>
-                        <Link onClick={() => this.onClick(csrf_token, id)} to={`/lessons/${id}/attempts`}>
-                            <ul>{name}</ul>
+                        <Link onClick={() => this.onClick(csrf_token, description, lessonId, userId, topicId)} to={`/lessons/${lessonId}/attempts`}>
+                            <ul>{description}</ul>
                         </Link>
                         {/* {this.props.attempts.map(attempt=> {
                             return <AttemptItem 
@@ -64,7 +64,7 @@ const mapStateToProps = (state) => {
 
 
 const mapDispatchToProps = dispatch => ({
-    // get_lesson_attempts: (csrf_token, id) => dispatch(getLessonAttempts(csrf_token, id))
+    // get_lesson_attempts: (csrf_token, lessonId) => dispatch(getLessonAttempts(csrf_token, lessonId))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(LessonItem)

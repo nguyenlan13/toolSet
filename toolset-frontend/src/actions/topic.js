@@ -27,10 +27,10 @@ export const getTopics = topics => {
 }
 
 
-export const getTopicLessons = (csrf_token, id) => {
+export const getTopicLessons = (csrf_token, topicId) => {
     return async function (dispatch) {
         try{
-            let response = await fetch(baseURL + `topics/${id}/lessons`, {
+            let response = await fetch(baseURL + `topics/${topicId}/lessons`, {
                 method: "GET",
                 headers: {
                     'Accept': 'application/json',

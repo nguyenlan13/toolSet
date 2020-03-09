@@ -1,18 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 // import { GET_CSRF_TOKEN } from '../actionTypes'
-// import { getTopicLessons } from '../actions/lesson'
 import { addLesson } from '../actions/lesson'
-import TopicLessons from '../components/Topic/TopicLessons'
+// import TopicLessons from '../components/Topic/TopicLessons'
 import LessonItem  from '../components/Lesson/LessonItem'
 import LessonForm from '../components/Lesson/LessonForm'
-// import { 
-//     BrowserRouter as Router,
-//     Link,
-//     Route, 
-//     Switch,
-//     useRouteMatch
-// } from 'react-router-dom'
+
 
 class LessonContainer extends Component {
 
@@ -21,8 +14,8 @@ class LessonContainer extends Component {
     // }
 
 
-    submitHandler = async (description) => {
-        await this.props.add_lesson(this.props.csrf_token, description)
+    submitHandler = async (description, topicId, userId) => {
+        await this.props.add_lesson(this.props.csrf_token, description, topicId, userId)
     }
 
     render(){
@@ -30,17 +23,17 @@ class LessonContainer extends Component {
             return(
                 <div>
                     <h1>Lessons:</h1>
-                    <TopicLessons>
+                    {/* <TopicLessons> */}
                     < LessonForm handleSubmit={this.submitHandler}/>
                         {lessons.map(lesson => {
                             return <LessonItem 
                                 description={lesson.description} 
                                 key={lesson.id} 
-                                id={lesson.id} 
+                                lessonId={lesson.id} 
                             />
                         })}
 
-                    </TopicLessons>
+                    {/* </TopicLessons> */}
                    
                 </div>
             )     
@@ -53,14 +46,15 @@ class LessonContainer extends Component {
 //     return { topicLessons: lesson, csrf_token}
 // }
 
-const mapStateToProps = ({csrf_token}) => ({
-    csrf_token
-})
+const mapStateToProps = (state) => {
+    const { topic, lesson, csrf_token, user} = state;
+    return { topics: topic, lessons: lesson, csrf_token, user}
+}
 
 const mapDispatchToProps = dispatch => ({
     // get_token: (csrf_token) => dispatch(dispatch => dispatch({type: GET_CSRF_TOKEN, payload: csrf_token})),
     // get_topic_lessons: () => dispatch(getTopicLessons()),
-    add_lesson: (csrf_token, description) => dispatch(addLesson(csrf_token, description))
+    add_lesson: (csrf_token, description, topicId, userId) => dispatch(addLesson(csrf_token, description, topicId, userId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LessonContainer)

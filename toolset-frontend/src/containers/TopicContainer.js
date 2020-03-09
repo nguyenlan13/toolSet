@@ -20,17 +20,17 @@ class TopicContainer extends Component {
     }
 
     render(){
-        const { topics } = this.props
-        console.log({topics})
+        const { topics, lessons } = this.props
+        console.log({topics, lessons})
             return(
                 <div>
                     <h1>Topics:</h1>
                         < TopicForm handleSubmit={this.submitHandler}/>
                         {topics.map(topic => {
                             return <TopicItem 
-                                name={topic.name} 
+                                topicName={topic.name} 
                                 key={topic.id} 
-                                id={topic.id} 
+                                topicId={topic.id} 
                             />
                         })}
                 </div>
@@ -49,7 +49,7 @@ const mapDispatchToProps = dispatch => ({
     // get_token: (csrf_token) => dispatch(dispatch => dispatch({type: GET_CSRF_TOKEN, payload: csrf_token})),
     get_topics: () => dispatch(getTopics()),
     add_topic: (csrf_token, name) => dispatch(addTopic(csrf_token, name)),
-    get_topic_lessons: (csrf_token, id) => dispatch(getTopicLessons(csrf_token, id))
+    get_topic_lessons: (csrf_token, topicId) => dispatch(getTopicLessons(csrf_token, topicId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopicContainer)

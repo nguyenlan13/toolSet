@@ -30,9 +30,9 @@ class CategoryContainer extends Component {
                         < CategoryForm handleSubmit={this.submitHandler}/>
                         {categories.map(category => {
                             return <CategoryItem 
-                                name={category.name} 
+                                categoryName={category.name} 
                                 key={category.id} 
-                                id={category.id}
+                                categoryId={category.id}
                             />
                         })}
 
@@ -52,7 +52,7 @@ const mapDispatchToProps = dispatch => ({
     // get_token: (csrf_token) => dispatch(dispatch => dispatch({type: GET_CSRF_TOKEN, payload: csrf_token})),
     get_categories: () => dispatch(getCategories()),
     add_category: (csrf_token, name) => dispatch(addCategory(csrf_token, name)),
-    get_category_topics: (csrf_token, id) => dispatch(getCategoryTopics(csrf_token, id))
+    get_category_topics: (csrf_token, categoryId) => dispatch(getCategoryTopics(csrf_token, categoryId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryContainer)

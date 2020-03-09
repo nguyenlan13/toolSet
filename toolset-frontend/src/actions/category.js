@@ -61,11 +61,11 @@ export const addCategory = (csrf_token, name) => {
 }
 
 
-export const getCategoryTopics = (csrf_token, id) => {
-    console.log(csrf_token, id)
+export const getCategoryTopics = (csrf_token, categoryId) => {
+    console.log(csrf_token, categoryId)
     return async function (dispatch) {
         try{
-            let response = await fetch(baseURL + "categories/" + `${id}` + "/topics", {
+            let response = await fetch(baseURL + "categories/" + `${categoryId}` + "/topics", {
                 method: "GET",
                 headers: {
                     'Accept': 'application/json',
