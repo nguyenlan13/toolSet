@@ -1,7 +1,7 @@
 import { 
     GET_CATEGORIES,
     ADD_CATEGORY,
-    // GET_CATEGORY_TOPICS
+    GET_CATEGORY_TOPICS
 } from '../actionTypes'
 
 export default function categoriesReducer(state=[], action){
@@ -11,6 +11,9 @@ export default function categoriesReducer(state=[], action){
             return action.payload
         case ADD_CATEGORY:
             return [...state, action.payload]
+        case GET_CATEGORY_TOPICS:
+        // console.log(action.payload)
+        return action.payload
         default:
             return state
     }
