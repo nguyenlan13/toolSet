@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 // import { GET_CSRF_TOKEN } from '../actionTypes'
 import { getTopics } from '../actions/topic'
 import { addTopic } from '../actions/topic'
+import { getTopicLessons } from '../actions/topic'
 import TopicItem  from '../components/Topic/TopicItem'
 import TopicForm from '../components/Topic/TopicForm'
 // import { 
@@ -53,7 +54,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
     // get_token: (csrf_token) => dispatch(dispatch => dispatch({type: GET_CSRF_TOKEN, payload: csrf_token})),
     get_topics: () => dispatch(getTopics()),
-    add_topic: (csrf_token, name) => dispatch(addTopic(csrf_token, name))
+    add_topic: (csrf_token, name) => dispatch(addTopic(csrf_token, name)),
+    get_topic_lessons: () => dispatch(getTopicLessons())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopicContainer)
