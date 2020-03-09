@@ -11,14 +11,14 @@ import {baseURL} from '../constants/baseURL'
 
 
 
-export const addLesson = (csrf_token, name) => {
+export const addLesson = (csrf_token, description, topic_id, user_id) => {
     return async function (dispatch) {
         try{
             dispatch({
                 type: ADD_LESSON,
                 payload: {
                     lesson:{
-                        name: name
+                        description: description
                     }
                 }
             })
@@ -29,7 +29,7 @@ export const addLesson = (csrf_token, name) => {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': csrf_token
                 },
-                body: JSON.stringify({topic: {name}}),
+                body: JSON.stringify({lesson: {description, topic_id, user_id}}),
                 credentials: 'include'
             })
             if(!response.ok){
