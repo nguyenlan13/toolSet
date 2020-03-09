@@ -4,7 +4,7 @@ import LoginForm from '../components/Login/LoginForm';
 // import { getToken } from '../actions/authSetup'
 import { login } from '../actions/user'
 // import { GET_CSRF_TOKEN } from '../actionTypes'
-
+// import { Redirect } from 'react-router-dom'
 
 class LoginContainer extends Component {
 
@@ -29,6 +29,7 @@ class LoginContainer extends Component {
 
 const mapStateToProps = ({csrf_token}) => ({
     csrf_token
+
 })
 
 

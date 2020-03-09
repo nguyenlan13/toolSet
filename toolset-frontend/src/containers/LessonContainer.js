@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 // import { GET_CSRF_TOKEN } from '../actionTypes'
-import { getTopicLessons } from '../actions/lesson'
+// import { getTopicLessons } from '../actions/lesson'
 import { addLesson } from '../actions/lesson'
 import TopicLessons from '../components/Topic/TopicLessons'
 import LessonItem  from '../components/Lesson/LessonItem'
@@ -16,13 +16,13 @@ import LessonForm from '../components/Lesson/LessonForm'
 
 class LessonContainer extends Component {
 
-    componentDidMount(){
-        this.props.get_topic_lessons()
-    }
+    // componentDidMount(){
+    //     // this.props.add_lesson()
+    // }
 
 
     submitHandler = async (description) => {
-        await this.props.add_add(this.props.csrf_token, description)
+        await this.props.add_lesson(this.props.csrf_token, description)
     }
 
     render(){
@@ -48,15 +48,18 @@ class LessonContainer extends Component {
 }
 
 
-const mapStateToProps = (state) => {
-    const { lesson, csrf_token } = state;
-    return { topicLessons: lesson, csrf_token}
-}
+// const mapStateToProps = (state) => {
+//     const { lesson, csrf_token } = state;
+//     return { topicLessons: lesson, csrf_token}
+// }
 
+const mapStateToProps = ({csrf_token}) => ({
+    csrf_token
+})
 
 const mapDispatchToProps = dispatch => ({
     // get_token: (csrf_token) => dispatch(dispatch => dispatch({type: GET_CSRF_TOKEN, payload: csrf_token})),
-    get_topic_lessons: () => dispatch(getTopicLessons()),
+    // get_topic_lessons: () => dispatch(getTopicLessons()),
     add_lesson: (csrf_token, description) => dispatch(addLesson(csrf_token, description))
 })
 
