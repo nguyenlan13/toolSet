@@ -1,30 +1,34 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from './../assets/ToolSet_Glasses.png'
 
 function Navbar() {
   return (
     <nav>
-      <Link className="nav-link" to="/">
-        <h2 className="title">toolSet(Add LOGO)</h2>
-      </Link>
+            <Link className="nav-link" to="/">
+                <div><img id="logo" src={logo} alt=""/></div>
+            </Link>
         <ul className="nav-links">
             <Link className="nav-link" to="/profile">
-                <li>My Profile</li>
+                <li>MY PROFILE</li>
             </Link>
             <Link className="nav-link" to="/categories">
-                <li>Categories</li>
+                <li>CATEGORIES</li>
             </Link>
             <Link className="nav-link" to="/topics">
-                <li>Topics</li>
+                <li>TOPICS</li>
             </Link>
             <Link className="nav-link" to="/about">
-                <li>About</li>
+                <li>ABOUT</li>
             </Link>
+            {/* <Link className="nav-link" to="/lessons">
+                <li>LESSONS</li>
+            </Link> */}
             <Link className="nav-link" to="/login">
-                <li>Log In</li>
+                <li>LOG IN</li>
             </Link>
             <Link className="nav-link" to="/signup">
-                <li>Sign Up</li>
+                <li>SIGN UP</li>
             </Link>
         </ul>
     </nav>
