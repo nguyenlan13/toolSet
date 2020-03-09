@@ -23,7 +23,7 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getTopicLessons } from '../../actions/topic'
-// import  lessonItem  from '../../components/Lesson/LessonItem'
+import  LessonItem  from '../../components/Lesson/LessonItem'
 
 
 class TopicItem extends Component {
@@ -42,13 +42,15 @@ class TopicItem extends Component {
                         <Link onClick={() => this.onClick(csrf_token, id)} to={`/topics/${id}/lessons`}>
                             <ul>{name}</ul>
                         </Link>
-                        {/* {this.props.lessons.map(lesson => {
-                            return <lessonItem 
+                        {this.props.lessons.map(lesson => {
+                            return <LessonItem 
                                 description={lesson.description} 
                                 key={lesson.id} 
-                                id={lesson.id} 
+                                id={lesson.id}
+                                topicId={lesson.topic_id}
+                                userId={lesson.user_id} 
                             />
-                        })} */}
+                        })}
                     </p>
                 </div>
             )
@@ -60,8 +62,8 @@ class TopicItem extends Component {
     
 
 const mapStateToProps = (state) => {
-    const { category, topic, lesson, csrf_token} = state;
-    return { categories: category, topics: topic, lessons: lesson, csrf_token}
+    const { category, topic, lesson, csrf_token, user} = state;
+    return { categories: category, topics: topic, lessons: lesson, csrf_token, user}
 }
 
 

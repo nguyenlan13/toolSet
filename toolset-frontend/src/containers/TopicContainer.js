@@ -6,13 +6,7 @@ import { addTopic } from '../actions/topic'
 import { getTopicLessons } from '../actions/topic'
 import TopicItem  from '../components/Topic/TopicItem'
 import TopicForm from '../components/Topic/TopicForm'
-// import { 
-//     BrowserRouter as Router,
-//     Link,
-//     Route, 
-//     Switch,
-//     useRouteMatch
-// } from 'react-router-dom'
+
 
 class TopicContainer extends Component {
 
@@ -46,8 +40,8 @@ class TopicContainer extends Component {
 
 
 const mapStateToProps = (state) => {
-    const { topic, csrf_token } = state;
-    return { topics: topic, csrf_token}
+    const { topic, lesson, csrf_token, user} = state;
+    return { topics: topic, lessons: lesson, csrf_token, user}
 }
 
 
@@ -55,7 +49,7 @@ const mapDispatchToProps = dispatch => ({
     // get_token: (csrf_token) => dispatch(dispatch => dispatch({type: GET_CSRF_TOKEN, payload: csrf_token})),
     get_topics: () => dispatch(getTopics()),
     add_topic: (csrf_token, name) => dispatch(addTopic(csrf_token, name)),
-    get_topic_lessons: () => dispatch(getTopicLessons())
+    get_topic_lessons: (csrf_token, id) => dispatch(getTopicLessons(csrf_token, id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopicContainer)
