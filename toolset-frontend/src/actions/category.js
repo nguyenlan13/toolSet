@@ -61,10 +61,32 @@ export const addCategory = (csrf_token, name) => {
 }
 
 
-const getCategoryTopics = categoryTopics => {
-    return {
-        type: GET_CATEGORY_TOPICS,
-        payload: categoryTopics
+export const getCategoryTopics = (csrf_token, id) => {
+    console.log(csrf_token, id)
+    return async function (dispatch) {
+        try{
+            let response = await fetch(baseURL + "categories/" + `${id}` + "/topics", {
+                method: "GET",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrf_token
+                },
+                credentials: 'include'
+            })
+            if(!response.ok){
+                throw response
+            }
+            let categoryTopicsJson = await response.json()
+            console.log(categoryTopicsJson)
+                dispatch({
+                    type: GET_CATEGORY_TOPICS,
+                    payload: categoryTopicsJson
+                })
+            // return categoriesJson
+        }catch(error){
+            console.log(error)
+        }
     }
 }
 

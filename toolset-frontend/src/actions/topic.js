@@ -1,7 +1,7 @@
 import { 
     GET_TOPICS,
-    ADD_TOPIC
-    // GET_TOPIC_LESSONS
+    ADD_TOPIC,
+    GET_TOPIC_LESSONS
 } from '../actionTypes'
 
 import {baseURL} from '../constants/baseURL'
@@ -26,6 +26,33 @@ export const getTopics = topics => {
     }
 }
 
+
+export const getTopicLessons = (csrf_token, id) => {
+    return async function (dispatch) {
+        try{
+            let response = await fetch(baseURL + `topics/${id}/lessons`, {
+                method: "GET",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrf_token
+                },
+                credentials: 'include'
+            })
+            if(!response.ok){
+                throw response
+            }
+            let topicLessonsJson = await response.json()
+            console.log(topicLessonsJson)
+                dispatch({
+                    type: GET_TOPIC_LESSONS,
+                    payload: topicLessonsJson
+                })
+        }catch(error){
+            console.log(error.message)
+        }
+    }
+}
 
 export const addTopic = (csrf_token, name) => {
     return async function (dispatch) {
@@ -58,10 +85,4 @@ export const addTopic = (csrf_token, name) => {
 }
 
 
-// const getTopicLessons = lessons => {
-//     return {
-//         type: GET_TOPIC_LESSONS,
-//         payload: lessons
-//     }
-// }
 

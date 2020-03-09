@@ -1,6 +1,6 @@
 
 import { 
-    GET_LESSON_ATTEMPTS,
+    // GET_LESSON_ATTEMPTS,
     ADD_ATTEMPT
 } from '../actionTypes'
 
@@ -8,24 +8,24 @@ import {
 import {baseURL} from '../constants/baseURL'
 
 
-export const getLessonAttempts = lessonAttempts => {
-    return async function (dispatch) {
-        try{
-            let response = await fetch(baseURL + `lessons/${id}/attempts`)
-            if(!response.ok){
-                throw response
-            }
-            let lessonAttemptsJson = await response.json()
-            console.log(lessonAttemptsJson)
-                dispatch({
-                    type: GET_LESSON_ATTEMPTS,
-                    payload: lessonAttemptsJson
-                })
-        }catch(error){
-            console.log(error)
-        }
-    }
-}
+// export const getLessonAttempts = lessonAttempts => {
+//     return async function (dispatch) {
+//         try{
+//             let response = await fetch(baseURL + `lessons/${id}/attempts`)
+//             if(!response.ok){
+//                 throw response
+//             }
+//             let lessonAttemptsJson = await response.json()
+//             console.log(lessonAttemptsJson)
+//                 dispatch({
+//                     type: GET_LESSON_ATTEMPTS,
+//                     payload: lessonAttemptsJson
+//                 })
+//         }catch(error){
+//             console.log(error)
+//         }
+//     }
+// }
 
 
 // export const addAttempt = (csrf_token, name) => {

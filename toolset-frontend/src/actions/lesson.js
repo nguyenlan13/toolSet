@@ -1,32 +1,14 @@
 
 import { 
-    GET_TOPIC_LESSONS,
     ADD_LESSON,
-    // GET_LESSON_ATTEMPTS
+    GET_LESSON_ATTEMPTS
 } from '../actionTypes'
 
 // import {getToken} from './authSetup'
 import {baseURL} from '../constants/baseURL'
 
 
-export const getTopicLessons = topicLessons => {
-    return async function (dispatch) {
-        try{
-            let response = await fetch(baseURL + `topics/${id}/lessons`)
-            if(!response.ok){
-                throw response
-            }
-            let topicLessonsJson = await response.json()
-            console.log(topicLessonsJson)
-                dispatch({
-                    type: GET_TOPIC_LESSONS,
-                    payload: topicLessonsJson
-                })
-        }catch(error){
-            console.log(error.message)
-        }
-    }
-}
+
 
 
 export const addLesson = (csrf_token, name) => {
