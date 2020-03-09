@@ -6,16 +6,9 @@ import { addCategory } from '../actions/category'
 import { getCategoryTopics} from '../actions/category'
 import CategoryItem  from '../components/Category/CategoryItem'
 import CategoryForm from '../components/Category/CategoryForm'
-import CategoryTopics from '../components/Category/CategoryTopics'
-import TopicItem from '../components/Topic/TopicItem'
-// import Categories  from '../components/Category/CategoryItem'
-// import { 
-//     BrowserRouter as Router,
-//     Link,
-//     Route, 
-//     Switch,
-//     useRouteMatch
-// } from 'react-router-dom'
+// import CategoryTopics from '../components/Category/CategoryTopics'
+// import TopicItem from '../components/Topic/TopicItem'
+
 
 class CategoryContainer extends Component {
 
@@ -35,18 +28,14 @@ class CategoryContainer extends Component {
                 <div>
                     <h1>Categories:</h1>
                         < CategoryForm handleSubmit={this.submitHandler}/>
-                        {/* < Categories/> */}
                         {categories.map(category => {
                             return <CategoryItem 
                                 name={category.name} 
                                 key={category.id} 
-                                id={category.id} 
-                                topics={category.topics}
-                                topics={this.props.get_category_topics(this.props.csrf_token, category.id)}
+                                id={category.id}
                             />
-                     
                         })}
-                      
+
                 </div>
             )     
     }
@@ -56,8 +45,6 @@ class CategoryContainer extends Component {
 const mapStateToProps = (state) => {
     const { category, topic, csrf_token } = state;
     return { categories: category, topics: topic, csrf_token}
-    // const { categories, topics, csrf_token } = state;
-    // return { categories, topics, csrf_token}
 }
 
 
