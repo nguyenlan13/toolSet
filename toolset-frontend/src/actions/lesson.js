@@ -4,21 +4,20 @@ import {
     GET_LESSON_ATTEMPTS
 } from '../actionTypes'
 
-// import {getToken} from './authSetup'
+
 import {baseURL} from '../constants/baseURL'
 
 
-
-
-
-export const addLesson = (csrf_token, description, topic_id, user_id) => {
+export const addLesson = (csrf_token, description, topicId, userId) => {
     return async function (dispatch) {
         try{
             dispatch({
                 type: ADD_LESSON,
                 payload: {
                     lesson:{
-                        description: description
+                        description: description,
+                        topic_id: topicId,
+                        user_id: userId
                     }
                 }
             })
@@ -29,7 +28,7 @@ export const addLesson = (csrf_token, description, topic_id, user_id) => {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': csrf_token
                 },
-                body: JSON.stringify({lesson: {description, topic_id, user_id}}),
+                body: JSON.stringify({lesson: {description, topicId, userId}}),
                 credentials: 'include'
             })
             if(!response.ok){
@@ -42,9 +41,31 @@ export const addLesson = (csrf_token, description, topic_id, user_id) => {
 }
 
 
-// const getLessonAttempts = lessonAttempts => {
-//     return {
-//         type: GET_LESSON_ATTEMPTS,
-//         payload: lessonAttempts
-//     }
-// }
+export const getLessonAttempts = (csrf_token, lessonId) => {
+    return async function (dispatch) {
+        try{
+            let response = await fetch(baseURL + "lessons/" + `${lessonId}` + "/attempts", {
+            // let response = await fetch(baseURL + "lessons/" + `${lessonId}`, {
+                method: "GET",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrf_token
+                },
+                credentials: 'include'
+            })
+            if(!response.ok){
+                throw response
+            }
+            let lessonAttemptsJson = await response.json()
+            console.log(lessonAttemptsJson)
+                dispatch({
+                    type: GET_LESSON_ATTEMPTS,
+                    // payload: 
+                    payload: lessonAttemptsJson
+                })
+        }catch(error){
+            console.log(error.message)
+        }
+    }
+}

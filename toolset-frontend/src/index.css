@@ -21,6 +21,13 @@ nav {
     color: #df5718;
     text-decoration: none;
   }
+
+  .layout-link {
+    color: #008B8B;
+    text-decoration: none;
+    font-weight: bold
+  }
+
   .nav-links {
     list-style: none;
     display: flex;
@@ -30,26 +37,47 @@ nav {
     font-weight: bold
   }
   
+  .link-color {
+    color: #008B8B;
+
+  }
   .title {
     padding-left: 20px;
   }
   
   .search {
+    justify-content: space-around;
     width: 50%;
-    text-align: center;
-    padding: 10px;
-    font-size: 22px;
+    text-align: left;
+    padding: 5px;
+    font-size: 10px;
     border-radius: 4px;
     margin-left: auto;
   }
   
   
-  .search-form {
-    text-align: center;
-    margin: 5px;
-  }
+    .search-form {
+        text-align: center;
+        margin: 5px;
+    }
 
 
-  #logo {
-    width: 350px;
-  }
+    #logo {
+        width: 350px;
+    }
+
+
+    .page {
+        background-color: #008B8B;
+        background-size: 200px 200px;
+    }
+
+    .headline-md,h2,form {
+        display:inline-block !important;
+    }
+
+    .headline-md {
+        width:80px !important;
+        margin-right:15px !important;
+        display:inline-block !important;
+    }

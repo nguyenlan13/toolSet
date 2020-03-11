@@ -23,7 +23,7 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getTopicLessons } from '../../actions/topic'
-import  LessonItem  from '../../components/Lesson/LessonItem'
+// import  LessonItem  from '../../components/Lesson/LessonItem'
 
 
 class TopicItem extends Component {
@@ -40,7 +40,7 @@ class TopicItem extends Component {
             return(
                 <div>
                     <p>
-                        <Link onClick={() => this.onClick(csrf_token, topicId)} to={`/topics/${topicId}/lessons`}>
+                        <Link className="link-color" onClick={() => this.onClick(csrf_token, topicId)} to={`/topics/${topicId}/lessons`}>
                             {topicName}
                         </Link>
                         {/* {this.props.lessons.map(lesson => {

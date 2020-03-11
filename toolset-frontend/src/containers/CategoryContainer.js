@@ -12,7 +12,6 @@ import CategoryForm from '../components/Category/CategoryForm'
 
 class CategoryContainer extends Component {
 
-  
         // state = {
         //     categoryId: null
         // }
@@ -20,10 +19,9 @@ class CategoryContainer extends Component {
     componentDidMount(){
         this.props.get_categories()
         // this.setState({
-        //     categoryId: this.props.match.params.id
-            
+        //     categoryId: this.props.match.params.id 
         // })
-
+        // console.log(this.props)
     }
 
 
@@ -61,7 +59,7 @@ const mapDispatchToProps = dispatch => ({
     // get_token: (csrf_token) => dispatch(dispatch => dispatch({type: GET_CSRF_TOKEN, payload: csrf_token})),
     get_categories: () => dispatch(getCategories()),
     add_category: (csrf_token, name) => dispatch(addCategory(csrf_token, name)),
-    get_category_topics: (csrf_token, categoryId) => dispatch(getCategoryTopics(csrf_token, categoryId))
+    // get_category_topics: (csrf_token, categoryId) => dispatch(getCategoryTopics(csrf_token, categoryId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryContainer)

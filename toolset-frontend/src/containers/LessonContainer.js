@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import { GET_CSRF_TOKEN } from '../actionTypes'
 import { addLesson } from '../actions/lesson'
 // import TopicLessons from '../components/Topic/TopicLessons'
 import LessonItem  from '../components/Lesson/LessonItem'
 import LessonForm from '../components/Lesson/LessonForm'
+import { getTopicLessons } from '../actions/topic'
 
 
 class LessonContainer extends Component {
@@ -14,9 +14,11 @@ class LessonContainer extends Component {
     }
 
     componentDidMount(){
+        // this.props.get_topic_lessons()
         this.setState({
             topicId: this.props.match.params.id
         })
+        // console.log(this.props)
     }
 
 
@@ -32,6 +34,8 @@ class LessonContainer extends Component {
                     {/* <TopicLessons> */}
                     < LessonForm handleSubmit={this.submitHandler}/>
                         {lessons.map(lesson => {
+                        // {(lesson => { 
+                        
                             return <LessonItem 
                                 description={lesson.description} 
                                 key={lesson.id} 
@@ -49,21 +53,14 @@ class LessonContainer extends Component {
 }
 
 
-
-// const mapStateToProps = (state) => {
-//     const { lesson, csrf_token } = state;
-//     return { topicLessons: lesson, csrf_token}
-// }
-
 const mapStateToProps = (state) => {
     const { topic, lesson, csrf_token, user} = state;
     return { topics: topic, lessons: lesson, csrf_token, user}
 }
 
 const mapDispatchToProps = dispatch => ({
-    // get_token: (csrf_token) => dispatch(dispatch => dispatch({type: GET_CSRF_TOKEN, payload: csrf_token})),
-    // get_topic_lessons: () => dispatch(getTopicLessons()),
-    add_lesson: (csrf_token, description, topicId, userId) => dispatch(addLesson(csrf_token, description, topicId, userId))
+    add_lesson: (csrf_token, description, topicId, userId) => dispatch(addLesson(csrf_token, description, topicId, userId)),
+    get_topic_lessons: (csrf_token, topicId) => dispatch(getTopicLessons(csrf_token, topicId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LessonContainer)

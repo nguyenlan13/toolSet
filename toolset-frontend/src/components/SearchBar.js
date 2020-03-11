@@ -18,6 +18,7 @@ function SearchBar(props) {
         onChange={event => setInput(event.target.value)}
         placeholder="Search"
       />
+      <input type="submit" value="Search"/>
     </form>
   );
 }

@@ -34,26 +34,26 @@ class App extends Component {
                     <Layout>
                         <Navbar/>
                         <Switch>
-                            
-                        
-                        
-                            
 
+                            {/* <Route path="/categories" component={CategoryContainer} /> */}
+                            
+                            <Route 
+                            path="/lessons/:lessonId/attempts" 
+                            component={({match}) => (<AttemptContainer match={match} />)} />
 
                             <Route 
                             path="/topics/:topicId/lessons" 
                             component={({match}) => (<LessonContainer match={match} />)} />
-                            
-                           
+                                                     
                             <Route 
                             path="/categories/:categoryId/topics" 
                             component={({match}) => (<TopicContainer match={match} />)} />
                             
-                       
-                            <Route path="/categories" exact component={CategoryContainer} />
+                            
                             <Route path="/lessons" exact component={LessonContainer} />
                             <Route path="/topics" exact component={TopicContainer} />
-                            {/* <Route path="/lessons/:lessonId/attempts" component={LessonItem} /> */}
+                            <Route path="/categories" exact component={CategoryContainer} />
+                            
                             {/* <Route path="/attempts" component={AttemptContainer} /> */}
                             {/* <Route path="/attempts/:id/comments" component={AttemptContainer} /> */}
                             <Route path="/profile" component={ProfileContainer} />

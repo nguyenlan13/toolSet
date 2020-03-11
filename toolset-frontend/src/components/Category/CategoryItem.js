@@ -32,7 +32,7 @@ class CategoryItem extends Component {
         return(
             <div>
                 <p>
-                    <Link onClick={() => this.handleClick(csrf_token, categoryId)} to={`/categories/${categoryId}/topics`}>
+                    <Link className="link-color" onClick={() => this.handleClick(csrf_token, categoryId)} to={`/categories/${categoryId}/topics`}>
                         {categoryName}
                     </Link>
                     {/* <TopicItem/> */}
