@@ -27,18 +27,20 @@ import { connect } from 'react-redux'
 class LessonItem extends Component {
 
 
-    onClick = async (csrf_token, lessonId) => {
-        //  await this.props.get_lesson_attempts(csrf_token, lessonId)
+    handleClickClick = async (csrf_token, lessonId, userId, topicId) => {
+        //  await this.props.get_lesson_attempts(csrf_token, lessonId, userId, topicId)
     }
 
     render(){
         const {csrf_token, description, lessonId, userId, topicId} = this.props
+        console.log({description})
         // if (this.props.category.topics){
             return(
                 <div>
                     <p>
-                        <Link onClick={() => this.onClick(csrf_token, description, lessonId, userId, topicId)} to={`/lessons/${lessonId}/attempts`}>
-                            <ul>{description}</ul>
+                        <Link onClick={() => this.handleClick(csrf_token, description, lessonId, userId, topicId)} to={`/lessons/${lessonId}/attempts`}>
+                        {/* <Link to={`/lessons/${lessonId}/attempts`}> */}
+                            {description}
                         </Link>
                         {/* {this.props.attempts.map(attempt=> {
                             return <AttemptItem 
@@ -58,8 +60,8 @@ class LessonItem extends Component {
     
 
 const mapStateToProps = (state) => {
-    const { topic, lesson, csrf_token, user} = state;
-    return { topics: topic, lessons: lesson, csrf_token, user}
+    const { category, topic, lesson, csrf_token, user} = state;
+    return { categories: category, topics: topic, lessons: lesson, csrf_token, user}
 }
 
 

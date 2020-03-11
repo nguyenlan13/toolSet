@@ -12,8 +12,18 @@ import CategoryForm from '../components/Category/CategoryForm'
 
 class CategoryContainer extends Component {
 
+  
+        // state = {
+        //     categoryId: null
+        // }
+
     componentDidMount(){
         this.props.get_categories()
+        // this.setState({
+        //     categoryId: this.props.match.params.id
+            
+        // })
+
     }
 
 
@@ -22,8 +32,7 @@ class CategoryContainer extends Component {
     }
 
     render(){
-        const { categories, topics } = this.props
-        console.log({categories, topics})
+        const { categories } = this.props
             return(
                 <div>
                     <h1>Categories:</h1>
@@ -43,8 +52,8 @@ class CategoryContainer extends Component {
 
 
 const mapStateToProps = (state) => {
-    const { category, topic, csrf_token } = state;
-    return { categories: category, topics: topic, csrf_token}
+    const { category, csrf_token } = state;
+    return { categories: category,  csrf_token}
 }
 
 

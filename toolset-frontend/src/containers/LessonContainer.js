@@ -9,9 +9,15 @@ import LessonForm from '../components/Lesson/LessonForm'
 
 class LessonContainer extends Component {
 
-    // componentDidMount(){
-    //     // this.props.add_lesson()
-    // }
+    state = {
+        topicId: null
+    }
+
+    componentDidMount(){
+        this.setState({
+            topicId: this.props.match.params.id
+        })
+    }
 
 
     submitHandler = async (description, topicId, userId) => {
@@ -29,7 +35,9 @@ class LessonContainer extends Component {
                             return <LessonItem 
                                 description={lesson.description} 
                                 key={lesson.id} 
-                                lessonId={lesson.id} 
+                                lessonId={lesson.id}
+                                userId={lesson.user_id}
+                                topicId={lesson.topic_id}
                             />
                         })}
 
@@ -39,6 +47,7 @@ class LessonContainer extends Component {
             )     
     }
 }
+
 
 
 // const mapStateToProps = (state) => {

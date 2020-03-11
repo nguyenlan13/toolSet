@@ -14,7 +14,7 @@ export default function topicsReducer(state=[], action){
             return [...state, action.payload]
         case GET_TOPIC_LESSONS:
             console.log(action.payload)
-            return action.payload
+            return  action.payload
         default:
             return state
     }

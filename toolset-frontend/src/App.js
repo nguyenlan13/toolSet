@@ -13,9 +13,9 @@ import CategoryContainer from "./containers/CategoryContainer";
 import LoginContainer from "./containers/LoginContainer";
 import SignupContainer from "./containers/SignupContainer";
 import { getToken } from './actions/authSetup';
-import CategoryItem from './components/Category/CategoryItem'
-import TopicItem from './components/Topic/TopicItem'
-import LessonItem from './components/Lesson/LessonItem'
+// import CategoryItem from './components/Category/CategoryItem'
+// import TopicItem from './components/Topic/TopicItem'
+// import LessonItem from './components/Lesson/LessonItem'
 import './App.css';
 // import { render } from 'react-dom';
 
@@ -35,20 +35,34 @@ class App extends Component {
                         <Navbar/>
                         <Switch>
                             
+                        
+                        
+                            
+
+
+                            <Route 
+                            path="/topics/:topicId/lessons" 
+                            component={({match}) => (<LessonContainer match={match} />)} />
+                            
+                           
+                            <Route 
+                            path="/categories/:categoryId/topics" 
+                            component={({match}) => (<TopicContainer match={match} />)} />
+                            
+                       
+                            <Route path="/categories" exact component={CategoryContainer} />
+                            <Route path="/lessons" exact component={LessonContainer} />
+                            <Route path="/topics" exact component={TopicContainer} />
+                            {/* <Route path="/lessons/:lessonId/attempts" component={LessonItem} /> */}
+                            {/* <Route path="/attempts" component={AttemptContainer} /> */}
+                            {/* <Route path="/attempts/:id/comments" component={AttemptContainer} /> */}
                             <Route path="/profile" component={ProfileContainer} />
                             <Route path="/about" component={About} />
                             <Route path="/login" component={LoginContainer} />
                             <Route path="/signup" component={SignupContainer} />
-                            <Route path="/categories" component={CategoryContainer} />
-                            <Route path="/categories/:categoryId/topics" component={CategoryItem} />
-                            <Route path="/topics" component={TopicContainer} />
-                            <Route path="/topics/:topicId/lessons" component={TopicItem} />
-                            <Route path="/lessons" component={LessonContainer} />
-                            <Route path="/lessons/:lessonId/attempts" component={LessonItem} />
-                            <Route path="/attempts" component={AttemptContainer} />
-                            {/* <Route path="/attempts/:id/comments" component={AttemptContainer} /> */}
-                           
                             <Route path="/" exact component={HomeContainer} />
+                        
+                           
 
                         </Switch>
                     </Layout>

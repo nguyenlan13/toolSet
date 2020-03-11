@@ -10,31 +10,37 @@ import TopicForm from '../components/Topic/TopicForm'
 
 class TopicContainer extends Component {
 
-    componentDidMount(){
-        this.props.get_topics()
+    state = {
+        categoryId: null
     }
 
-
+    componentDidMount(){
+        this.props.get_topics()
+        this.setState({
+            categoryId: this.props.match.params.id
+        })
+    }
+    
     submitHandler = async (name) => {
         await this.props.add_topic(this.props.csrf_token, name)
     }
 
     render(){
-        const { topics, lessons } = this.props
-        console.log({topics, lessons})
-            return(
-                <div>
-                    <h1>Topics:</h1>
-                        < TopicForm handleSubmit={this.submitHandler}/>
-                        {topics.map(topic => {
-                            return <TopicItem 
-                                topicName={topic.name} 
-                                key={topic.id} 
-                                topicId={topic.id} 
-                            />
-                        })}
-                </div>
-            )     
+        const { topics } = this.props
+        return(
+            <div>
+                <h1>Topics:</h1>
+                    < TopicForm handleSubmit={this.submitHandler}/>
+                    {topics.map(topic => {
+                        return <TopicItem 
+                            topicName={topic.name} 
+                            key={topic.id} 
+                            topicId={topic.id}
+                            lessons={topic.lessons}
+                        />
+                    })}
+            </div>
+        )     
     }
 }
 

@@ -15,7 +15,7 @@ export const getTopics = topics => {
                 throw response
             }
             let topicsJson = await response.json()
-            console.log(topicsJson)
+            // console.log(topicsJson)
                 dispatch({
                     type: GET_TOPICS,
                     payload: topicsJson
@@ -28,9 +28,11 @@ export const getTopics = topics => {
 
 
 export const getTopicLessons = (csrf_token, topicId) => {
+    console.log(topicId)
     return async function (dispatch) {
         try{
-            let response = await fetch(baseURL + `topics/${topicId}/lessons`, {
+            let response = await fetch(baseURL + "topics/" + `${topicId}` + "/lessons", {
+            // let response = await fetch(baseURL + "topics/" + `${topicId}`, {
                 method: "GET",
                 headers: {
                     'Accept': 'application/json',
@@ -46,6 +48,7 @@ export const getTopicLessons = (csrf_token, topicId) => {
             console.log(topicLessonsJson)
                 dispatch({
                     type: GET_TOPIC_LESSONS,
+                    // payload: 
                     payload: topicLessonsJson
                 })
         }catch(error){

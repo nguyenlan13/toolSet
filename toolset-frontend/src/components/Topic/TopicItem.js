@@ -30,6 +30,7 @@ class TopicItem extends Component {
 
 
     onClick = async (csrf_token, topicId) => {
+
         await this.props.get_topic_lessons(csrf_token, topicId)
     }
 
@@ -40,9 +41,9 @@ class TopicItem extends Component {
                 <div>
                     <p>
                         <Link onClick={() => this.onClick(csrf_token, topicId)} to={`/topics/${topicId}/lessons`}>
-                            <ul>{topicName}</ul>
+                            {topicName}
                         </Link>
-                        {this.props.lessons.map(lesson => {
+                        {/* {this.props.lessons.map(lesson => {
                             return <LessonItem 
                                 description={lesson.description} 
                                 key={lesson.id} 
@@ -50,7 +51,7 @@ class TopicItem extends Component {
                                 topicId={lesson.topic_id}
                                 userId={lesson.user_id} 
                             />
-                        })}
+                        })} */}
                     </p>
                 </div>
             )

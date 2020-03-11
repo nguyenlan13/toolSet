@@ -24,12 +24,12 @@ function Navbar() {
             {/* <Link className="nav-link" to="/lessons">
                 <li>LESSONS</li>
             </Link> */}
-            <Link className="nav-link" to="/login">
+            {/* <Link className="nav-link" to="/login">
                 <li>LOG IN</li>
             </Link>
             <Link className="nav-link" to="/signup">
                 <li>SIGN UP</li>
-            </Link>
+            </Link> */}
         </ul>
     </nav>
   );
