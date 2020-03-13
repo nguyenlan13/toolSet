@@ -1,11 +1,11 @@
 class Api::V1::CategoriesController < ApplicationController
 
     def index
-        if params[:topic_id]
-            categories = Topic.find(params[:topic_id]).categories
-        else
+        # if params[:topic_id]
+        #     categories = Topic.find(params[:topic_id]).categories
+        # else
             categories = Category.all
-        end
+        # end
         render json: categories, status: 200
     end
 
