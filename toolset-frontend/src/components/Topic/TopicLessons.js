@@ -9,11 +9,11 @@ import { Link} from 'react-router-dom'
 // } from 'react-router-dom'
 
 
-const topicLessons = ({description, id}) => {
+const topicLessons = ({description, lessonId}) => {
     return(
         <div>
             <p>
-                <Link to={`lessons/${id}/attempts`}>
+                <Link to={`lessons/${lessonId}/attempts`}>
                 {description}
                 </Link>
             </p>

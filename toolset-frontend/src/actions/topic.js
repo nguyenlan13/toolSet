@@ -1,7 +1,8 @@
 import { 
     GET_TOPICS,
     ADD_TOPIC,
-    GET_TOPIC_LESSONS
+    GET_TOPIC_LESSONS,
+    GET_CATEGORY_TOPICS
 } from '../actionTypes'
 
 import {baseURL} from '../constants/baseURL'
@@ -15,11 +16,41 @@ export const getTopics = topics => {
                 throw response
             }
             let topicsJson = await response.json()
-            // console.log(topicsJson)
                 dispatch({
                     type: GET_TOPICS,
                     payload: topicsJson
                 })
+        }catch(error){
+            console.log(error)
+        }
+    }
+}
+
+
+export const addTopic = (csrf_token, name) => {
+    return async function (dispatch) {
+        try{
+            dispatch({
+                type: ADD_TOPIC,
+                payload: {
+                    topic:{
+                        name: name
+                    }
+                }
+            })
+            let response = await fetch(baseURL + "topics",{
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrf_token
+                },
+                body: JSON.stringify({topic: {name}}),
+                credentials: 'include'
+            })
+            if(!response.ok){
+                throw response
+            }
         }catch(error){
             console.log(error)
         }
@@ -55,35 +86,31 @@ export const getTopicLessons = (csrf_token, topicId) => {
     }
 }
 
-export const addTopic = (csrf_token, name) => {
+export const getCategoryTopics = (csrf_token, categoryId) => {
+    console.log(csrf_token, categoryId)
     return async function (dispatch) {
         try{
-            dispatch({
-                type: ADD_TOPIC,
-                payload: {
-                    topic:{
-                        name: name
-                    }
-                }
-            })
-            let response = await fetch(baseURL + "topics",{
-                method: "POST",
+            let response = await fetch(baseURL + `categories/${categoryId}/topics`, {
+                method: "GET",
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': csrf_token
                 },
-                body: JSON.stringify({topic: {name}}),
                 credentials: 'include'
             })
             if(!response.ok){
                 throw response
             }
+            let categoryTopicsJson = await response.json()
+            console.log(categoryTopicsJson)
+                dispatch({
+                    type: GET_CATEGORY_TOPICS,
+                    payload: categoryTopicsJson
+                })
+            // return categoriesJson
         }catch(error){
             console.log(error)
         }
     }
 }
-
-
-

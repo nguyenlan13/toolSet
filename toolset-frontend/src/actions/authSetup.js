@@ -12,7 +12,6 @@ export const getToken = () => {
             }
             const tokenJson = await res.json()
             const csrf_token = tokenJson.csrf_auth_token
-            // console.log(csrf_token)
             dispatch({
                 type: GET_CSRF_TOKEN,
                 payload: csrf_token

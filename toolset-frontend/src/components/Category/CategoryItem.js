@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getCategoryTopics } from '../../actions/category'
-import { withRouter } from 'react-router-dom'
-import  TopicItem  from '../Topic/TopicItem'
+// import { getCategoryTopics } from '../../actions/category'
+
+// import  TopicItem  from '../Topic/TopicItem'
 
 
 class CategoryItem extends Component {
@@ -27,8 +27,7 @@ class CategoryItem extends Component {
     // }
 
     render(){
-        const {csrf_token, categoryName, categoryId} = this.props
-console.log(categoryName)
+        const {categoryName, categoryId} = this.props
         return(
             <div>
                 <p>
@@ -36,14 +35,6 @@ console.log(categoryName)
                     <Link className="link-color" to={`/categories/${categoryId}/topics`}>
                         {categoryName}
                     </Link>
-                    {/* <TopicItem/> */}
-                    {/* {topics.map(topic => {
-                        return <CategoryTopics 
-                            topicName={topic.name} 
-                            key={topic.id} 
-                            topicId={topic.id} 
-                        />
-                    })} */}
                 </p>
             </div>
         )
@@ -52,14 +43,16 @@ console.log(categoryName)
     
 
 const mapStateToProps = (state) => {
-    const { category, topic, csrf_token} = state;
-    return { categories: category, topics: topic, csrf_token}
+    const { categories, topics, csrf_token} = state;
+    return { categories, topics, csrf_token}
+    // const { category, topic, csrf_token} = state;
+    // return { categories: category, topics: topic, csrf_token}
 }
 
 
-const mapDispatchToProps = dispatch => ({
-    get_category_topics: (csrf_token, categoryId) => dispatch(getCategoryTopics(csrf_token, categoryId))
-})
+// const mapDispatchToProps = dispatch => ({
+//     // get_category_topics: (csrf_token, categoryId) => dispatch(getCategoryTopics(csrf_token, categoryId))
+// })
 
-export default connect(mapStateToProps,mapDispatchToProps)(CategoryItem)
-// export default withRouter(connect(mapStateToProps,mapDispatchToProps)(CategoryItem))
+// export default connect(mapStateToProps, mapDispatchToProps)(CategoryItem)
+export default connect(mapStateToProps)(CategoryItem)

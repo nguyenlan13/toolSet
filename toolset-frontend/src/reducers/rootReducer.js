@@ -9,10 +9,10 @@ import attemptReducer from './attemptReducer'
 const rootReducer = (combineReducers) ({
     csrf_token: tokenReducer,
     user: userReducer,
-    category: categoryReducer,
-    topic: topicReducer,
-    lesson: lessonReducer,
-    attempt: attemptReducer
+    categories: categoryReducer,
+    topics: topicReducer,
+    lessons: lessonReducer,
+    attempts: attemptReducer
 
 })
 

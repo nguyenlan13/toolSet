@@ -17,6 +17,7 @@ export const getLessons = lessons => {
                 throw response
             }
             let lessonsJson = await response.json()
+            console.log(lessonsJson)
                 dispatch({
                     type: GET_LESSONS,
                     payload: lessonsJson
@@ -28,16 +29,15 @@ export const getLessons = lessons => {
 }
 
 
-export const addLesson = (csrf_token, description, topic, user) => {
+// export const addLesson = (csrf_token, description, topic, user) => {
+export const addLesson = (csrf_token, description) => {
     return async function (dispatch) {
         try{
             dispatch({
                 type: ADD_LESSON,
                 payload: {
                     lesson:{
-                        description: description,
-                        topic_id: topic,
-                        user_id: user
+                        description: description
                     }
                 }
             })
@@ -48,7 +48,7 @@ export const addLesson = (csrf_token, description, topic, user) => {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': csrf_token
                 },
-                body: JSON.stringify({lesson: {description, topic, user}}),
+                body: JSON.stringify({lesson: {description}}),
                 credentials: 'include'
             })
             if(!response.ok){
@@ -64,8 +64,7 @@ export const addLesson = (csrf_token, description, topic, user) => {
 export const getLessonAttempts = (csrf_token, lessonId) => {
     return async function (dispatch) {
         try{
-            let response = await fetch(baseURL + "lessons/" + `${lessonId}` + "/attempts", {
-            // let response = await fetch(baseURL + "lessons/" + `${lessonId}`, {
+            let response = await fetch(baseURL + `lessons/${lessonId}/attempts`, {
                 method: "GET",
                 headers: {
                     'Accept': 'application/json',

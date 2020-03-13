@@ -20,19 +20,19 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { getLessonAttempts } from '../../actions/lesson'
+// import { getLessonAttempts } from '../../actions/lesson'
 // import  AttemptItem  from '../../components/Attempt/AttemptItem'
 
 
 class LessonItem extends Component {
 
 
-    handleClick = async (csrf_token, lessonId) => {
-         await this.props.get_lesson_attempts(csrf_token, lessonId)
-    }
+    // handleClick = async (csrf_token, lessonId) => {
+    //      await this.props.get_lesson_attempts(csrf_token, lessonId)
+    // }
 
     render(){
-        const {description, lessonId, userId, topicId} = this.props
+        const {description, lessonId} = this.props
         console.log(description)
             return(
                 <div>
@@ -59,13 +59,15 @@ class LessonItem extends Component {
     
 
 const mapStateToProps = (state) => {
-    const { category, topic, lesson, csrf_token, user} = state;
-    return { categories: category, topics: topic, lessons: lesson, csrf_token, user}
+    const { categories, topics, lessons, csrf_token, user} = state;
+    return { categories, topics, lessons, csrf_token, user}
+    // const { category, topic, lesson, csrf_token, user} = state;
+    // return { categories: category, topics: topic, lessons: lesson, csrf_token, user}
 }
 
 
 const mapDispatchToProps = dispatch => ({
-    get_lesson_attempts: (csrf_token, lessonId) => dispatch(getLessonAttempts(csrf_token, lessonId))
+    // get_lesson_attempts: (csrf_token, lessonId) => dispatch(getLessonAttempts(csrf_token, lessonId))
 })
 
-export default connect(mapStateToProps,mapDispatchToProps)(LessonItem)
+export default connect(mapStateToProps, mapDispatchToProps)(LessonItem)

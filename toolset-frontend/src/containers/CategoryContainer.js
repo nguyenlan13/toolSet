@@ -1,29 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import { GET_CSRF_TOKEN } from '../actionTypes'
 import { getCategories } from '../actions/category'
 import { addCategory } from '../actions/category'
-import { getCategoryTopics} from '../actions/category'
+// import { getCategoryTopics} from '../actions/category'
 import CategoryItem  from '../components/Category/CategoryItem'
 import CategoryForm from '../components/Category/CategoryForm'
-// import CategoryTopics from '../components/Category/CategoryTopics'
-// import TopicItem from '../components/Topic/TopicItem'
 
 
 class CategoryContainer extends Component {
 
-        // state = {
-        //     categoryId: null
-        // }
 
     componentDidMount(){
         this.props.get_categories()
-        // this.setState({
-        //     categoryId: this.props.match.params.id 
-        // })
-        // console.log(this.props)
     }
-
 
     submitHandler = async (name) => {
         await this.props.add_category(this.props.csrf_token, name)
@@ -38,9 +27,9 @@ class CategoryContainer extends Component {
                         {categories.map(category => {
                             return <CategoryItem 
                                 categoryName={category.name} 
-                                key={category.id} 
+                                key={ "123" + category.id} 
                                 categoryId={category.id}
-                                categoryTopics={category.topics}
+                                // categoryTopics={category.topics}
                             />
                         })}
 
@@ -51,8 +40,10 @@ class CategoryContainer extends Component {
 
 
 const mapStateToProps = (state) => {
-    const { category, csrf_token } = state;
-    return { categories: category,  csrf_token}
+    const { categories, csrf_token } = state;
+    return { categories,  csrf_token}
+    // const { category, csrf_token } = state;
+    // return { categories: category,  csrf_token}
 }
 
 
