@@ -2,8 +2,12 @@ class Api::V1::AttemptsController < ApplicationController
 
     def index
         #authorize
-        attempts = Lesson.find(params[:lesson_id]).attempts
-        render json: attempts
+        if params[:lesson_id]
+            attempts = Lesson.find(params[:lesson_id]).attempts
+        else
+            attempts = Attempt.all
+        end
+        render json: attempts, status: 200
     end
 
     def create
