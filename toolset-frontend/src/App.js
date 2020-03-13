@@ -46,19 +46,19 @@ class App extends Component {
                             <Route 
                             path="/categories/:categoryId/topics" 
                             render={({match}) => (<TopicContainer match={match} />)} />    
-                                          
-                            {/* <Route 
-                            path="/categories/:categoryId/topics" 
-                            render={() => <TopicContainer key={`category:${this.props.match.params.categoryId}`}  {...props}/> */}
 
-                            {/* <Route path="/lessons" exact component={LessonContainer} /> */}
-                            
-                       
+
+                            {/* <Route 
+                            exact
+                            path="/categories/:categoryId/topics" 
+                        render={(props) => <TopicContainer key={this.props.match.params.categoryId}/> /> */}
+
+                            <Route exact path="/lessons" component={LessonContainer} />
                             <Route exact path="/topics" component={TopicContainer} /> 
                             <Route exact path="/categories" component={CategoryContainer} />
                             
-                            <Route exact path="/attempts" component={AttemptContainer} />
-                            <Route path="/attempts/:id/comments" component={AttemptContainer} />
+                            {/* <Route exact path="/attempts" component={AttemptContainer} /> */}
+                            {/* <Route path="/attempts/:attemptId/comments" component={AttemptContainer} /> */}
 
                             <Route path="/profile" component={ProfileContainer} />
                             <Route path="/about" component={About} />
