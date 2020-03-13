@@ -5,7 +5,6 @@ import {
 } from '../actionTypes'
 
 export default function categoriesReducer(state=[], action){
-    console.log(state)
     switch(action.type){
         case GET_CATEGORIES:
         console.log(action.payload)
@@ -13,8 +12,9 @@ export default function categoriesReducer(state=[], action){
         case ADD_CATEGORY:
             return [...state, action.payload]
         case GET_CATEGORY_TOPICS:
-            return action.payload
-            
+            console.log(action.payload)
+            // return {...state, ...state.topics}
+            return {...state, topics: action.payload}
         default:
             return state
     }
