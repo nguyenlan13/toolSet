@@ -40,6 +40,7 @@ class CategoryContainer extends Component {
                                 categoryName={category.name} 
                                 key={category.id} 
                                 categoryId={category.id}
+                                categoryTopics={category.topics}
                             />
                         })}
 
