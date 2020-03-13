@@ -34,33 +34,37 @@ class App extends Component {
                     <Layout>
                         <Navbar/>
                         <Switch>
-
-                            {/* <Route path="/categories" component={CategoryContainer} /> */}
-                            
+                   
                             <Route 
                             path="/lessons/:lessonId/attempts" 
-                            component={({match}) => (<AttemptContainer match={match} />)} />
+                            render={({match}) => (<AttemptContainer match={match} />)} />
 
                             <Route 
                             path="/topics/:topicId/lessons" 
-                            component={({match}) => (<LessonContainer match={match} />)} />
-                                                     
+                            render={({match}) => (<LessonContainer match={match} />)} />
+
                             <Route 
                             path="/categories/:categoryId/topics" 
-                            component={({match}) => (<TopicContainer match={match} />)} />
+                            render={({match}) => (<TopicContainer match={match} />)} />    
+                                          
+                            {/* <Route 
+                            path="/categories/:categoryId/topics" 
+                            render={() => <TopicContainer key={`category:${this.props.match.params.categoryId}`}  {...props}/> */}
+
+                            {/* <Route path="/lessons" exact component={LessonContainer} /> */}
                             
+                       
+                            <Route exact path="/topics" component={TopicContainer} /> 
+                            <Route exact path="/categories" component={CategoryContainer} />
                             
-                            <Route path="/lessons" exact component={LessonContainer} />
-                            <Route path="/topics" exact component={TopicContainer} />
-                            <Route path="/categories" exact component={CategoryContainer} />
-                            
-                            {/* <Route path="/attempts" component={AttemptContainer} /> */}
-                            {/* <Route path="/attempts/:id/comments" component={AttemptContainer} /> */}
+                            <Route exact path="/attempts" component={AttemptContainer} />
+                            <Route path="/attempts/:id/comments" component={AttemptContainer} />
+
                             <Route path="/profile" component={ProfileContainer} />
                             <Route path="/about" component={About} />
                             <Route path="/login" component={LoginContainer} />
                             <Route path="/signup" component={SignupContainer} />
-                            <Route path="/" exact component={HomeContainer} />
+                            <Route exact path="/" component={HomeContainer} />
                         
                            
 
