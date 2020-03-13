@@ -27,18 +27,18 @@ import { getLessonAttempts } from '../../actions/lesson'
 class LessonItem extends Component {
 
 
-    handleClickClick = async (csrf_token, lessonId) => {
+    handleClick = async (csrf_token, lessonId) => {
          await this.props.get_lesson_attempts(csrf_token, lessonId)
     }
 
     render(){
-        const {csrf_token, description, lessonId, userId, topicId} = this.props
-        console.log({description})
+        const {description, lessonId, userId, topicId} = this.props
+        console.log(description)
             return(
                 <div>
                     <p>
-                        <Link className="link-color" onClick={() => this.handleClick(csrf_token, description, lessonId)} to={`/lessons/${lessonId}/attempts`}>
-                        {/* <Link to={`/lessons/${lessonId}/attempts`}> */}
+                        {/* <Link className="link-color" onClick={() => this.handleClick(csrf_token, description, lessonId)} to={`/lessons/${lessonId}/attempts`}> */}
+                        <Link className="link-color" to={`/lessons/${lessonId}/attempts`}>
                             {description}
                         </Link>
                         {/* {this.props.attempts.map(attempt=> {

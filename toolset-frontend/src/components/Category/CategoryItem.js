@@ -21,18 +21,19 @@ class CategoryItem extends Component {
     //     })
     // }
 
-    handleClick = async (csrf_token, categoryId) => {
-        await this.props.get_category_topics(csrf_token, categoryId)
+    // handleClick = async (csrf_token, categoryId) => {
+    //     await this.props.get_category_topics(csrf_token, categoryId)
     
-    }
+    // }
 
     render(){
         const {csrf_token, categoryName, categoryId} = this.props
-
+console.log(categoryName)
         return(
             <div>
                 <p>
-                    <Link className="link-color" onClick={() => this.handleClick(csrf_token, categoryId)} to={`/categories/${categoryId}/topics`}>
+                    {/* <Link className="link-color" onClick={() => this.handleClick(csrf_token, categoryId)} to={`/categories/${categoryId}/topics`}> */}
+                    <Link className="link-color" to={`/categories/${categoryId}/topics`}>
                         {categoryName}
                     </Link>
                     {/* <TopicItem/> */}

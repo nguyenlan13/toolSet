@@ -24,25 +24,32 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { getTopicLessons } from '../../actions/topic'
 // import  LessonItem  from '../../components/Lesson/LessonItem'
-
+import { withRouter } from 'react-router-dom'
 
 class TopicItem extends Component {
 
 
-    onClick = async (csrf_token, topicId) => {
-
-        await this.props.get_topic_lessons(csrf_token, topicId)
-    }
+    // onClick = async (csrf_token, topicId) => {
+    //     await this.props.get_topic_lessons(csrf_token, topicId)
+    //     console.log(csrf_token, topicId)
+    // }
+        
 
     render(){
-        const {csrf_token, topicName, topicId} = this.props
-        // if (this.props.category.topics){
+        const {topicName, topicId, topicLessons} = this.props
+        console.log(topicName)
             return(
                 <div>
                     <p>
-                        <Link className="link-color" onClick={() => this.onClick(csrf_token, topicId)} to={`/topics/${topicId}/lessons`}>
+                        {/* <Link className="link-color" onClick={() => this.onClick(csrf_token, topicId)} to={`/topics/${topicId}/lessons`}> */}
+                        <Link className="link-color" to={`/topics/${topicId}/lessons`}>
+                        {/* <Link className="link-color"  
+                        to={{
+                            pathname:`/topics/${topicId}/lessons`, state: {csrf_token, topicId: topicId}
+                            }}> */}
                             {topicName}
                         </Link>
+                        {topicLessons}
                         {/* {this.props.lessons.map(lesson => {
                             return <LessonItem 
                                 description={lesson.description} 
@@ -69,4 +76,4 @@ const mapDispatchToProps = dispatch => ({
     get_topic_lessons: (csrf_token, topicId) => dispatch(getTopicLessons(csrf_token, topicId))
 })
 
-export default connect(mapStateToProps,mapDispatchToProps)(TopicItem)
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(TopicItem))
