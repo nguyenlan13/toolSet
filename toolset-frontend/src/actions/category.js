@@ -65,7 +65,7 @@ export const getCategoryTopics = (csrf_token, categoryId) => {
     console.log(csrf_token, categoryId)
     return async function (dispatch) {
         try{
-            let response = await fetch(baseURL + "categories/" + `${categoryId}` + "/topics", {
+            let response = await fetch(baseURL + `categories/${categoryId}/topics`, {
                 method: "GET",
                 headers: {
                     'Accept': 'application/json',

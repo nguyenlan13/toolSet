@@ -31,8 +31,7 @@ export const getTopicLessons = (csrf_token, topicId) => {
     console.log(topicId)
     return async function (dispatch) {
         try{
-            let response = await fetch(baseURL + "topics/" + `${topicId}` + "/lessons", {
-            // let response = await fetch(baseURL + "topics/" + `${topicId}`, {
+            let response = await fetch(baseURL + `topics/${topicId}/lessons`, {
                 method: "GET",
                 headers: {
                     'Accept': 'application/json',
@@ -48,7 +47,6 @@ export const getTopicLessons = (csrf_token, topicId) => {
             console.log(topicLessonsJson)
                 dispatch({
                     type: GET_TOPIC_LESSONS,
-                    // payload: 
                     payload: topicLessonsJson
                 })
         }catch(error){

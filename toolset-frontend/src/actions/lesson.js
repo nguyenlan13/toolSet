@@ -1,5 +1,6 @@
 
 import { 
+    GET_LESSONS,
     ADD_LESSON,
     GET_LESSON_ATTEMPTS
 } from '../actionTypes'
@@ -8,7 +9,26 @@ import {
 import {baseURL} from '../constants/baseURL'
 
 
-export const addLesson = (csrf_token, description, topicId, userId) => {
+export const getLessons = lessons => {
+    return async function (dispatch) {
+        try{
+            let response = await fetch(baseURL + "lessons")
+            if(!response.ok){
+                throw response
+            }
+            let lessonsJson = await response.json()
+                dispatch({
+                    type: GET_LESSONS,
+                    payload: lessonsJson
+                })
+        }catch(error){
+            console.log(error)
+        }
+    }
+}
+
+
+export const addLesson = (csrf_token, description, topic, user) => {
     return async function (dispatch) {
         try{
             dispatch({
@@ -16,8 +36,8 @@ export const addLesson = (csrf_token, description, topicId, userId) => {
                 payload: {
                     lesson:{
                         description: description,
-                        topic_id: topicId,
-                        user_id: userId
+                        topic_id: topic,
+                        user_id: user
                     }
                 }
             })
@@ -28,7 +48,7 @@ export const addLesson = (csrf_token, description, topicId, userId) => {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': csrf_token
                 },
-                body: JSON.stringify({lesson: {description, topicId, userId}}),
+                body: JSON.stringify({lesson: {description, topic, user}}),
                 credentials: 'include'
             })
             if(!response.ok){

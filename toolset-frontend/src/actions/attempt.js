@@ -1,5 +1,7 @@
 
-import { 
+import {
+    GET_ATTEMPTS,
+    // GET_LESSON_ATTEMPTS,
     ADD_ATTEMPT
 } from '../actionTypes'
 
