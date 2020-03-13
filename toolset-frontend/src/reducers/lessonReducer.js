@@ -1,4 +1,5 @@
 import { 
+    GET_LESSONS,
     ADD_LESSON,
     GET_LESSON_ATTEMPTS
 } from '../actionTypes'
@@ -6,11 +7,13 @@ import {
 export default function lessonReducer(state=[], action){
 
     switch(action.type){
-
+        
+        case GET_LESSONS:
+            return action.payload
         case ADD_LESSON:
             return [...state, action.payload]
         case GET_LESSON_ATTEMPTS:
-            return action.payload
+            return [...state, action.payload]
         default:
             return state
     }

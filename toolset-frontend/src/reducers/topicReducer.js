@@ -4,17 +4,16 @@ import {
     GET_TOPIC_LESSONS
 } from '../actionTypes'
 
-export default function topicsReducer(state=[], action){
+
+export default function topicsReducer(state=[], action={}){
 
     switch(action.type){
-
         case GET_TOPICS:
             return action.payload
         case ADD_TOPIC:
             return [...state, action.payload]
         case GET_TOPIC_LESSONS:
-            console.log(action.payload)
-            return  action.payload
+            return action.payload
         default:
             return state
     }
