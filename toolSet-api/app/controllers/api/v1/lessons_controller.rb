@@ -1,13 +1,13 @@
 class Api::V1::LessonsController < ApplicationController
 
     def index
-        # if params[:user_id]
-        #     lessons = User.find(params[:user_id]).lessons
-        # elsif params[:topic_id]
-        #     lessons = Topic.find(params[:topic_id]).lessons
-        # else
+        if params[:user_id]
+            lessons = User.find(params[:user_id]).lessons
+        elsif params[:topic_id]
+            lessons = Topic.find(params[:topic_id]).lessons
+        else
             lessons = Lesson.all
-        # end
+        end
         render json: lessons, status: 200
     end
 
