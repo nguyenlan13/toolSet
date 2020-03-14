@@ -1,17 +1,21 @@
 
 import { 
+    LOADING,
     GET_CATEGORIES,
     ADD_CATEGORY,
     // GET_CATEGORY_TOPICS
 } from '../actionTypes'
 
-// import {getToken} from './authSetup'
-import {baseURL} from '../constants/baseURL'
+
+import { baseURL } from '../constants/baseURL'
 
 
 export const getCategories = categories => {
     return async function (dispatch) {
         try{
+            dispatch({
+                type: LOADING
+            })
             let response = await fetch(baseURL + "categories")
             if(!response.ok){
                 throw response
@@ -23,7 +27,7 @@ export const getCategories = categories => {
                 })
             // return categoriesJson
         }catch(error){
-            console.log(error)
+            console.log(error.message)
         }
     }
 }
@@ -32,15 +36,6 @@ export const getCategories = categories => {
 export const addCategory = (csrf_token, name) => {
     return async function (dispatch) {
         try{
-            dispatch({
-                type: ADD_CATEGORY,
-                payload: {
-                    category:{
-                        // category_id: id,
-                        name: name
-                    }
-                }
-            })
             let response = await fetch(baseURL + "categories",{
                 method: "POST",
                 headers: {
@@ -54,8 +49,16 @@ export const addCategory = (csrf_token, name) => {
             if(!response.ok){
                 throw response
             }
+            dispatch({
+                type: ADD_CATEGORY,
+                payload: {
+                    category:{
+                        name: name
+                    }
+                }
+            })
         }catch(error){
-            console.log(error)
+            console.log(error.message)
         }
     }
 }

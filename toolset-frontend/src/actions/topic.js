@@ -1,12 +1,12 @@
 import { 
+    LOADING,
     GET_TOPICS,
     ADD_TOPIC,
-    GET_TOPIC_LESSONS,
-    GET_CATEGORY_TOPICS,
-    LOADING
+    // GET_TOPIC_LESSONS,
+    GET_CATEGORY_TOPICS
 } from '../actionTypes'
 
-import {baseURL} from '../constants/baseURL'
+import { baseURL } from '../constants/baseURL'
 
 
 export const getTopics = topics => {
@@ -25,7 +25,7 @@ export const getTopics = topics => {
                     payload: topicsJson
                 })
         }catch(error){
-            console.log(error)
+            console.log(error.message)
         }
     }
 }
@@ -56,45 +56,42 @@ export const addTopic = (csrf_token, name) => {
                 }
             })
         }catch(error){
-            console.log(error)
-        }
-    }
-}
-
-
-export const getTopicLessons = (csrf_token, topicId) => {
-    console.log(topicId)
-    return async function (dispatch) {
-        try{
-            dispatch({
-                type: LOADING
-            })
-            let response = await fetch(baseURL + `topics/${topicId}/lessons`, {
-                method: "GET",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': csrf_token
-                },
-                credentials: 'include'
-            })
-            if(!response.ok){
-                throw response
-            }
-            let topicLessonsJson = await response.json()
-            console.log(topicLessonsJson)
-                dispatch({
-                    type: GET_TOPIC_LESSONS,
-                    payload: topicLessonsJson
-                })
-        }catch(error){
             console.log(error.message)
         }
     }
 }
 
+
+// export const getTopicLessons = (csrf_token, topicId) => {
+//     return async function (dispatch) {
+//         try{
+//             dispatch({
+//                 type: LOADING
+//             })
+//             let response = await fetch(baseURL + `topics/${topicId}/lessons`, {
+//                 method: "GET",
+//                 headers: {
+//                     'Accept': 'application/json',
+//                     'Content-Type': 'application/json',
+//                     'X-CSRF-TOKEN': csrf_token
+//                 },
+//                 credentials: 'include'
+//             })
+//             if(!response.ok){
+//                 throw response
+//             }
+//             let topicLessonsJson = await response.json()
+//                 dispatch({
+//                     type: GET_TOPIC_LESSONS,
+//                     payload: topicLessonsJson
+//                 })
+//         }catch(error){
+//             console.log(error.message)
+//         }
+//     }
+// }
+
 export const getCategoryTopics = (csrf_token, categoryId) => {
-    // console.log(csrf_token, categoryId)
     return async function (dispatch) {
         try{
             dispatch({
@@ -113,14 +110,13 @@ export const getCategoryTopics = (csrf_token, categoryId) => {
                 throw response
             }
             let categoryTopicsJson = await response.json()
-            // console.log(categoryTopicsJson)
                 dispatch({
                     type: GET_CATEGORY_TOPICS,
                     payload: categoryTopicsJson
                 })
             // return categoriesJson
         }catch(error){
-            console.log(error)
+            console.log(error.message)
         }
     }
 }
