@@ -6,13 +6,6 @@ import { baseURL } from '../constants/baseURL'
 export const login = (csrf_token, email, password) => {
     return async function (dispatch) {
         try{
-            dispatch({
-                type: LOG_IN_USER,
-                payload: {
-                        email: email,
-                        password: password
-                }
-            });
             const res = await fetch(baseURL + "login", {
                 method: "POST",
                 headers: {
@@ -26,6 +19,13 @@ export const login = (csrf_token, email, password) => {
             if(!res.ok){
                 throw res
             }
+            dispatch({
+                type: LOG_IN_USER,
+                payload: {
+                        email: email,
+                        password: password
+                }
+            });
             // return await res.json()
         }catch(error){
             console.log(error.message)
@@ -37,17 +37,6 @@ export const login = (csrf_token, email, password) => {
 export const signup = (csrf_token, email, username, name, password) => {
     return async function (dispatch) {
         try{
-            dispatch({
-                type: SIGN_UP_USER,
-                payload: {
-                    user:{
-                        email: email,
-                        username: username,
-                        name: name,
-                        password: password
-                    }
-                }
-            });
             const res = await fetch(baseURL + "signup", {
                 method: "POST",
                 headers: {
@@ -61,6 +50,17 @@ export const signup = (csrf_token, email, username, name, password) => {
             if(!res.ok){
                 throw res
             }
+            dispatch({
+                type: SIGN_UP_USER,
+                payload: {
+                    user:{
+                        email: email,
+                        username: username,
+                        name: name,
+                        password: password
+                    }
+                }
+            });
             // return await res.json()
         }catch(error){
             console.log(error.message)
@@ -71,9 +71,6 @@ export const signup = (csrf_token, email, username, name, password) => {
 export const logout = csrf_token => {
     return async function (dispatch) {
         try{
-            dispatch({
-                type: LOGOUT
-            });
             const res = await fetch(baseURL + "logout", {
                 method: "DELETE",
                 headers: {
@@ -87,7 +84,10 @@ export const logout = csrf_token => {
             if(!res.ok){
                 throw res
             }
-            return await res.json()
+            dispatch({
+                type: LOGOUT
+            });
+            // return await res.json()
         }catch(error){
             console.log(error.message)
         }
