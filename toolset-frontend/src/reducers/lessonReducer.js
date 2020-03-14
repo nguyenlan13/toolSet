@@ -1,19 +1,25 @@
 import { 
+    LOADING,
     GET_LESSONS,
     ADD_LESSON,
-    GET_LESSON_ATTEMPTS
+    GET_TOPIC_LESSONS
 } from '../actionTypes'
 
-export default function lessonReducer(state=[], action){
+export default function lessonReducer(state = {
+        lessons:[],
+        loading: false,
+        topicLessons: []
+    }, action){
 
-    switch(action.type){
+    switch(action.type) {
+        case LOADING:
+            return {...state, loading: true}
         case GET_LESSONS:
-            console.log(action.payload)
-            return action.payload
+            return {...state, lessons: action.payload, loading: false}
         case ADD_LESSON:
             return [...state, action.payload]
-        case GET_LESSON_ATTEMPTS:
-            return [...state, action.payload]
+        case GET_TOPIC_LESSONS:
+            return {...state, topicLessons: action.payload, loading: false}
         default:
             return state
     }

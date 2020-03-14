@@ -1,20 +1,22 @@
 import { 
+    LOADING,
     GET_CATEGORIES,
     ADD_CATEGORY,
     // GET_CATEGORY_TOPICS
 } from '../actionTypes'
 
-export default function categoriesReducer(state=[], action){
+export default function categoriesReducer(state = {
+    categories: [],
+    loading: false,
+}, action) {
+
     switch(action.type){
+        case LOADING:
+            return {...state, loading: true}
         case GET_CATEGORIES:
-        console.log(action.payload)
-            return action.payload
+            return {...state, categories: action.payload, loading: false}
         case ADD_CATEGORY:
             return [...state, action.payload]
-        // case GET_CATEGORY_TOPICS:
-        //     console.log(action.payload)
-        //     // return {...state, ...state.topics}
-        //     return {...state, topics: action.payload}
         default:
             return state
     }
