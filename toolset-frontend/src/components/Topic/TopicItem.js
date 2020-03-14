@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
-// import { getTopicLessons } from '../../actions/topic'
-// import  LessonItem  from '../../components/Lesson/LessonItem'
+// import { connect } from 'react-redux'
 
 class TopicItem extends Component {
 
@@ -15,35 +13,27 @@ class TopicItem extends Component {
 
     render(){
         const {topicName, topicId} = this.props
-        console.log(this.props)
-            return(
-                <div >
-                    <p>
-                        {/* <Link className="link-color" onClick={() => this.onClick(csrf_token, topicId)} to={`/topics/${topicId}/lessons`}> */}
-                        {/* <li> */}
-                            <Link className="link-color" to={`/topics/${topicId}/lessons`}>
-                                {topicName}
-                            </Link>
-                        {/* </li> */}
-                        {/* {topicLessons} */}
-                        </p>
-                </div>
-            )
-        }     
+        return(
+            <div >
+                <p>
+                    <Link className="link-color" to={`/topics/${topicId}/lessons`}>
+                        {topicName}
+                    </Link>
+                </p>
+            </div>
+        )
+    }     
 }
     
+// const mapStateToProps = (state) => {
+//     const { topics, csrf_token } = state
+//     return { 
+//         topics: topics.topics, 
+//         categoryTopics: topics.categoryTopics, 
+//         loading: topics.loading,
+//         csrf_token: csrf_token
+//     }
+// }
 
-const mapStateToProps = (state) => {
-    const { categories, topics, lessons, csrf_token, user} = state;
-    return { categories, topics, lessons, csrf_token, user}
-    // const { category, topic, lesson, csrf_token, user} = state;
-    // return { categories: category, topics: topic, lessons: lesson, csrf_token, user}
-}
-
-
-// const mapDispatchToProps = dispatch => ({
-//     get_topic_lessons: (csrf_token, topicId) => dispatch(getTopicLessons(csrf_token, topicId))
-// })
-
-// export default connect(mapStateToProps, mapDispatchToProps)(TopicItem)
-export default connect(mapStateToProps)(TopicItem)
+// export default connect(mapStateToProps)(TopicItem)
+export default TopicItem

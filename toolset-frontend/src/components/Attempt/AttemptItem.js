@@ -1,36 +1,38 @@
 import React, { Component } from "react";
 // import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 
 
 class AttemptItem extends Component {
 
 
     render(){
-        const {content, diagram, lessonId} = this.props
-        console.log(content)
-            return(
-                <div>
-                    <p>
-                        {/* <Link className="link-color" onClick={() => this.handleClick(csrf_token, description, lessonId)} to={`/lessons/${lessonId}/attempts`}> */}
-                        {/* <Link className="link-color"> */}
-                            {content}
-                            {diagram}
-                        {/* </Link> */}
+        const {content, diagram, attemptNumber} = this.props
+        return(
+            <div>
+                <p>
+                    {/* <Link className="link-color" onClick={() => this.handleClick(csrf_token, description, lessonId)} to={`/lessons/${lessonId}/attempts`}> */}
+                    {/* <Link className="link-color"> */}
+                        {attemptNumber} - {content} - {diagram}
+                        
+                        
+                    {/* </Link> */}
 
-                    </p>
-                </div>
-            )
-        }
-      
-}
-    
-
-const mapStateToProps = (state) => {
-    const { categories, topics, lessons, csrf_token, user} = state;
-    return { categories, topics, lessons, csrf_token, user}
-    // const { category, topic, lesson, csrf_token, user} = state;
-    // return { categories: category, topics: topic, lessons: lesson, csrf_token, user}
+                </p>
+            </div>
+        )
+    }  
 }
 
-export default connect(mapStateToProps)(AttemptItem)
+// const mapStateToProps = (state) => {
+//     const { attempts, csrf_token, user} = state;
+//     return { 
+//         attempts: attempts.attempts,
+//         lessonAttempts: attempts.lessonAttempts,
+//         csrf_token: csrf_token,
+//         user: user
+//     }
+// }
+
+export default AttemptItem
+// export default connect(mapStateToProps)(AttemptItem)
