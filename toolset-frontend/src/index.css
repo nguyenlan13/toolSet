@@ -58,6 +58,7 @@ nav {
   
     .search-form {
         text-align: center;
+        float: right;
         margin: 5px;
     }
 
