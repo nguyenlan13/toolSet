@@ -10,19 +10,7 @@ import { getTopicLessons } from '../actions/topic'
 
 class LessonContainer extends Component {
 
-    // state = {
-    //     topicId: null
-    // }
-
-    // setState() {
-    //         topicId: this.props.match.params.topicId
-    //     }
-    // async getLessons() {
-    //     await this.props.get_topic_lessons()
-    // }
-
     componentDidMount(){
-        console.log("hello")
         this.props.get_lessons()
         let topicId = this.props.match.params.topicId
         // this.props.get_topic_lessons(this.csrf_token, topicId)
@@ -32,7 +20,8 @@ class LessonContainer extends Component {
 
 
     submitHandler = async (description) => {
-        await this.props.add_lesson(this.props.csrf_token, description)
+        let topicId = this.props.match.params.topicId
+        await this.props.add_lesson(this.props.csrf_token, description, topicId)
     }
 
     render(){
