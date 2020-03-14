@@ -2,13 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getCategories } from '../actions/category'
 import { addCategory } from '../actions/category'
-// import { getCategoryTopics} from '../actions/category'
 import CategoryItem  from '../components/Category/CategoryItem'
 import CategoryForm from '../components/Category/CategoryForm'
 
 
 class CategoryContainer extends Component {
-
 
     componentDidMount(){
         this.props.get_categories()
@@ -29,7 +27,6 @@ class CategoryContainer extends Component {
                             categoryName={category.name} 
                             key={category.id} 
                             categoryId={category.id}
-                            // categoryTopics={category.topics}
                         />
                     })}
             </div>
@@ -40,9 +37,11 @@ class CategoryContainer extends Component {
 
 const mapStateToProps = (state) => {
     const { categories, csrf_token } = state;
-    return { categories,  csrf_token}
-    // const { category, csrf_token } = state;
-    // return { categories: category,  csrf_token}
+    return { 
+        categories: categories.categories,
+        loading: categories.loading,
+        csrf_token: csrf_token
+    }
 }
 
 

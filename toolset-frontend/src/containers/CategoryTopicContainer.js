@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addTopic } from '../actions/topic'
-import CategoryTopicItem  from '../components/CategoryTopic/CategoryTopicItem'
+// import CategoryTopicItem  from '../components/CategoryTopic/CategoryTopicItem'
+import TopicItem from '../components/Topic/TopicItem'
 import TopicForm from '../components/Topic/TopicForm'
 import { getCategoryTopics } from '../actions/topic'
 
