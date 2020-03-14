@@ -5,6 +5,7 @@ import userReducer from './userReducer'
 import topicReducer from './topicReducer'
 import lessonReducer from './lessonReducer'
 import attemptReducer from './attemptReducer'
+import commentReducer from './commentReducer'
 
 const rootReducer = (combineReducers) ({
     csrf_token: tokenReducer,
@@ -12,7 +13,8 @@ const rootReducer = (combineReducers) ({
     categories: categoryReducer,
     topics: topicReducer,
     lessons: lessonReducer,
-    attempts: attemptReducer
+    attempts: attemptReducer,
+    comments: commentReducer
 
 })
 

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import { Link } from 'react-router-dom'
 // import { connect } from 'react-redux'
-
+import CommentForm from '../Comment/CommentForm'
 
 class AttemptItem extends Component {
 
@@ -15,7 +15,7 @@ class AttemptItem extends Component {
                     {/* <Link className="link-color"> */}
                         {attemptNumber} - {content} - {diagram}
                         
-                        
+                        <CommentForm/>
                     {/* </Link> */}
 
                 </p>
