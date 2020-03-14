@@ -14,7 +14,7 @@ class TopicItem extends Component {
         
 
     render(){
-        const {topicName, topicId, key} = this.props
+        const {topicName, topicId} = this.props
         console.log(this.props)
             return(
                 <div >

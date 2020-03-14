@@ -2,7 +2,8 @@ import {
     GET_TOPICS,
     ADD_TOPIC,
     GET_TOPIC_LESSONS,
-    GET_CATEGORY_TOPICS
+    GET_CATEGORY_TOPICS,
+    LOADING
 } from '../actionTypes'
 
 import {baseURL} from '../constants/baseURL'
@@ -11,6 +12,9 @@ import {baseURL} from '../constants/baseURL'
 export const getTopics = topics => {
     return async function (dispatch) {
         try{
+            dispatch({
+                type: LOADING
+            })
             let response = await fetch(baseURL + "topics")
             if(!response.ok){
                 throw response
@@ -30,14 +34,6 @@ export const getTopics = topics => {
 export const addTopic = (csrf_token, name) => {
     return async function (dispatch) {
         try{
-            dispatch({
-                type: ADD_TOPIC,
-                payload: {
-                    topic:{
-                        name: name
-                    }
-                }
-            })
             let response = await fetch(baseURL + "topics",{
                 method: "POST",
                 headers: {
@@ -51,6 +47,14 @@ export const addTopic = (csrf_token, name) => {
             if(!response.ok){
                 throw response
             }
+            dispatch({
+                type: ADD_TOPIC,
+                payload: {
+                    topic:{
+                        name: name
+                    }
+                }
+            })
         }catch(error){
             console.log(error)
         }
@@ -62,6 +66,9 @@ export const getTopicLessons = (csrf_token, topicId) => {
     console.log(topicId)
     return async function (dispatch) {
         try{
+            dispatch({
+                type: LOADING
+            })
             let response = await fetch(baseURL + `topics/${topicId}/lessons`, {
                 method: "GET",
                 headers: {
@@ -87,9 +94,12 @@ export const getTopicLessons = (csrf_token, topicId) => {
 }
 
 export const getCategoryTopics = (csrf_token, categoryId) => {
-    console.log(csrf_token, categoryId)
+    // console.log(csrf_token, categoryId)
     return async function (dispatch) {
         try{
+            dispatch({
+                type: LOADING
+            })
             let response = await fetch(baseURL + `categories/${categoryId}/topics`, {
                 method: "GET",
                 headers: {
@@ -103,7 +113,7 @@ export const getCategoryTopics = (csrf_token, categoryId) => {
                 throw response
             }
             let categoryTopicsJson = await response.json()
-            console.log(categoryTopicsJson)
+            // console.log(categoryTopicsJson)
                 dispatch({
                     type: GET_CATEGORY_TOPICS,
                     payload: categoryTopicsJson
