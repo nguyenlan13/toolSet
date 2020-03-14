@@ -9,13 +9,11 @@ import ProfileContainer from "./containers/ProfileContainer";
 import TopicContainer from "./containers/TopicContainer";
 import LessonContainer from "./containers/LessonContainer";
 import AttemptContainer from "./containers/AttemptContainer";
+import CategoryTopicContainer from "./containers/CategoryTopicContainer";
 import CategoryContainer from "./containers/CategoryContainer";
 import LoginContainer from "./containers/LoginContainer";
 import SignupContainer from "./containers/SignupContainer";
 import { getToken } from './actions/authSetup';
-// import CategoryItem from './components/Category/CategoryItem'
-// import TopicItem from './components/Topic/TopicItem'
-// import LessonItem from './components/Lesson/LessonItem'
 import './App.css';
 // import { render } from 'react-dom';
 
@@ -45,7 +43,7 @@ class App extends Component {
 
                             <Route 
                             path="/categories/:categoryId/topics" 
-                            render={({match}) => (<TopicContainer match={match} />)} />    
+                            render={({match}) => (<CategoryTopicContainer match={match} />)} />    
 
 
                             {/* <Route 
