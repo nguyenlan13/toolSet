@@ -20,21 +20,20 @@ class CategoryContainer extends Component {
 
     render(){
         const { categories } = this.props
-            return(
-                <div>
-                    <h1>Categories:</h1>
-                        < CategoryForm handleSubmit={this.submitHandler}/>
-                        {categories.map(category => {
-                            return <CategoryItem 
-                                categoryName={category.name} 
-                                key={ "123" + category.id} 
-                                categoryId={category.id}
-                                // categoryTopics={category.topics}
-                            />
-                        })}
-
-                </div>
-            )     
+        return(
+            <div>
+                <h1>Categories:</h1>
+                    < CategoryForm handleSubmit={this.submitHandler}/>
+                    {categories.map(category => {
+                        return <CategoryItem 
+                            categoryName={category.name} 
+                            key={category.id} 
+                            categoryId={category.id}
+                            // categoryTopics={category.topics}
+                        />
+                    })}
+            </div>
+        )     
     }
 }
 

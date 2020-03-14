@@ -5,14 +5,11 @@ import { addTopic } from '../actions/topic'
 // import { getTopicLessons } from '../actions/topic'
 import TopicItem  from '../components/Topic/TopicItem'
 import TopicForm from '../components/Topic/TopicForm'
-// import { getCategoryTopics } from '../actions/category'
 import { getCategoryTopics } from '../actions/topic'
 
 class TopicContainer extends Component {
 
     componentDidMount(){
-        let categoryId = this.props.match.params.categoryId
-        // this.props.get_category_topics(this.props.csrf_token, categoryId)
         this.props.get_topics()
     }
     
@@ -20,29 +17,58 @@ class TopicContainer extends Component {
         await this.props.add_topic(this.props.csrf_token, name)
     }
 
-    render(){
-        const { topics } = this.props
-        return(
-            <div>
-                <h1>Topics:</h1>
-                    <TopicForm handleSubmit={this.submitHandler}/>
-                    {topics.map(topic => {
-                        return <TopicItem
-                            topicName={topic.name} 
-                            key={"3123" + topic.id} 
-                            topicId={topic.id} 
-                            // topicLessons={topic.lessons}
-                        />
-                    })}
-            </div>
-        )     
-    }
+//     render(){
+//         const { topics } = this.props
+//         // console.log(this.props)
+//         console.log(topics)
+//         return(
+//             <div>
+//                 <h1>Topics:</h1>
+//                     <TopicForm handleSubmit={this.submitHandler}/>
+//                     {topics.map(topic => {
+             
+//                         return <TopicItem
+                        
+//                             topicName={topic.name} 
+//                             key={"3123" + topic.id} 
+//                             topicId={topic.id} 
+//                             // topicLessons={topic.lessons}
+//                         />
+//                     })}
+//             </div>
+//         )     
+//     }
+// }
+render(){
+    const { categoryTopics } = this.props
+    return(
+        <div>
+            <h1>Topics:</h1>
+                <TopicForm handleSubmit={this.submitHandler}/>
+                {categoryTopics.map(topic => {
+         
+                    return <TopicItem
+                    
+                        topicName={topic.name} 
+                        key={"3123" + topic.id} 
+                        topicId={topic.id} 
+                        // topicLessons={topic.lessons}
+                    />
+                })}
+        </div>
+    )     
+}
 }
 
 
 const mapStateToProps = (state) => {
-    const { categories, topics, lessons, csrf_token, user} = state;
-    return { categories, topics, lessons, csrf_token, user}
+    console.log(state)
+    const { topics } = state
+    return { topics: topics.topics, 
+        categoryTopics: topics.categoryTopics, 
+        loading: topics.loading}
+    // const { categories, topics, lessons, csrf_token, user} = state;
+    // return { categories, topics, lessons, csrf_token, user}
     // const { topic, lesson, csrf_token, user} = state;
     // return { topics: topic, lessons: lesson, csrf_token, user}
 }
