@@ -12,6 +12,9 @@ import {baseURL} from '../constants/baseURL'
 export const getAttempts = attempts => {
     return async function (dispatch) {
         try{
+            dispatch({
+                type: LOADING
+            })
             let response = await fetch(baseURL + "attempts")
             if(!response.ok){
                 throw response
@@ -28,21 +31,11 @@ export const getAttempts = attempts => {
 }
 
 
-export const addAttempt = (csrf_token, content, diagram, attemptNumber, lessonId, ) => {
+export const addAttempt = (csrf_token, content, diagram, attemptNumber, lessonId) => {
+    console.log(lessonId)
     return async function (dispatch) {
         try{
-            dispatch({
-                type: ADD_ATTEMPT,
-                payload: {
-                    attempt:{
-                        content: content,
-                        diagram: diagram,
-                        attempt_number: attemptNumber,
-                        lesson_id: lessonId
-                    }
-                }
-            })
-            let response = await fetch(baseURL + "attempts",{
+            let response = await fetch(baseURL + `lessons/${lessonId}/attempts`,{
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',
@@ -55,6 +48,17 @@ export const addAttempt = (csrf_token, content, diagram, attemptNumber, lessonId
             if(!response.ok){
                 throw response
             }
+            dispatch({
+                type: ADD_ATTEMPT,
+                payload: {
+                    attempt:{
+                        content: content,
+                        diagram: diagram,
+                        attempt_number: attemptNumber,
+                        lesson_id: lessonId
+                    }
+                }
+            })
         }catch(error){
             console.log(error)
         }

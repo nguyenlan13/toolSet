@@ -11,12 +11,13 @@ class LessonContainer extends Component {
     componentDidMount(){
         // this.props.get_lessons()
         let topicId = this.props.match.params.topicId
-        this.props.get_topic_lessons(this.csrf_token, topicId)
+        this.props.get_topic_lessons(this.props.csrf_token, topicId)
     }
 
 
     submitHandler = async (description) => {
         let topicId = this.props.match.params.topicId
+        console.log(topicId)
         await this.props.add_lesson(this.props.csrf_token, description, topicId)
     }
 
@@ -53,7 +54,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
     // get_lessons: () => dispatch(getLessons()),
-    add_lesson: (csrf_token, description) => dispatch(addLesson(csrf_token, description)),
+    add_lesson: (csrf_token, description, topicId) => dispatch(addLesson(csrf_token, description, topicId)),
     get_topic_lessons: (csrf_token, topicId) => dispatch(getTopicLessons(csrf_token, topicId))
 })
 

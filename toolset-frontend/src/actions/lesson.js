@@ -32,9 +32,10 @@ export const getLessons = lessons => {
 
 
 export const addLesson = (csrf_token, description, topicId) => {
+    console.log(topicId)
     return async function (dispatch) {
         try{
-            let response = await fetch(baseURL + "lessons",{
+            let response = await fetch(baseURL + `topics/${topicId}/lessons`,{
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',

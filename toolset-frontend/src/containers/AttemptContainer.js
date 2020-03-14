@@ -55,7 +55,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
     // get_attempts: () => dispatch(getAttempts()),
-    add_attempt: (csrf_token, lessonId, ) => dispatch(addAttempt(csrf_token, lessonId)),
+    add_attempt: (csrf_token, content, diagram, attemptNumber, lessonId) => dispatch(addAttempt(csrf_token, content, diagram, attemptNumber, lessonId)),
     get_lesson_attempts: (csrf_token, lessonId) => dispatch(getLessonAttempts(csrf_token, lessonId))
 })
 
