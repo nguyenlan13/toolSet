@@ -3,7 +3,7 @@ class ApplicationController < ActionController::API
     include ActionController::RequestForgeryProtection
     
     protect_from_forgery with: :exception
-    # before_action :set_csrf_cookie
+    before_action :set_csrf_cookie
     
     
     def log_in(user)
