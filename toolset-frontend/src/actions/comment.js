@@ -1,11 +1,41 @@
 import {
     LOADING,
-    GET_COMMENTS,
+    GET_ATTEMPT_COMMENTS,
     ADD_COMMENT,
     EDIT_COMMENT
 } from '../actionTypes'
 
 import { baseURL } from '../constants/baseURL'
+
+export const getAttemptComments = (csrf_token, attemptId) => {
+    return async function (dispatch) {
+        try{
+            dispatch({
+                type: LOADING
+            })
+            let response = await fetch(baseURL + `attempts/${attemptId}/comments`, {
+                method: "GET",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrf_token
+                },
+                credentials: 'include'
+            })
+            if(!response.ok){
+                throw response
+            }
+            let attemptCommentsJson = await response.json()
+                dispatch({
+                    type: GET_ATTEMPT_COMMENTS,
+                    payload: attemptCommentsJson
+                })
+        }catch(error){
+            console.log(error.message)
+        }
+    }
+}
+
 
 export const addComment = (csrf_token, content, commentableId) => {
     return async function (dispatch) {
