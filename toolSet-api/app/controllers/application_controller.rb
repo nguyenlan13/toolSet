@@ -22,8 +22,8 @@ class ApplicationController < ActionController::API
         resource.user == current_user
     end
     
-        private
-    
+    private
+
     def set_csrf_cookie
         cookies["CSRF-TOKEN"] = form_authenticity_token
     end
