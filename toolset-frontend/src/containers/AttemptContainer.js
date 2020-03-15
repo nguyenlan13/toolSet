@@ -5,6 +5,7 @@ import { addAttempt } from '../actions/attempt'
 import { getLessonAttempts } from '../actions/attempt'
 import AttemptItem  from '../components/Attempt/AttemptItem'
 import AttemptForm from '../components/Attempt/AttemptForm'
+import DoodleItem from '../components/DoodleItem'
 
 
 class AttemptContainer extends Component {
@@ -14,18 +15,24 @@ class AttemptContainer extends Component {
         // this.props.get_attempts()
         const lessonId = this.props.match.params.lessonId
         this.props.get_lesson_attempts(this.props.csrf_token, lessonId)
+
+        
     }
 
-    submitHandler = async (content, diagram, attemptNumber) => {
+    // submitHandler = async (content, diagram, attemptNumber) => {
+    submitHandler = async (content, diagram) => {
         const lessonId = this.props.match.params.lessonId
-        await this.props.add_attempt(this.props.csrf_token, content, diagram, attemptNumber, lessonId)
+        await this.props.add_attempt(this.props.csrf_token, content, diagram, lessonId)
     }
 
     render() {
         const { lessonAttempts } = this.props
+      
+
         return(
             <div>
                 <h1>Lesson Attempts:</h1>
+                {/* < DoodleItem /> */}
                 < AttemptForm handleSubmit={this.submitHandler}/>
                     {lessonAttempts.map(attempt => {
                         return <AttemptItem 
@@ -35,6 +42,7 @@ class AttemptContainer extends Component {
                             key={attempt.id} 
                             attemptId={attempt.id}
                             lessonId={attempt.lesson_id}
+                            timeStamp={attempt.created_at}
                         />
                     })}                   
             </div>
