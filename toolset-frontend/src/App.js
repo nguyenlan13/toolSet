@@ -11,6 +11,7 @@ import LessonContainer from "./containers/LessonContainer";
 import AttemptContainer from "./containers/AttemptContainer";
 import CategoryTopicContainer from "./containers/CategoryTopicContainer";
 import CategoryContainer from "./containers/CategoryContainer";
+import CommentContainer from "./containers/CommentContainer";
 import LoginContainer from "./containers/LoginContainer";
 import SignupContainer from "./containers/SignupContainer";
 import { getToken } from './actions/authSetup';
@@ -34,6 +35,10 @@ class App extends Component {
                         <Switch>
                    
                             <Route 
+                            path="/attempts/:attemptId/comments" 
+                            render={({match}) => (<CommentContainer match={match} />)} />
+
+                            <Route 
                             path="/lessons/:lessonId/attempts" 
                             render={({match}) => (<AttemptContainer match={match} />)} />
 
@@ -45,27 +50,16 @@ class App extends Component {
                             path="/categories/:categoryId/topics" 
                             render={({match}) => (<CategoryTopicContainer match={match} />)} />    
 
-
-                            {/* <Route 
-                            exact
-                            path="/categories/:categoryId/topics" 
-                        render={(props) => <TopicContainer key={this.props.match.params.categoryId}/> /> */}
-
+                            <Route exact path="/attempts" component={AttemptContainer} />
                             <Route exact path="/lessons" component={LessonContainer} />
                             <Route exact path="/topics" component={TopicContainer} /> 
                             <Route exact path="/categories" component={CategoryContainer} />
-                            
-                            {/* <Route exact path="/attempts" component={AttemptContainer} /> */}
-                            {/* <Route path="/attempts/:attemptId/comments" component={AttemptContainer} /> */}
 
                             <Route path="/profile" component={ProfileContainer} />
                             <Route path="/about" component={About} />
                             <Route path="/login" component={LoginContainer} />
                             <Route path="/signup" component={SignupContainer} />
                             <Route exact path="/" component={HomeContainer} />
-                        
-                           
-
                         </Switch>
                     </Layout>
                 </div>
