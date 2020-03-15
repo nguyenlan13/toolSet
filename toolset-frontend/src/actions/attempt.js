@@ -31,7 +31,7 @@ export const getAttempts = attempts => {
 }
 
 
-export const addAttempt = (csrf_token, content, diagram, attemptNumber, lessonId) => {
+export const addAttempt = (csrf_token, content, diagram, lessonId) => {
     console.log(lessonId)
     return async function (dispatch) {
         try{
@@ -42,7 +42,7 @@ export const addAttempt = (csrf_token, content, diagram, attemptNumber, lessonId
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': csrf_token
                 },
-                body: JSON.stringify({attempt: {content, diagram, attemptNumber, lessonId}}),
+                body: JSON.stringify({attempt: {content, diagram, lessonId}}),
                 credentials: 'include'
             })
             if(!response.ok){
@@ -54,7 +54,7 @@ export const addAttempt = (csrf_token, content, diagram, attemptNumber, lessonId
                     attempt:{
                         content: content,
                         diagram: diagram,
-                        attempt_number: attemptNumber,
+                        // attempt_number: attemptNumber,
                         lesson_id: lessonId
                     }
                 }

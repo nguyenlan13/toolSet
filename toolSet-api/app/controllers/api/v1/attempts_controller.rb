@@ -22,6 +22,11 @@ class Api::V1::AttemptsController < ApplicationController
         end
     end
 
+    def show
+        attemp = Attempt.find(params[:id])
+        render json: attempt, include: [:comments], status: 200
+    end
+
     private
 
     def attempt_params

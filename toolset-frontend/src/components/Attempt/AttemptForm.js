@@ -1,45 +1,54 @@
 import React, { useState } from "react";
 
+
 const AttemptForm = (props) => {
-    const [attemptNumber, setAttemptNumber] = useState("");
+    // const [attemptNumber, setAttemptNumber] = useState("");
     const [content, setContent] = useState("");
     const [diagram, setDiagram] = useState("");
 
   const handleSubmit = event => {
     event.preventDefault();
 
-    setAttemptNumber("");
+    // setAttemptNumber("");
     setContent("");
     setDiagram("");
   
-
-    props.handleSubmit(attemptNumber, content, diagram)
+    // props.handleSubmit(attemptNumber, content, diagram)
+    props.handleSubmit(content, diagram)
   };
   return (
     <form onSubmit={handleSubmit}>
-        <input
+        {/* <input
             className="mr-sm-2"
             type="text"
             placeholder="Attempt #"
             onChange={event => setAttemptNumber(event.target.value)}
             value={attemptNumber}
-        />
+        /> */}
         <input
-            className="mr-sm-2"
+            className="content-form"
             type="text"
-            placeholder="Content"
+            placeholder="Add Content"
             onChange={event => setContent(event.target.value)}
             value={content}
         />
+        <br />
         <input
             className="mr-sm-2"
-            type="text"
+            type="file"
             placeholder="Upload Diagram"
             onChange={event => setDiagram(event.target.value)}
             value={diagram}
         />
+        <br />
+        <br />
         <input type="submit" value="Submit Attempt"/>
     </form>   
   );
 };
+
+
+
+
+
 export default AttemptForm;

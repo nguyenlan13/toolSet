@@ -1,23 +1,25 @@
 import React, { Component } from "react";
 // import { Link } from 'react-router-dom'
 // import { connect } from 'react-redux'
-import CommentForm from '../Comment/CommentForm'
+// import CommentForm from '../Comment/CommentForm'
+import CommentContainer from '../../containers/CommentContainer'
 
 class AttemptItem extends Component {
 
 
     render(){
-        const {content, diagram, attemptNumber} = this.props
+        const {content, diagram, timeStamp, attemptId} = this.props
         return(
             <div>
                 <p>
-                    {/* <Link className="link-color" onClick={() => this.handleClick(csrf_token, description, lessonId)} to={`/lessons/${lessonId}/attempts`}> */}
+                    <Link className="link-color" to={`/attempts/${attemptId}/comments`}>
                     {/* <Link className="link-color"> */}
-                        {attemptNumber} - {content} - {diagram}
-                        
-                        <CommentForm/>
-                    {/* </Link> */}
-
+                        {timeStamp}
+                     <br />
+                        {content} - {diagram}
+                        <br />
+                    {/* <CommentContainer /> */}
+                
                 </p>
             </div>
         )
