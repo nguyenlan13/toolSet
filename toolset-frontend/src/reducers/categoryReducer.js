@@ -16,7 +16,8 @@ export default function categoriesReducer(state = {
         case GET_CATEGORIES:
             return {...state, categories: action.payload, loading: false}
         case ADD_CATEGORY:
-            return [...state, action.payload]
+            return {...state, categories: [...state.categories, action.payload]}
+            // return [...state, action.payload]
         default:
             return state
     }

@@ -6,7 +6,7 @@ import {
 } from '../actionTypes'
 
 export default function commentReducer(state = {
-        comments: [],
+        // comments: [],
         attemptComments:[],
         loading: false,
         commentComments: []
@@ -18,7 +18,8 @@ export default function commentReducer(state = {
         case GET_ATTEMPT_COMMENTS:
             return {...state, attemptComments: action.payload, loading: false}
         case ADD_COMMENT:
-            return [...state, action.payload]
+            return {...state, attemptComments: [...state.attemptComments, action.payload]}
+            // return [...state, action.payload]
         case EDIT_COMMENT:
             return {attemptComments: action.payload, loading: false}
         default:
