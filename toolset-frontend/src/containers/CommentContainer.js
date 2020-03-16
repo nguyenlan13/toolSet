@@ -1,16 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import { getAttempts } from '../actions/attempt'
 import { addComment } from '../actions/comment'
 import { getAttemptComments } from '../actions/comment'
 import Comment from '../components/Comment/Comment'
 import CommentForm from '../components/Comment/CommentForm'
 
-
 class CommentContainer extends Component {
 
     componentDidMount() {
         const attemptId = this.props.match.params.attemptId
+        console.log(attemptId)
         this.props.get_attempt_comments(this.props.csrf_token, attemptId)
     }
 
@@ -21,10 +20,10 @@ class CommentContainer extends Component {
 
     render() {
         const { attemptComments } = this.props
+        console.log(this.props)
         return(
-            <div>
-                <h1>Attempt Comments:</h1>
-                < CommentForm handleSubmit={this.submitHandler}/>
+            <div className="page">
+                <h1 className="headlines">FEEDBACK:</h1>
                     {attemptComments.map(comment => {
                         return <Comment
                             content={comment.content}
@@ -32,20 +31,20 @@ class CommentContainer extends Component {
                             commentId={comment.id}
                             commentableId={comment.commentable_id}
                             commentableType={comment.commentable_type}
-                            userName={comment.user.username}
+                            userName={comment? comment.user.name: "no name"}
                             timeStamp={comment.created_at}
                         />
-                    })}                   
+                    })}      
+                    < CommentForm handleSubmit={this.submitHandler}/>             
             </div>
         )     
     }
 }
 
-
 const mapStateToProps = (state) => {
     const { comments, csrf_token, user} = state;
     return { 
-        comments: comments.comments,
+        // comments: comments.comments,
         attemptComments: comments.attemptComments,
         commentComments: comments.commentComments,
         csrf_token: csrf_token,

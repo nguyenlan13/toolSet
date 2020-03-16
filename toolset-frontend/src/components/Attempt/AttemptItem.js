@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 // import { connect } from 'react-redux'
 // import CommentForm from '../Comment/CommentForm'
 import CommentContainer from '../../containers/CommentContainer'
@@ -12,14 +12,14 @@ class AttemptItem extends Component {
         return(
             <div>
                 <p>
-                    <Link className="link-color" to={`/attempts/${attemptId}/comments`}>
-                    {/* <Link className="link-color"> */}
                         {timeStamp}
                      <br />
+                     <Link className="link-color" to={`/attempts/${attemptId}/comments`}>
                         {content} - {diagram}
-                        <br />
-                    {/* <CommentContainer /> */}
-                
+                    <br />
+                    </Link>
+                    {/* <CommentContainer/> */}
+            
                 </p>
             </div>
         )

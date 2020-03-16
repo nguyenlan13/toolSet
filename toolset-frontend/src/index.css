@@ -9,6 +9,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* background-image: url("../../toolset-frontend/src/assets/background-blank-business-craft-301703\ \(1\).jpg");
+  padding: 25px;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover; */
 }
 
 code {
@@ -29,7 +35,7 @@ nav {
 .layout-link {
     color: #008B8B;
     text-decoration: none;
-    font-weight: bold
+    font-weight: bold;
 }
 
 .nav-links {
@@ -37,13 +43,15 @@ nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 50%;
-    font-weight: bold
+    width: 90%;
+    font-weight: bold;
+    font-size: large;
+    letter-spacing: 3px;
 }
 
 .link-color {
     color: #008B8B;
-
+    font-weight: bold
 }
 
 
@@ -78,15 +86,31 @@ nav {
 
 
 #logo {
-    width: 350px;
+    width: 275px;
 }
 
 
 .page {
-    background-color: #008B8B;
-    background-size: 200px 200px;
+    /* background-image: url("../../toolset-frontend/src/assets/board-bright-design-fabric-235994.jpg"); */
+    background-image: url("../../toolset-frontend/src/assets/background-blank-business-craft-301703\ \(1\).jpg");
+    padding: 25px;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+    /* background-color: #008B8B; */
+    /* background-size: 1000px 1000px; */
+    /* background-size: 100%; */
 }
 
+.profile-page {
+    background-image: url("../../toolset-frontend/src/assets/flat-lay-photography-of-hand-tools-1029243.jpg")
+}
+
+.headlines {
+    color: white;
+    letter-spacing: 3px;
+}
 .headline-md,h2,form {
     display:inline-block !important;
 }

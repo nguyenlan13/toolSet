@@ -19,8 +19,8 @@ class TopicContainer extends Component {
     render(){
         const { topics } = this.props
         return(
-            <div>
-                <h1>Topics:</h1>
+            <div className="page">
+                <h1 className="headlines">TOPICS:</h1>
                     <TopicForm handleSubmit={this.submitHandler}/>
                     {topics.map(topic => {
                         return <TopicItem

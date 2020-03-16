@@ -5,10 +5,10 @@ import SearchBar from '../SearchBar'
 
 const layout= (props) => (
     <Aux>
-        <div>  
+        <div style={{marginLeft: "60%"}}>  
             <Link className="layout-link" to="/login"> LOG IN </Link> | <Link className="layout-link" to="/signup"> SIGN UP </Link> <SearchBar className="headline-md"/>
         </div>
-        <main>
+        <main >
             {props.children}
         </main>
     </Aux>

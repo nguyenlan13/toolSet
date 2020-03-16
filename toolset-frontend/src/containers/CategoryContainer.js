@@ -18,11 +18,16 @@ class CategoryContainer extends Component {
 
     render(){
         const { categories } = this.props
+        const sortedCategories = categories.sort(function(a,b){
+            if(a.name < b.name) {return -1;}
+            if(a.name > b.name) {return 1;}
+            return 0
+        })
         return(
-            <div>
-                <h1>Categories:</h1>
+            <div className="page">
+                <h1 className="headlines">CATEGORIES:</h1>
                     < CategoryForm handleSubmit={this.submitHandler}/>
-                    {categories.map(category => {
+                    {sortedCategories.map(category => {
                         return <CategoryItem 
                             categoryName={category.name} 
                             key={category.id} 

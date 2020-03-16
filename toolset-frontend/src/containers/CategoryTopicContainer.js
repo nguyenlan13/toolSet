@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addTopic } from '../actions/topic'
-// import CategoryTopicItem  from '../components/CategoryTopic/CategoryTopicItem'
 import TopicItem from '../components/Topic/TopicItem'
 import TopicForm from '../components/Topic/TopicForm'
 import { getCategoryTopics } from '../actions/topic'
@@ -20,8 +19,8 @@ class TopicContainer extends Component {
     render(){
         const { categoryTopics } = this.props
         return(
-            <div>
-                <h1>Topics:</h1>
+            <div className="page">
+                <h1 className="headlines">TOPICS:</h1>
                     <TopicForm handleSubmit={this.submitHandler}/>
                     {categoryTopics.map(topic => {
                         return <TopicItem
