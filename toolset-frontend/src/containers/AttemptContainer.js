@@ -28,8 +28,8 @@ class AttemptContainer extends Component {
         const { lessonAttempts } = this.props
         console.log(this.props)
         return(
-            <div>
-                <h1>LESSON ATTEMPTS:</h1>
+            <div className="page">
+                <h1 className="headlines">LESSON ATTEMPTS:</h1>
                 {/* < DoodleItem /> */}
                 < AttemptForm handleSubmit={this.submitHandler}/>
                     {lessonAttempts.map(attempt => {

@@ -10,11 +10,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* background-image: url("../../toolset-frontend/src/assets/background-blank-business-craft-301703\ \(1\).jpg");
+  background-image: url("../../toolset-frontend/src/assets/background-blank-business-craft-301703\ \(1\).jpg");
   padding: 25px;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-size: cover; */
+  background-size: cover;
 }
 
 code {

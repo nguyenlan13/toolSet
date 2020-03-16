@@ -24,8 +24,8 @@ class LessonContainer extends Component {
     render(){
         const { topicLessons } = this.props
         return(
-            <div>
-                <h1>Lessons:</h1>
+            <div className="page">
+                <h1 className="headlines">LESSONS:</h1>
                 <LessonForm handleSubmit={this.submitHandler}/>
                     {topicLessons.map(lesson => {                       
                         return <LessonItem 

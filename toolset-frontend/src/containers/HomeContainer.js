@@ -3,7 +3,7 @@ import React from "react";
 function HomeContainer() {
   return (
     <div>
-      <h1>Welcome to toolSet</h1>
+      <h1 className="headlines">Welcome to toolSet</h1>
     </div>
   );
 }

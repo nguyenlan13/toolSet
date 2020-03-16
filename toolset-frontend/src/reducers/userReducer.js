@@ -10,7 +10,6 @@ export default function userReducer(state="", action){
         case LOG_IN_USER: 
             return action.payload
         case SIGN_UP_USER:
-            console.log(action.payload)
             return action.payload
         case LOGOUT:
             return {...state}
