@@ -1,21 +1,21 @@
 class Api::V1::CommentsController < ApplicationController
 
     # before_action :authenticate
-    before_action :get_comment, only: [:edit, :update, :destroy]
+    before_action :get_comment, only: [:edit, :update, :show, :destroy]
      # before_action :authorize[]
 
     def index
         current_user
         if params[:comment_id]
-            comment = Comment.find(params[:comment_id]).comments
+            comments = Comment.find(params[:comment_id]).comments
         elsif params[:user_id]
-            comment = User.find(params[:user_id]).comments
+            comments = User.find(params[:user_id]).comments
         elsif params[:attempt_id]
-            comment = Attempt.find(params[:attempt_id]).comments
+            comments = Attempt.find(params[:attempt_id]).comments
         else
             comments = Comment.all
         end
-        render json: comments, status: 200
+        render json: comments, include: :user, status: 200
     end 
 
     def new
@@ -62,7 +62,7 @@ class Api::V1::CommentsController < ApplicationController
     end
 
     def show
-        comment = Comment.find(params[:id])
+        # comment = Comment.find(params[:id])
         render json: comment, status: 200
     end
 
