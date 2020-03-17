@@ -17,8 +17,8 @@ class SignupContainer extends Component {
     
     render(){
         return(
-            <div>
-            <h1>SIGN UP!</h1>
+            <div className="page">
+            <h1 className="headlines">SIGN UP!</h1>
            <SignupForm handleSubmit={this.submitHandler}
             />
             </div>

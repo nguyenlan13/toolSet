@@ -23,11 +23,16 @@ class LessonContainer extends Component {
 
     render(){
         const { topicLessons } = this.props
+        const sortedTopicLessons = topicLessons.sort(function(a,b){
+            if(a.name < b.name) {return -1;}
+            if(a.name > b.name) {return 1;}
+            return 0
+        })
         return(
             <div className="page">
                 <h1 className="headlines">LESSONS:</h1>
                 <LessonForm handleSubmit={this.submitHandler}/>
-                    {topicLessons.map(lesson => {                       
+                    {sortedTopicLessons.map(lesson => {                       
                         return <LessonItem 
                             description={lesson.description} 
                             key={lesson.id} 

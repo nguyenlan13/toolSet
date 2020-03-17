@@ -11,6 +11,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   background-image: url("../../toolset-frontend/src/assets/background-blank-business-craft-301703\ \(1\).jpg");
+  /* background-image: url("../../toolset-frontend/src/assets/apple-blank-business-computer-442574.jpg"); */
+  /* background-image: url("../../toolset-frontend/src/assets/analysis-blackboard-board-bubble-355952.jpg"); */
   padding: 25px;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -23,19 +25,45 @@ code {
 }
 
 nav {
+    background: rgba(20, 4, 4, 0.424);
+    z-index: 10;
+    overflow: hidden;
     display: flex;
     justify-content: space-around;
 }
+
+@font-face {
+    font-family: "PWChalk";
+    src: url("./assets/fonts/PWCHALK.TTF");
+}
   
+@font-face {
+    font-family: "Right_Chalk";
+    src: url("./assets/fonts/RIGHT_CHALK.TTF");
+}
+
+@font-face {
+    font-family: "Big_Marker";
+    src: url("./assets/fonts/BIG_MARKER.TTF");
+}
+
+@font-face {
+    font-family: "CFCrayons";
+    src: url("./assets/fonts/CFCRAYONS-REGULAR.TTF");
+}
 .nav-link {
     color: #df5718;
     text-decoration: none;
+    font-family: "Right_Chalk";
 }
 
 .layout-link {
     color: #008B8B;
     text-decoration: none;
     font-weight: bold;
+    letter-spacing: 3px;
+    padding-bottom: 5px;
+    
 }
 
 .nav-links {
@@ -45,13 +73,14 @@ nav {
     align-items: center;
     width: 90%;
     font-weight: bold;
-    font-size: large;
+    font-size: x-large;
     letter-spacing: 3px;
 }
 
 .link-color {
     color: #008B8B;
-    font-weight: bold
+    font-weight: bold;
+    font-size: large;
 }
 
 
@@ -63,7 +92,7 @@ nav {
     justify-content: space-around;
     width: 50%;
     text-align: left;
-    padding: 5px;
+    padding: 4px;
     font-size: 10px;
     border-radius: 4px;
     margin-left: auto;
@@ -73,7 +102,7 @@ nav {
 .search-form {
     text-align: center;
     float: right;
-    margin: 5px;
+    /* margin: 5px; */
 }
 
 .content-form {
@@ -91,16 +120,24 @@ nav {
 
 
 .page {
+    padding-top: 50px;
     /* background-image: url("../../toolset-frontend/src/assets/board-bright-design-fabric-235994.jpg"); */
-    background-image: url("../../toolset-frontend/src/assets/background-blank-business-craft-301703\ \(1\).jpg");
+    /* background-image: url("../../toolset-frontend/src/assets/background-blank-business-craft-301703\ \(1\).jpg");
     padding: 25px;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
   
     /* background-color: #008B8B; */
     /* background-size: 1000px 1000px; */
     /* background-size: 100%; */
+
+    /* background: rgba(20, 4, 4, 0.424);
+    z-index: 10;
+    overflow: hidden; */
+    /* display: flex; */
+    /* justify-content: space-around; */
+
 }
 
 .profile-page {
@@ -110,6 +147,7 @@ nav {
 .headlines {
     color: white;
     letter-spacing: 3px;
+    font-family: "Right_Chalk";
 }
 .headline-md,h2,form {
     display:inline-block !important;
@@ -119,4 +157,12 @@ nav {
     width:80px !important;
     margin-right:15px !important;
     display:inline-block !important;
+}
+
+.about-page {
+    background-size: 70%
+}
+
+.welcome-page {
+    background-image: url("../../toolset-frontend/src/assets/analysis-blackboard-board-bubble-355952.jpg");
 }

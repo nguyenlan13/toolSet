@@ -21,6 +21,7 @@ const LoginForm = (props) => {
         onChange={event => setEmail(event.target.value)}
         value={email}
       />
+      <br/>
       <input
         className="mr-sm-2"
         type="password"
@@ -28,6 +29,7 @@ const LoginForm = (props) => {
         onChange={event => setPassword(event.target.value)}
         value={password}
       />
+      <br/>
       <input type="submit" />
     </form> 
   );

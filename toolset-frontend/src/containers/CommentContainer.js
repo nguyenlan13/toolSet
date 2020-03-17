@@ -4,6 +4,7 @@ import { addComment } from '../actions/comment'
 import { getAttemptComments } from '../actions/comment'
 import Comment from '../components/Comment/Comment'
 import CommentForm from '../components/Comment/CommentForm'
+import moment from 'moment'
 
 class CommentContainer extends Component {
 
@@ -31,8 +32,8 @@ class CommentContainer extends Component {
                             commentId={comment.id}
                             commentableId={comment.commentable_id}
                             commentableType={comment.commentable_type}
-                            userName={comment? comment.user.name: "no name"}
-                            timeStamp={comment.created_at}
+                            userName={comment.user? comment.user.name: this.props.user.name}
+                            timeStamp={moment(comment.created_at).format('MMMM Do YYYY, h:mm:ss a')}
                         />
                     })}      
                     < CommentForm handleSubmit={this.submitHandler}/>             

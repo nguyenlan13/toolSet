@@ -2,7 +2,7 @@ import React from "react";
 
 function ProfileContainer() {
   return (
-    <div>
+    <div className="page">
       <h1 className="headlines">YOUR PROFILE:</h1>
     </div>
   );

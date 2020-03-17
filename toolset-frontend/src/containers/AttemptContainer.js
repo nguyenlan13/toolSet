@@ -5,9 +5,10 @@ import { addAttempt } from '../actions/attempt'
 import { getLessonAttempts } from '../actions/attempt'
 import AttemptItem  from '../components/Attempt/AttemptItem'
 import AttemptForm from '../components/Attempt/AttemptForm'
-import DoodleItem from '../components/DoodleItem'
-import CommentContainer from './CommentContainer'
-import Comment from '../components/Comment/Comment'
+import moment from "moment"
+// import DoodleItem from '../components/DoodleItem'
+// import CommentContainer from './CommentContainer'
+// import Comment from '../components/Comment/Comment'
 
 class AttemptContainer extends Component {
 
@@ -40,7 +41,7 @@ class AttemptContainer extends Component {
                             key={attempt.id} 
                             attemptId={attempt.id}
                             lessonId={attempt.lesson_id}
-                            timeStamp={attempt.created_at}
+                            timeStamp={moment(attempt.created_at).format('MMMM Do YYYY, h:mm:ss a')}
                         />
                     }) } 
                     {/* <Comment/> */}

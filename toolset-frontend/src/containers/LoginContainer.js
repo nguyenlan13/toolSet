@@ -14,12 +14,13 @@ class LoginContainer extends Component {
     
     submitHandler = async (email, password) => {
         await this.props.login(this.props.csrf_token, email, password)
+        
     }
     
     render(){
         return(
-            <div>
-            <h1>LOG IN:</h1>
+            <div className="page">
+            <h1 className="headlines">LOG IN:</h1>
            <LoginForm handleSubmit={this.submitHandler}
             />
             </div>

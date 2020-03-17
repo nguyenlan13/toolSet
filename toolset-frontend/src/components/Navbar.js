@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from './../assets/ToolSet_Glasses.png'
+import logo from './../assets/ToolSet_Glasses_White_and_Orange.png'
 
 function Navbar() {
   return (

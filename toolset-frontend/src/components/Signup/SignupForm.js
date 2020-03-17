@@ -25,6 +25,7 @@ const SignupForm = (props) => {
         onChange={e => setEmail(e.target.value)}
         value={email}
       />
+      <br/>
       <input
         className="mr-sm-2"
         type="text"
@@ -32,6 +33,7 @@ const SignupForm = (props) => {
         onChange={e => setUsername(e.target.value)}
         value={username}
       />
+      <br/>
       <input
         className="mr-sm-2"
         type="text"
@@ -39,6 +41,7 @@ const SignupForm = (props) => {
         onChange={e => setName(e.target.value)}
         value={name}
       />
+      <br/>
       <input
         className="mr-sm-2"
         type="password"
@@ -46,6 +49,7 @@ const SignupForm = (props) => {
         onChange={e => setPassword(e.target.value)}
         value={password}
       />
+      <br/>
       <input type="submit" />
     </form> 
   );

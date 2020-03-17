@@ -9,7 +9,7 @@ class CategoryItem extends Component {
         const {categoryName, categoryId} = this.props
         return(
             <div>
-                <p>
+                <p >
                     <Link className="link-color" to={`/categories/${categoryId}/topics`}>
                         {categoryName}
                     </Link>

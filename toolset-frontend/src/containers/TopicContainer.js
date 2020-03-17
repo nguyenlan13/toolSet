@@ -18,11 +18,16 @@ class TopicContainer extends Component {
 
     render(){
         const { topics } = this.props
+        const sortedTopics = topics.sort(function(a,b){
+            if(a.name < b.name) {return -1;}
+            if(a.name > b.name) {return 1;}
+            return 0
+        })
         return(
             <div className="page">
                 <h1 className="headlines">TOPICS:</h1>
                     <TopicForm handleSubmit={this.submitHandler}/>
-                    {topics.map(topic => {
+                    {sortedTopics.map(topic => {
                         return <TopicItem
                             topicName={topic.name} 
                             key={topic.id} 
