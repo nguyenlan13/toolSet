@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addTopic } from '../actions/topic'
+// import { addTopic } from '../actions/topic'
+import { addCategoryTopic } from '../actions/topic'
 import TopicItem from '../components/Topic/TopicItem'
 import TopicForm from '../components/Topic/TopicForm'
 import { getCategoryTopics } from '../actions/topic'
@@ -13,7 +14,9 @@ class TopicContainer extends Component {
     }
     
     submitHandler = async (name) => {
-        await this.props.add_topic(this.props.csrf_token, name)
+        // await this.props.add_topic(this.props.csrf_token, name)
+        let categoryId = this.props.match.params.categoryId
+        await this.props.add_category_topic(this.props.csrf_token, categoryId, name)
     }
 
     render(){
@@ -50,7 +53,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    add_topic: (csrf_token, name) => dispatch(addTopic(csrf_token, name)),
+    // add_topic: (csrf_token, name) => dispatch(addTopic(csrf_token, name)),
+    add_category_topic: (csrf_token, categoryId, name) => dispatch(addCategoryTopic(csrf_token, categoryId, name)),
     get_category_topics: (csrf_token, categoryId) => dispatch(getCategoryTopics(csrf_token, categoryId))
 })
 
