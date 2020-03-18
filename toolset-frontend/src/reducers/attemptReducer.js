@@ -17,7 +17,8 @@ export default function attemptReducer(state = {
         case GET_ATTEMPTS:
             return {...state, attempts: action.payload, loading: true}
         case ADD_ATTEMPT:
-            return [...state, action.payload]
+            // return [...state, action.payload]
+            return {...state, lessonAttempts: [...state.lessonAttempts, action.payload]}
         case GET_LESSON_ATTEMPTS:
             return {...state, lessonAttempts: action.payload, loading: true}
         default:

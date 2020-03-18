@@ -4,13 +4,15 @@ import {
     LOGOUT
 } from '../actionTypes'
 
-export default function userReducer(state="", action){
+export default function userReducer(state = {
+        isAuthenticated: false
+    }, action){
 
     switch(action.type){
         case LOG_IN_USER: 
-            return action.payload
+            return {...action.payload, isAuthenticated: true}
         case SIGN_UP_USER:
-            return action.payload
+            return {...action.payload, isAuthenticated: true}
         case LOGOUT:
             return {...state}
         default:

@@ -17,7 +17,8 @@ export default function lessonReducer(state = {
         case GET_LESSONS:
             return {...state, lessons: action.payload, loading: false}
         case ADD_LESSON:
-            return [...state, action.payload]
+            // return [...state, action.payload]
+            return {...state, topicLessons: [...state.topicLessons, action.payload]}
         case GET_TOPIC_LESSONS:
             return {...state, topicLessons: action.payload, loading: false}
         default:
