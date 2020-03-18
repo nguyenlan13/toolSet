@@ -25,9 +25,8 @@ const AttemptForm = (props) => {
             onChange={event => setAttemptNumber(event.target.value)}
             value={attemptNumber}
         /> */}
-        <input
-            className="content-form"
-            type="text"
+        <textarea
+            className="attempt-form"
             placeholder="Add Content"
             onChange={event => setContent(event.target.value)}
             value={content}
