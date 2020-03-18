@@ -2,7 +2,8 @@ import {
     LOADING,
     GET_TOPICS,
     ADD_TOPIC,
-    GET_CATEGORY_TOPICS
+    GET_CATEGORY_TOPICS,
+    ADD_CATEGORY_TOPIC
 } from '../actionTypes'
 
 import { baseURL } from '../constants/baseURL'
@@ -86,6 +87,38 @@ export const getCategoryTopics = (csrf_token, categoryId) => {
                     payload: categoryTopicsJson
                 })
             // return categoriesJson
+        }catch(error){
+            console.log(error.message)
+        }
+    }
+}
+
+
+export const addCategoryTopic = (csrf_token, categoryId, name) => {
+    console.log(categoryId)
+    return async function (dispatch) {
+        try{
+            let response = await fetch(baseURL + `categories/${categoryId}/topics`,{
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrf_token
+                },
+                body: JSON.stringify({topic: {name}}),
+                credentials: 'include'
+            })
+            if(!response.ok){
+                throw response
+            }
+            dispatch({
+                type: ADD_CATEGORY_TOPIC,
+                payload: {
+                    topic:{
+                        name: name
+                    }
+                }
+            })
         }catch(error){
             console.log(error.message)
         }
