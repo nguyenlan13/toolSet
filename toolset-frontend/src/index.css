@@ -10,6 +10,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  background-color: white;
   background-image: url("../../toolset-frontend/src/assets/background-blank-business-craft-301703\ \(1\).jpg");
   /* background-image: url("../../toolset-frontend/src/assets/apple-blank-business-computer-442574.jpg"); */
   /* background-image: url("../../toolset-frontend/src/assets/analysis-blackboard-board-bubble-355952.jpg"); */
@@ -17,6 +18,10 @@ body {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
+  /* backdrop-filter: blur(2x); */
+ 
+  /* backdrop-filter: opacity(60%); */
+ 
 }
 
 code {
@@ -113,14 +118,22 @@ nav {
     margin: 5px;
 }
 
+.attempt-form {
+    /* font-size: 10px; */
+    width: 100%;
+    height: 100px;
+    border-radius: 4px;
+    text-align: center;
+    margin: 5px;
+}
 
 #logo {
-    width: 275px;
+    width: 325px;
 }
 
 
 .page {
-    padding-top: 50px;
+    padding-top: 100px;
     /* background-image: url("../../toolset-frontend/src/assets/board-bright-design-fabric-235994.jpg"); */
     /* background-image: url("../../toolset-frontend/src/assets/background-blank-business-craft-301703\ \(1\).jpg");
     padding: 25px;
@@ -160,9 +173,17 @@ nav {
 }
 
 .about-page {
-    background-size: 70%
+    padding-top: 100px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .welcome-page {
     background-image: url("../../toolset-frontend/src/assets/analysis-blackboard-board-bubble-355952.jpg");
+}
+
+.feedback {
+    color: #008B8B;
+    font-weight: bold;
 }
