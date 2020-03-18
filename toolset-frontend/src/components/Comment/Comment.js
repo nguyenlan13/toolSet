@@ -7,7 +7,7 @@ class Comment extends Component {
         const {content, userName, timeStamp} = this.props
         return(
             <div>
-                <p>
+                <p className="feedback">
                     {timeStamp}
                     <br />
                     {content} - {userName}
