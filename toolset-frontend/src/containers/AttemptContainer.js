@@ -23,6 +23,7 @@ class AttemptContainer extends Component {
     submitHandler = async (content, diagram) => {
         const lessonId = this.props.match.params.lessonId
         await this.props.add_attempt(this.props.csrf_token, content, diagram, lessonId)
+        window.location.reload()
     }
 
     render() {

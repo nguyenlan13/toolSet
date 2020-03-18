@@ -17,6 +17,7 @@ class CommentContainer extends Component {
     submitHandler = async (content) => {
         const attemptId = this.props.match.params.attemptId
         await this.props.add_comment(this.props.csrf_token, content, attemptId)
+        window.location.reload()
     }
 
     render() {
