@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import { Stage, Layer, Rect, Text } from 'react-konva';
+import Konva from 'konva';
 
 const AttemptForm = (props) => {
     // const [attemptNumber, setAttemptNumber] = useState("");

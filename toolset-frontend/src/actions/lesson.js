@@ -40,20 +40,25 @@ export const addLesson = (csrf_token, description, topicId) => {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': csrf_token
                 },
-                body: JSON.stringify({lesson: {description, topicId}}),
+                body: JSON.stringify({lesson: {description}}),
                 credentials: 'include'
             })
             if(!response.ok){
                 throw response
             }
+            let lessonJson = await response.json()
             dispatch({
                 type: ADD_LESSON,
-                payload: {
-                    lesson:{
-                        description: description,
-                        topic_id: topicId
-                    }
-                }
+                payload: 
+                // {
+                //     lesson: 
+                    lessonJson
+                    // {
+
+                    //     description: description
+                        // topic_id: topicId
+                    // }
+                // }
             })
         }catch(error){
             console.log(error.message)

@@ -48,16 +48,18 @@ export const addAttempt = (csrf_token, content, diagram, lessonId) => {
             if(!response.ok){
                 throw response
             }
+            let attemptJson = await response.json()
             dispatch({
                 type: ADD_ATTEMPT,
-                payload: {
-                    attempt:{
-                        content: content,
-                        diagram: diagram,
-                        // attempt_number: attemptNumber,
-                        lesson_id: lessonId
-                    }
-                }
+                payload: attemptJson
+                // {
+                //     attempt:{
+                //         content: content,
+                //         diagram: diagram,
+                //         // attempt_number: attemptNumber,
+                //         lesson_id: lessonId
+                //     }
+                // }
             })
         }catch(error){
             console.log(error)

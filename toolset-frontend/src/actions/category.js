@@ -48,13 +48,15 @@ export const addCategory = (csrf_token, name) => {
             if(!response.ok){
                 throw response
             }
+            let categoryJson = await response.json()
             dispatch({
                 type: ADD_CATEGORY,
-                payload: {
-                    category:{
-                        name: name
-                    }
-                }
+                payload: categoryJson
+                // {
+                //     category:{
+                //         name: name
+                //     }
+                // }
             })
         }catch(error){
             console.log(error.message)

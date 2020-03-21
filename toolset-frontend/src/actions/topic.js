@@ -47,13 +47,15 @@ export const addTopic = (csrf_token, name) => {
             if(!response.ok){
                 throw response
             }
+            let topicJson = await response.json()
             dispatch({
                 type: ADD_TOPIC,
-                payload: {
-                    topic:{
-                        name: name
-                    }
-                }
+                payload: topicJson
+                // {
+                //     topic:{
+                //         name: name
+                //     }
+                // }
             })
         }catch(error){
             console.log(error.message)
@@ -94,7 +96,7 @@ export const getCategoryTopics = (csrf_token, categoryId) => {
 }
 
 
-export const addCategoryTopic = (csrf_token, categoryId, name) => {
+export const addCategoryTopic = (csrf_token, name, categoryId) => {
     console.log(categoryId)
     return async function (dispatch) {
         try{
@@ -111,13 +113,16 @@ export const addCategoryTopic = (csrf_token, categoryId, name) => {
             if(!response.ok){
                 throw response
             }
+            let categoryTopicJson = await response.json()
             dispatch({
                 type: ADD_CATEGORY_TOPIC,
-                payload: {
-                    topic:{
-                        name: name
-                    }
-                }
+                payload: 
+                    // topic: 
+                    categoryTopicJson
+                    // {
+                    //     name: name
+                    // }
+                // }
             })
         }catch(error){
             console.log(error.message)

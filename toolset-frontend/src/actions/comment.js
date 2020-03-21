@@ -53,14 +53,16 @@ export const addComment = (csrf_token, content, commentableId) => {
             if(!response.ok){
                 throw response
             }
+            let commentJson = await response.json()
             dispatch({
                 type: ADD_COMMENT,
-                payload: {
-                    comment:{
-                        content: content,
-                        commentable_id: commentableId
-                    }
-                }
+                payload: commentJson
+                // {
+                //     comment:{
+                //         content: content,
+                //         commentable_id: commentableId
+                //     }
+                // }
             })
         }catch(error){
         console.log(error)
@@ -85,14 +87,16 @@ export const editComment = (csrf_token, content, commentableId) => {
             if(!response.ok){
                 throw response
             }
+            let editcommentJson = await response.json()
             dispatch({
                 type: EDIT_COMMENT,
-                payload: {
-                    comment:{
-                        content: content,
-                        commentable_id: commentableId
-                    }
-                }
+                payload: editcommentJson
+                // {
+                //     comment:{
+                //         content: content,
+                //         commentable_id: commentableId
+                //     }
+                // }
             })
         }catch(error){
         console.log(error)

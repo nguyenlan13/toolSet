@@ -16,7 +16,8 @@ class TopicContainer extends Component {
     submitHandler = async (name) => {
         // await this.props.add_topic(this.props.csrf_token, name)
         let categoryId = this.props.match.params.categoryId
-        await this.props.add_category_topic(this.props.csrf_token, categoryId, name)
+        console.log(categoryId)
+        await this.props.add_category_topic(this.props.csrf_token, name, categoryId)
     }
 
     render(){
@@ -54,7 +55,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
     // add_topic: (csrf_token, name) => dispatch(addTopic(csrf_token, name)),
-    add_category_topic: (csrf_token, categoryId, name) => dispatch(addCategoryTopic(csrf_token, categoryId, name)),
+    add_category_topic: (csrf_token, name, categoryId) => dispatch(addCategoryTopic(csrf_token, name, categoryId)),
     get_category_topics: (csrf_token, categoryId) => dispatch(getCategoryTopics(csrf_token, categoryId))
 })
 
