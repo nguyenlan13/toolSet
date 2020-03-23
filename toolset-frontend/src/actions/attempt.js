@@ -42,7 +42,7 @@ export const addAttempt = (csrf_token, content, diagram, lessonId) => {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': csrf_token
                 },
-                body: JSON.stringify({attempt: {content, diagram, lessonId}}),
+                body: JSON.stringify({attempt: {content, diagram}}),
                 credentials: 'include'
             })
             if(!response.ok){
