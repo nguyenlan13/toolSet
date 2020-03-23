@@ -15,7 +15,7 @@ class Api::V1::CommentsController < ApplicationController
         else
             comments = Comment.all
         end
-        render json: comments, include: :user, status: 200
+        render json: comments, include: [:user], status: 200
     end 
 
     def new
@@ -32,7 +32,8 @@ class Api::V1::CommentsController < ApplicationController
         comment = commentable.comments.new(comment_params)
         comment.user = current_user
         if comment.save 
-            render json: { message: "Feedback successfully saved!", error: false}
+            render json: comment, include: [:user], status: 200
+            # { message: "Feedback successfully saved!", comment: comment, error: false}
         else
             render json: { message: "Sorry, feedback could was not saved. Please try again.", error: true }
         end
