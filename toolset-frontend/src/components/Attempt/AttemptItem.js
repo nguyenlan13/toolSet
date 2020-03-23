@@ -15,9 +15,11 @@ class AttemptItem extends Component {
                         {timeStamp}
                      <br />
                      <Link className="link-color" to={`/attempts/${attemptId}/comments`}>
-                        {content} - <img src={diagram}></img>
+                        {content} -
+                     
                     <br />
                     </Link>
+                    <img src={diagram} alt="image" height="350" width="300"/>
                     {/* <CommentContainer/> */}
             
                 </p>
