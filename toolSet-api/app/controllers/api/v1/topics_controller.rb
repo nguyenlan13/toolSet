@@ -8,7 +8,7 @@ class Api::V1::TopicsController < ApplicationController
         else
             topics = Topic.all
         end
-        render json: topics, status: 200
+        render json: topics, include: [:category_topics, :categories], status: 200
        
     end
 
@@ -19,9 +19,16 @@ class Api::V1::TopicsController < ApplicationController
     def create
         if params[:category_id]
             category = Category.find(params[:category_id])
-            topic = category.topics.build(topic_params)
-        else
+            # topic = category.topics.build(topic_params)
             topic = Topic.new(topic_params)
+            category_topic = CategoryTopic.new(category: category, topic: topic)
+            if category_topic.save
+                render json: topic, status: 200
+            else
+                render json: { message: "Sorry, topic could not be created, please try again.", error: true}, status: 400
+            end
+        else
+        topic = Topic.new(topic_params)
             if topic.save
                 render json: topic, status: 200
             else
