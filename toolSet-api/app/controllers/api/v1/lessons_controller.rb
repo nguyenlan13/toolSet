@@ -8,7 +8,7 @@ class Api::V1::LessonsController < ApplicationController
         else
             lessons = Lesson.all
         end
-        render json: lessons, status: 200
+        render json: lessons, include: [:user, :topic], status: 200
     end
 
     def new
@@ -16,16 +16,14 @@ class Api::V1::LessonsController < ApplicationController
     end
 
     def create
-        if params[:topic_id]
-            topic = Topic.find(params[:topic_id])
-            lesson = topic.lessons.build(lesson_params)
-            lesson.user = current_user
+        topic = Topic.find(params[:topic_id])
+        lesson = topic.lessons.build(lesson_params)
+        lesson.user = current_user
             # authorize(lesson)
-            if lesson.save
-                render json: lesson, status: 200
-            else
-                render json: { message: "Sorry, lesson could not be created, please try again.", error: true}, status: 400
-            end
+        if lesson.save
+            render json: lesson, status: 200
+        else
+            render json: { message: "Sorry, lesson could not be created, please try again.", error: true}, status: 400
         end
     end
 
@@ -37,7 +35,7 @@ class Api::V1::LessonsController < ApplicationController
     def show
         lesson = Lesson.find(params[:id])
         # render json: @category.to_json(include: {:topics})
-        render json: lesson, include: [:attempts], status: 200
+        render json: lesson, include: [:attempts, :user], status: 200
     end
 
     def update
