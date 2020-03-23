@@ -5,6 +5,7 @@ import LoginForm from '../components/Login/LoginForm';
 import { login } from '../actions/user'
 // import { GET_CSRF_TOKEN } from '../actionTypes'
 // import { Redirect } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 class LoginContainer extends Component {
 
@@ -14,7 +15,7 @@ class LoginContainer extends Component {
     
     submitHandler = async (email, password) => {
         await this.props.login(this.props.csrf_token, email, password)
-        
+        this.props.history.push("/profile")
     }
     
     render(){
@@ -40,4 +41,4 @@ const mapDispatchToProps = dispatch => ({
     login: (csrf_token, email, password) => dispatch(login(csrf_token, email, password))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginContainer))

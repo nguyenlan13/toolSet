@@ -4,6 +4,7 @@ import SignupForm from '../components/Signup/SignupForm';
 // import { getToken } from '../actions/authSetup'
 import { signup } from '../actions/user'
 // import { GET_CSRF_TOKEN } from '../actionTypes'
+import { withRouter } from 'react-router-dom'
 
 class SignupContainer extends Component {
 
@@ -13,6 +14,7 @@ class SignupContainer extends Component {
     
     submitHandler = async (email, username, name, password) => {
         await this.props.signup(this.props.csrf_token, email, username, name, password)
+        this.props.history.push("/profile")
     }
     
     render(){
@@ -37,4 +39,4 @@ const mapDispatchToProps = dispatch => ({
     signup: (csrf_token, email, username, name, password) => dispatch(signup(csrf_token, email, username, name, password))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignupContainer)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignupContainer))
