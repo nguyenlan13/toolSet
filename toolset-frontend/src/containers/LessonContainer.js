@@ -17,12 +17,14 @@ class LessonContainer extends Component {
 
     submitHandler = async (description) => {
         let topicId = this.props.match.params.topicId
-        console.log(topicId)
         await this.props.add_lesson(this.props.csrf_token, description, topicId)
     }
 
     render(){
         const { topicLessons } = this.props
+        const topicName = topicLessons.map(lesson => {
+            return lesson.topic.name.toUpperCase()
+        })
         const sortedTopicLessons = topicLessons.sort(function(a,b){
             if(a.name < b.name) {return -1;}
             if(a.name > b.name) {return 1;}
@@ -30,7 +32,8 @@ class LessonContainer extends Component {
         })
         return(
             <div className="page">
-                <h1 className="headlines">LESSONS:</h1>
+            <h1 className="headlines">{topicName[0]}</h1>
+            <h1 className="headlines">LESSONS:</h1>
                 <LessonForm handleSubmit={this.submitHandler}/>
                     {sortedTopicLessons.map(lesson => {                       
                         return <LessonItem 
@@ -39,6 +42,7 @@ class LessonContainer extends Component {
                             lessonId={lesson.id}
                             userId={lesson.user_id}
                             topicId={lesson.topic_id}
+                            userName={lesson.user.name}
                         />
                     })}
             </div>

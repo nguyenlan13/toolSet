@@ -23,14 +23,16 @@ class AttemptContainer extends Component {
     submitHandler = async (content, diagram) => {
         const lessonId = this.props.match.params.lessonId
         await this.props.add_attempt(this.props.csrf_token, content, diagram, lessonId)
-        window.location.reload()
     }
 
     render() {
         const { lessonAttempts } = this.props
-        console.log(this.props)
+        const lessonDescription = lessonAttempts.map(attempt => {
+            return attempt.lesson.description.toUpperCase()
+        })
         return(
             <div className="page">
+                <h1 className="headlines">{lessonDescription[0]}</h1>
                 <h1 className="headlines">LESSON ATTEMPTS:</h1>
                 {/* < DoodleItem /> */}
                 < AttemptForm handleSubmit={this.submitHandler}/>
