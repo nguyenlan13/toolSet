@@ -50,6 +50,10 @@ class App extends Component {
                             path="/categories/:categoryId/topics" 
                             render={({match}) => (<CategoryTopicContainer match={match} />)} />    
 
+                            <Route 
+                            path="/users/:userId" 
+                            render={({match}) => (<ProfileContainer match={match} />)} />
+
                             <Route exact path="/attempts" component={AttemptContainer} />
                             <Route exact path="/lessons" component={LessonContainer} />
                             <Route exact path="/topics" component={TopicContainer} /> 
