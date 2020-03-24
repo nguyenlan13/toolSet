@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Stage, Layer, Rect, Text } from 'react-konva';
-import Konva from 'konva';
+import DoodleItem from '../DoodleItem'
 
 const AttemptForm = (props) => {
     // const [attemptNumber, setAttemptNumber] = useState("");
@@ -17,6 +16,20 @@ const AttemptForm = (props) => {
     // props.handleSubmit(attemptNumber, content, diagram)
     props.handleSubmit(content, diagram)
   };
+
+  const handleUpload = function(event) {
+    let file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        setDiagram(e.target.result);
+
+        // setPreview(e.target.result);
+    }
+
+    reader.readAsDataURL(file);
+  };
+
+
   return (
     <form onSubmit={handleSubmit}>
         {/* <input
@@ -34,12 +47,13 @@ const AttemptForm = (props) => {
         />
         <br />
         <input
+      
             className="mr-sm-2"
             type="file"
             placeholder="Upload Diagram"
-            onChange={event => setDiagram(event.target.value)}
-            value={diagram}
+            onChange={event => handleUpload(event)}
         />
+        {/* <DoodleItem/> */}
         <br />
         <br />
         <input type="submit" value="Submit Attempt"/>

@@ -7,8 +7,10 @@ import AttemptItem  from '../components/Attempt/AttemptItem'
 import AttemptForm from '../components/Attempt/AttemptForm'
 import moment from "moment"
 // import DoodleItem from '../components/DoodleItem'
-// import CommentContainer from './CommentContainer'
+import CommentContainer from './CommentContainer'
 // import Comment from '../components/Comment/Comment'
+// import { withRouter } from 'react-router-dom'
+
 
 class AttemptContainer extends Component {
 
@@ -26,13 +28,15 @@ class AttemptContainer extends Component {
     }
 
     render() {
-        const { lessonAttempts } = this.props
-        const lessonDescription = lessonAttempts.map(attempt => {
-            return attempt.lesson.description.toUpperCase()
-        })
+        const { attempts, lessonAttempts } = this.props
+        // const lessonDescription = lessonAttempts.map(attempt => {
+        //     return attempt.lesson.description.toUpperCase()
+        // })
+        const lessonDescription = this.props.match.params.description
+        console.log(lessonDescription)
         return(
             <div className="page">
-                <h1 className="headlines">{lessonDescription[0]}</h1>
+                {/* <h1 className="headlines">{lessonDescription[0]}</h1> */}
                 <h1 className="headlines">LESSON ATTEMPTS:</h1>
                 {/* < DoodleItem /> */}
                 < AttemptForm handleSubmit={this.submitHandler}/>
@@ -45,10 +49,11 @@ class AttemptContainer extends Component {
                             attemptId={attempt.id}
                             lessonId={attempt.lesson_id}
                             timeStamp={moment(attempt.created_at).format('MMMM Do YYYY, h:mm:ss a')}
+                            attemptComments={CommentContainer}
                         />
                     }) } 
                     {/* <Comment/> */}
-                      {/* <CommentContainer />                */}
+                      {/* <CommentContainer /> */}
             </div>
         )     
     }
