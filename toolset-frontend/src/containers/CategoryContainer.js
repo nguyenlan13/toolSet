@@ -26,7 +26,7 @@ class CategoryContainer extends Component {
         return(
             <div className="page">
                 <h1 className="headlines">CATEGORIES:</h1>
-                    {/* < CategoryForm handleSubmit={this.submitHandler}/> */}
+                    < CategoryForm handleSubmit={this.submitHandler}/>
                     {sortedCategories.map(category => {
                         return <CategoryItem 
                             categoryName={category.name} 

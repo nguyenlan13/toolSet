@@ -26,7 +26,7 @@ class TopicContainer extends Component {
         return(
             <div className="page">
                 <h1 className="headlines">TOPICS:</h1>
-                    <TopicForm handleSubmit={this.submitHandler}/>
+                    {/* <TopicForm handleSubmit={this.submitHandler}/> */}
                     {sortedTopics.map(topic => {
                         return <TopicItem
                             topicName={topic.name} 
@@ -43,7 +43,7 @@ const mapStateToProps = (state) => {
     const { topics, csrf_token } = state
     return { 
         topics: topics.topics, 
-        categoryTopics: topics.categoryTopics, 
+        // categoryTopics: topics.categoryTopics, 
         loading: topics.loading,
         csrf_token: csrf_token
     }

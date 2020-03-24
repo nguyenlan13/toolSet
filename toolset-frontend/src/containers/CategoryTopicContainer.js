@@ -16,7 +16,6 @@ class TopicContainer extends Component {
     submitHandler = async (name) => {
         // await this.props.add_topic(this.props.csrf_token, name)
         let categoryId = this.props.match.params.categoryId
-        console.log(categoryId)
         await this.props.add_category_topic(this.props.csrf_token, name, categoryId)
     }
 
@@ -29,7 +28,7 @@ class TopicContainer extends Component {
         })
         return(
             <div className="page">
-                <h1 className="headlines">TOPICS:</h1>
+                <h1 className="headlines"> TOPICS:</h1>
                     <TopicForm handleSubmit={this.submitHandler}/>
                     {sortedCategoryTopics.map(topic => {
                         return <TopicItem
@@ -46,7 +45,7 @@ class TopicContainer extends Component {
 const mapStateToProps = (state) => {
     const { topics, csrf_token } = state
     return { 
-        topics: topics.topics, 
+        // topics: topics.topics, 
         categoryTopics: topics.categoryTopics, 
         loading: topics.loading,
         csrf_token: csrf_token

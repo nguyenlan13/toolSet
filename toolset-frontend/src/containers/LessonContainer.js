@@ -22,9 +22,9 @@ class LessonContainer extends Component {
 
     render(){
         const { topicLessons } = this.props
-        const topicName = topicLessons.map(lesson => {
-            return lesson.topic.name.toUpperCase()
-        })
+        // const topicName = topicLessons.map(lesson => {
+        //     return lesson.topic.name.toUpperCase()
+        // })
         const sortedTopicLessons = topicLessons.sort(function(a,b){
             if(a.name < b.name) {return -1;}
             if(a.name > b.name) {return 1;}
@@ -32,7 +32,7 @@ class LessonContainer extends Component {
         })
         return(
             <div className="page">
-            <h1 className="headlines">{topicName[0]}</h1>
+            {/* <h1 className="headlines">{topicName[0]}</h1> */}
             <h1 className="headlines">LESSONS:</h1>
                 <LessonForm handleSubmit={this.submitHandler}/>
                     {sortedTopicLessons.map(lesson => {                       
