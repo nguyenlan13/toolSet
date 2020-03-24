@@ -8,6 +8,7 @@ class Api::V1::LessonsController < ApplicationController
         else
             lessons = Lesson.all
         end
+        # render json: lessons, include: [:user, :topic], status: 200
         render json: lessons, include: [:user, :topic], status: 200
     end
 
@@ -21,7 +22,7 @@ class Api::V1::LessonsController < ApplicationController
         lesson.user = current_user
             # authorize(lesson)
         if lesson.save
-            render json: lesson, status: 200
+            render json: lesson, include: [:user], status: 200
         else
             render json: { message: "Sorry, lesson could not be created, please try again.", error: true}, status: 400
         end
