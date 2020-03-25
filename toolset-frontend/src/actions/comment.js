@@ -57,12 +57,6 @@ export const addComment = (csrf_token, content, commentableId) => {
             dispatch({
                 type: ADD_COMMENT,
                 payload: commentJson
-                // {
-                //     comment:{
-                //         content: content,
-                //         commentable_id: commentableId
-                //     }
-                // }
             })
         }catch(error){
         console.log(error)
@@ -91,12 +85,6 @@ export const editComment = (csrf_token, content, commentableId) => {
             dispatch({
                 type: EDIT_COMMENT,
                 payload: editcommentJson
-                // {
-                //     comment:{
-                //         content: content,
-                //         commentable_id: commentableId
-                //     }
-                // }
             })
         }catch(error){
         console.log(error)

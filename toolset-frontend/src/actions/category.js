@@ -52,11 +52,6 @@ export const addCategory = (csrf_token, name) => {
             dispatch({
                 type: ADD_CATEGORY,
                 payload: categoryJson
-                // {
-                //     category:{
-                //         name: name
-                //     }
-                // }
             })
         }catch(error){
             console.log(error.message)
