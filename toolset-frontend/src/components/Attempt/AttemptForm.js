@@ -22,10 +22,8 @@ const AttemptForm = (props) => {
     const reader = new FileReader();
     reader.onload = function (e) {
         setDiagram(e.target.result);
-
         // setPreview(e.target.result);
     }
-
     reader.readAsDataURL(file);
   };
 
