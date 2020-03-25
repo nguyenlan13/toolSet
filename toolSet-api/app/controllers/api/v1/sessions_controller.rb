@@ -28,8 +28,10 @@ class Api::V1::SessionsController < ApplicationController
     end
 
     def destroy
-        session.delete(:user_id)
-        render json: {status: 200}
+        session.clear
+        cookies["logged_in"] = false
+        # session.delete(:user_id)
+        render json: {message: "Logged Out", status: 200}
     end
 
     def googleAuth

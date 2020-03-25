@@ -87,7 +87,7 @@ export const logout = csrf_token => {
             dispatch({
                 type: LOGOUT
             });
-            // return await res.json()
+            return await res.json()
         }catch(error){
             console.log(error.message)
         }

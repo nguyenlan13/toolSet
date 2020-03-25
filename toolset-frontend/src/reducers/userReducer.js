@@ -14,7 +14,7 @@ export default function userReducer(state = {
         case SIGN_UP_USER:
             return {...action.payload, isAuthenticated: true}
         case LOGOUT:
-            return {...state}
+            return {...state, isAuthenticated: false}
         default:
             return state
     }
