@@ -7,6 +7,7 @@ import About from "./components/About/About";
 import HomeContainer from "./containers/HomeContainer";
 import ProfileContainer from "./containers/ProfileContainer";
 import TopicContainer from "./containers/TopicContainer";
+import TopicLessonContainer from "./containers/TopicLessonContainer";
 import LessonContainer from "./containers/LessonContainer";
 import AttemptContainer from "./containers/AttemptContainer";
 import CategoryTopicContainer from "./containers/CategoryTopicContainer";
@@ -44,7 +45,7 @@ class App extends Component {
 
                             <Route 
                             path="/topics/:topicId/lessons" 
-                            render={({match}) => (<LessonContainer match={match} />)} />
+                            render={({match}) => (<TopicLessonContainer match={match} />)} />
 
                             <Route 
                             path="/categories/:categoryId/topics" 
