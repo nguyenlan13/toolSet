@@ -1,17 +1,14 @@
 import React, {Component } from 'react';
 import { connect } from 'react-redux';
 import LoginForm from '../components/Login/LoginForm';
-// import { getToken } from '../actions/authSetup'
 import { login } from '../actions/user'
+import { withRouter } from 'react-router-dom'
+// import { getToken } from '../actions/authSetup'
 // import { GET_CSRF_TOKEN } from '../actionTypes'
 // import { Redirect } from 'react-router-dom'
-import { withRouter } from 'react-router-dom'
+
 
 class LoginContainer extends Component {
-
-    // async componentDidMount(){
-    //     await this.props.get_token()
-    // }
     
     submitHandler = async (email, password) => {
         await this.props.login(this.props.csrf_token, email, password)
@@ -22,8 +19,7 @@ class LoginContainer extends Component {
         return(
             <div className="page">
             <h1 className="headlines">LOG IN:</h1>
-           <LoginForm handleSubmit={this.submitHandler}
-            />
+                <LoginForm handleSubmit={this.submitHandler}/>
             </div>
         )
     }

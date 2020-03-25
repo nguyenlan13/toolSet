@@ -1,16 +1,13 @@
 import React, {Component } from 'react';
 import { connect } from 'react-redux';
 import SignupForm from '../components/Signup/SignupForm';
-// import { getToken } from '../actions/authSetup'
 import { signup } from '../actions/user'
-// import { GET_CSRF_TOKEN } from '../actionTypes'
 import { withRouter } from 'react-router-dom'
+// import { getToken } from '../actions/authSetup'
+// import { GET_CSRF_TOKEN } from '../actionTypes'
+
 
 class SignupContainer extends Component {
-
-    // async componentDidMount(){
-    //     await this.props.get_token()
-    // }
     
     submitHandler = async (email, username, name, password) => {
         await this.props.signup(this.props.csrf_token, email, username, name, password)
@@ -21,8 +18,7 @@ class SignupContainer extends Component {
         return(
             <div className="page">
             <h1 className="headlines">SIGN UP!</h1>
-           <SignupForm handleSubmit={this.submitHandler}
-            />
+                <SignupForm handleSubmit={this.submitHandler}/>
             </div>
         )
     }
