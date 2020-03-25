@@ -45,7 +45,6 @@ class TopicContainer extends Component {
 const mapStateToProps = (state) => {
     const { topics, csrf_token } = state
     return { 
-        // topics: topics.topics, 
         categoryTopics: topics.categoryTopics, 
         loading: topics.loading,
         csrf_token: csrf_token

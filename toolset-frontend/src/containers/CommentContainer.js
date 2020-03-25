@@ -45,7 +45,6 @@ class CommentContainer extends Component {
 const mapStateToProps = (state) => {
     const { comments, csrf_token, user} = state;
     return { 
-        // comments: comments.comments,
         attemptComments: comments.attemptComments,
         commentComments: comments.commentComments,
         csrf_token: csrf_token,

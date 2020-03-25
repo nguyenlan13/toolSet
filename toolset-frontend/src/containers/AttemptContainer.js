@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import { getAttempts } from '../actions/attempt'
 import { addAttempt } from '../actions/attempt'
 import { getLessonAttempts } from '../actions/attempt'
 import AttemptItem  from '../components/Attempt/AttemptItem'
@@ -69,7 +68,6 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    // get_attempts: () => dispatch(getAttempts()),
     add_attempt: (csrf_token, content, diagram, attemptNumber, lessonId) => dispatch(addAttempt(csrf_token, content, diagram, attemptNumber, lessonId)),
     get_lesson_attempts: (csrf_token, lessonId) => dispatch(getLessonAttempts(csrf_token, lessonId))
 })

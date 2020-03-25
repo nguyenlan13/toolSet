@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getTopics } from '../actions/topic'
 import { addTopic } from '../actions/topic'
-// import { getTopicLessons } from '../actions/topic'
 import TopicItem  from '../components/Topic/TopicItem'
 // import TopicForm from '../components/Topic/TopicForm'
 
@@ -43,7 +42,6 @@ const mapStateToProps = (state) => {
     const { topics, csrf_token } = state
     return { 
         topics: topics.topics, 
-        // categoryTopics: topics.categoryTopics, 
         loading: topics.loading,
         csrf_token: csrf_token
     }
@@ -52,7 +50,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
     get_topics: () => dispatch(getTopics()),
     add_topic: (csrf_token, name) => dispatch(addTopic(csrf_token, name)),
-    // get_topic_lessons: (csrf_token, topicId) => dispatch(getTopicLessons(csrf_token, topicId)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopicContainer)
