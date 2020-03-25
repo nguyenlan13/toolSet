@@ -8,7 +8,6 @@ class Api::V1::LessonsController < ApplicationController
         else
             lessons = Lesson.all
         end
-        # render json: lessons, include: [:user, :topic], status: 200
         render json: lessons, include: [:user, :topic], status: 200
     end
 
@@ -35,7 +34,6 @@ class Api::V1::LessonsController < ApplicationController
 
     def show
         lesson = Lesson.find(params[:id])
-        # render json: @category.to_json(include: {:topics})
         render json: lesson, include: [:attempts, :user], status: 200
     end
 

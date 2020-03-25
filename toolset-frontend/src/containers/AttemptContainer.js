@@ -28,12 +28,10 @@ class AttemptContainer extends Component {
     }
 
     render() {
-        const { attempts, lessonAttempts } = this.props
+        const { lessonAttempts } = this.props
         // const lessonDescription = lessonAttempts.map(attempt => {
         //     return attempt.lesson.description.toUpperCase()
         // })
-        const lessonDescription = this.props.match.params.description
-        console.log(lessonDescription)
         return(
             <div className="page">
                 {/* <h1 className="headlines">{lessonDescription[0]}</h1> */}

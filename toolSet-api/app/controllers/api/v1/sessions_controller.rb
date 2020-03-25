@@ -9,7 +9,6 @@ class Api::V1::SessionsController < ApplicationController
     end
 
     def auth
-        # byebug
         cookies["logged_in"] = logged_in?
         render json: {csrf_auth_token: form_authenticity_token}
     end
@@ -19,7 +18,6 @@ class Api::V1::SessionsController < ApplicationController
         if @user && @user.authenticate(params[:password])
             log_in(@user)
             cookies["logged_in"] = true
-            # byebug
             # render json: { user: user, message: "sucess!" }, status: 200
             render json: { message: "success!", user: @user }
         else

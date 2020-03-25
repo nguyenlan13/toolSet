@@ -39,7 +39,6 @@ class Api::V1::TopicsController < ApplicationController
 
     def show
         topic = Topic.find(params[:id])
-        # render json: @category.to_json(include: {:topics})
         render json: topic, include: [:lessons], status: 200
     end
 

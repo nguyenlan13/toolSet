@@ -4,13 +4,14 @@ import Aux from '../../hoc/Aux'
 import { Link } from 'react-router-dom'
 import { logout } from './../../actions/user'
 import SearchBar from '../SearchBar'
-
+import { withRouter } from 'react-router-dom'
 
 class Layout extends Component {
 
-    handleLogout = () => {
-        this.props.logout(this.props.csrf_token);
-        
+    handleLogout = async () => {
+        await this.props.logout(this.props.csrf_token);
+        this.props.history.push("/")
+        console.log("hi")
       };
 
 
@@ -56,5 +57,5 @@ const mapDispatchToProps = dispatch => ({
     logout: (csrf_token) => dispatch(logout(csrf_token))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Layout)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Layout))
 

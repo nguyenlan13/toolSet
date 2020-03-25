@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom'
-// import { connect } from 'react-redux'
 
 class LessonItem extends Component {
 
@@ -19,15 +18,4 @@ class LessonItem extends Component {
 }
     
 
-// const mapStateToProps = (state) => {
-//     const { lessons, csrf_token, user } = state;
-//     return { 
-//         lessons: lessons.lessons, 
-//         topicLessons: lessons.topicLessons,
-//         csrf_token: csrf_token, 
-//         user: user
-//     }
-// }
-
-// export default connect(mapStateToProps)(LessonItem)
 export default LessonItem

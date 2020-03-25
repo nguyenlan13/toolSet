@@ -4,7 +4,7 @@ import { getTopics } from '../actions/topic'
 import { addTopic } from '../actions/topic'
 // import { getTopicLessons } from '../actions/topic'
 import TopicItem  from '../components/Topic/TopicItem'
-import TopicForm from '../components/Topic/TopicForm'
+// import TopicForm from '../components/Topic/TopicForm'
 
 class TopicContainer extends Component {
 
