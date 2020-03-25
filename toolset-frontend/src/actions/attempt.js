@@ -52,14 +52,6 @@ export const addAttempt = (csrf_token, content, diagram, lessonId) => {
             dispatch({
                 type: ADD_ATTEMPT,
                 payload: attemptJson
-                // {
-                //     attempt:{
-                //         content: content,
-                //         diagram: diagram,
-                //         // attempt_number: attemptNumber,
-                //         lesson_id: lessonId
-                //     }
-                // }
             })
         }catch(error){
             console.log(error)

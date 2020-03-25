@@ -51,11 +51,6 @@ export const addTopic = (csrf_token, name) => {
             dispatch({
                 type: ADD_TOPIC,
                 payload: topicJson
-                // {
-                //     topic:{
-                //         name: name
-                //     }
-                // }
             })
         }catch(error){
             console.log(error.message)
@@ -116,13 +111,7 @@ export const addCategoryTopic = (csrf_token, name, categoryId) => {
             let categoryTopicJson = await response.json()
             dispatch({
                 type: ADD_CATEGORY_TOPIC,
-                payload: 
-                    // topic: 
-                    categoryTopicJson
-                    // {
-                    //     name: name
-                    // }
-                // }
+                payload: categoryTopicJson
             })
         }catch(error){
             console.log(error.message)

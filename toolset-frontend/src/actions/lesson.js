@@ -50,15 +50,7 @@ export const addLesson = (csrf_token, description, topicId) => {
             dispatch({
                 type: ADD_LESSON,
                 payload: 
-                // {
-                //     lesson: 
                     lessonJson
-                    // {
-
-                    //     description: description
-                        // topic_id: topicId
-                    // }
-                // }
             })
         }catch(error){
             console.log(error.message)

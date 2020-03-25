@@ -19,12 +19,14 @@ export const login = (csrf_token, email, password) => {
             if(!res.ok){
                 throw res
             }
+            let loginJson = await res.json()
             dispatch({
                 type: LOG_IN_USER,
-                payload: {
-                        email: email,
-                        password: password
-                }
+                payload: loginJson
+                // {
+                //         email: email,
+                //         password: password
+                // }
             });
             // return await res.json()
         }catch(error){
@@ -50,16 +52,18 @@ export const signup = (csrf_token, email, username, name, password) => {
             if(!res.ok){
                 throw res
             }
+            let signupJson = await res.json()
             dispatch({
                 type: SIGN_UP_USER,
-                payload: {
-                    user:{
-                        email: email,
-                        username: username,
-                        name: name,
-                        password: password
-                    }
-                }
+                payload: signupJson
+                // {
+                //     user:{
+                //         email: email,
+                //         username: username,
+                //         name: name,
+                //         password: password
+                //     }
+                // }
             });
             // return await res.json()
         }catch(error){
@@ -78,7 +82,6 @@ export const logout = csrf_token => {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': csrf_token
                 },
-                // body: JSON.stringify({email, password}),
                 credentials: 'include'
             })
             if(!res.ok){
