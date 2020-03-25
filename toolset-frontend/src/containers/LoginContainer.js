@@ -27,7 +27,6 @@ class LoginContainer extends Component {
 
 const mapStateToProps = ({csrf_token}) => ({
     csrf_token
-
 })
 
 
