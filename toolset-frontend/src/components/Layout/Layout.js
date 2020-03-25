@@ -10,6 +10,7 @@ class Layout extends Component {
 
     handleLogout = () => {
         this.props.logout(this.props.csrf_token);
+        
       };
 
 
@@ -18,7 +19,7 @@ class Layout extends Component {
             return(
                 <Aux>
                     <div style={{marginLeft: "60%"}}>
-                        <Link className="layout-link" onClick={this.handleLogout}> LOG OUT </Link> <SearchBar className="headline-md"/>
+                        <Link className="layout-link" to="/logout" onClick={this.handleLogout}> LOG OUT </Link> <SearchBar className="headline-md"/>
                     </div>
                     <main >
                         {this.props.children}
