@@ -17,6 +17,7 @@ import LoginContainer from "./containers/LoginContainer";
 import SignupContainer from "./containers/SignupContainer";
 import { getToken } from './actions/authSetup';
 import './App.css';
+import NotFound from './components//NotFound'
 // import { render } from 'react-dom';
 
 
@@ -65,6 +66,7 @@ class App extends Component {
                             <Route path="/login" component={LoginContainer} />
                             <Route path="/signup" component={SignupContainer} />
                             <Route exact path="/" component={HomeContainer} />
+                            <Route component={NotFound}/>
                         </Switch>
                     </Layout>
                 </div>
