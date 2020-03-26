@@ -12,7 +12,7 @@ class Api::V1::UsersController < ApplicationController
             cookies["logged_in"] = true
             render json: user, except: [:password_digest]
         else
-            render json: { message: "Sorry, User could not be created, please try again.", error: true}, status: 400 
+            render json: { errors: user.errors.full_messages}, status: 400 
         end
     end
     

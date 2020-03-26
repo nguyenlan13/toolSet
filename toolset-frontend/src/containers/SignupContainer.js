@@ -3,21 +3,35 @@ import { connect } from 'react-redux';
 import SignupForm from '../components/Signup/SignupForm';
 import { signup } from '../actions/user'
 import { withRouter } from 'react-router-dom'
+import Errors from '../components/Errors'
 // import { getToken } from '../actions/authSetup'
 // import { GET_CSRF_TOKEN } from '../actionTypes'
 
 
 class SignupContainer extends Component {
     
+    state = {
+        errors: false,
+        errorMsg: []
+    }
+
     submitHandler = async (email, username, name, password) => {
-        await this.props.signup(this.props.csrf_token, email, username, name, password)
-        this.props.history.push("/profile")
+        const signupData = await this.props.signup(this.props.csrf_token, email, username, name, password)
+        if(Object.keys(signupData).includes("errors")){
+            this.setState({
+                errors: true,
+                errorMsg: signupData.errors
+            })
+        }else {
+            this.props.history.push("/profile")
+        }
     }
     
     render(){
         return(
             <div className="page">
             <h1 className="headlines">SIGN UP!</h1>
+                {(this.state.errors)? <Errors errors={this.state.errorMsg}/> : null}
                 <SignupForm handleSubmit={this.submitHandler}/>
             </div>
         )

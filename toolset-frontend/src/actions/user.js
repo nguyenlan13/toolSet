@@ -49,22 +49,25 @@ export const signup = (csrf_token, email, username, name, password) => {
                 body: JSON.stringify({user:{email, username, name, password}}),
                 credentials: 'include'
             })
-            if(!res.ok){
-                throw res
-            }
+            // if(!res.ok){
+            //     throw res
+            // }
             let signupJson = await res.json()
-            dispatch({
-                type: SIGN_UP_USER,
-                payload: signupJson
-                // {
-                //     user:{
-                //         email: email,
-                //         username: username,
-                //         name: name,
-                //         password: password
-                //     }
-                // }
-            });
+            if(!Object.keys(signupJson).includes("errors")){
+                dispatch({
+                    type: SIGN_UP_USER,
+                    payload: signupJson
+                    // {
+                    //     user:{
+                    //         email: email,
+                    //         username: username,
+                    //         name: name,
+                    //         password: password
+                    //     }
+                    // }
+                });
+            }
+            return signupJson
             // return await res.json()
         }catch(error){
             console.log(error.message)
@@ -90,7 +93,7 @@ export const logout = csrf_token => {
             dispatch({
                 type: LOGOUT
             });
-            return await res.json()
+            // return await res.json()
         }catch(error){
             console.log(error.message)
         }
