@@ -188,3 +188,9 @@ nav {
     color: #008B8B;
     font-weight: bold;
 }
+
+.errors {
+    color: red;
+    font-weight: bold;
+    border: 2px solid red
+}
