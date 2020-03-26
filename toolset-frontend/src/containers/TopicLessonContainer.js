@@ -9,6 +9,7 @@ class TopicLessonContainer extends Component {
 
     componentDidMount(){
         let topicId = this.props.match.params.topicId
+        
         this.props.get_topic_lessons(this.props.csrf_token, topicId)
     }
 

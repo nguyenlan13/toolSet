@@ -59,7 +59,7 @@ export const addComment = (csrf_token, content, commentableId) => {
                 payload: commentJson
             })
         }catch(error){
-        console.log(error)
+        console.log(error.message)
         }
     }
 }
@@ -87,7 +87,7 @@ export const editComment = (csrf_token, content, commentableId) => {
                 payload: editcommentJson
             })
         }catch(error){
-        console.log(error)
+        console.log(error.message)
         }
     }
 }
