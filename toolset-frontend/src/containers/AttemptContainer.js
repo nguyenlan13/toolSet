@@ -13,8 +13,12 @@ import CommentContainer from './CommentContainer'
 
 class AttemptContainer extends Component {
 
+    state = {
+        attempt_number: 0
+    }
 
     componentDidMount() {
+        
         // this.props.get_attempts()
         const lessonId = this.props.match.params.lessonId
         this.props.get_lesson_attempts(this.props.csrf_token, lessonId)
@@ -23,7 +27,14 @@ class AttemptContainer extends Component {
     // submitHandler = async (content, diagram, attemptNumber) => {
     submitHandler = async (content, diagram) => {
         const lessonId = this.props.match.params.lessonId
-        await this.props.add_attempt(this.props.csrf_token, content, diagram, lessonId)
+        // this.setState attemptNum increment 1
+        this.setState(prevState => ({
+            attempt_number: prevState.attempt_number + 1
+        }))
+        await this.props.add_attempt(this.props.csrf_token, content, diagram, this.state.attempt_number, lessonId)
+        // set state attempNum + 1
+        // this.props.updateAttemptNum (token, this.state.attemptNum)
+
     }
 
     render() {

@@ -25,13 +25,13 @@ export const getAttempts = attempts => {
                     payload: attemptsJson
                 })
         }catch(error){
-            console.log(error)
+            console.log(error.message)
         }
     }
 }
 
 
-export const addAttempt = (csrf_token, content, diagram, lessonId) => {
+export const addAttempt = (csrf_token, content, diagram, attempt_number, lessonId) => {
     console.log(lessonId)
     return async function (dispatch) {
         try{
@@ -42,7 +42,7 @@ export const addAttempt = (csrf_token, content, diagram, lessonId) => {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': csrf_token
                 },
-                body: JSON.stringify({attempt: {content, diagram}}),
+                body: JSON.stringify({attempt: {content, diagram, attempt_number}}),
                 credentials: 'include'
             })
             if(!response.ok){
@@ -54,7 +54,7 @@ export const addAttempt = (csrf_token, content, diagram, lessonId) => {
                 payload: attemptJson
             })
         }catch(error){
-            console.log(error)
+            console.log(error.message)
         }
     }
 }
