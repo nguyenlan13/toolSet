@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 
 class AttemptItem extends Component {
 
-
     render(){
         const {content, diagram, timeStamp, attemptId, attempt_number} = this.props
         return(
@@ -16,12 +15,13 @@ class AttemptItem extends Component {
                     <br/>
                     Attempt: #{attempt_number}
                      <br />
-                     <Link className="link-color" to={`/attempts/${attemptId}/comments`}>
+                     <Link className="attempt-content" to={`/attempts/${attemptId}/comments`}>
                     {content}
                     <br />
                     </Link>
                     <img src={diagram} alt="" height="350" width="300"/>
                     <br />
+
                     {/* <CommentForm/> */}
                 </p>
             </div>
