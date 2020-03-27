@@ -51,7 +51,7 @@ cm = Lesson.create(user: lan, topic: mm, description: "Critical Mass")
 tr = Lesson.create(user: lan, topic: mm, description: "Theory of Relativity")
 anchor = Lesson.create(user: lan, topic: mm, description: "Cognitive Biases: Anchoring")
 
-pa1 = Attempt.create(lesson: pa, attempt_number: 1, content:"blah blah blah")
+pa1 = Attempt.create(lesson: pa, attempt_number: 1, content:"A model can belong to one model on many associations")
 pa2 = Attempt.create(lesson: pa, attempt_number: 2, content:"A model can belong to more than one model on a single association")
 
 Comment.create(user: micah, content: "Incorrect!", commentable: pa1)
