@@ -11,7 +11,6 @@ class Layout extends Component {
     handleLogout = async () => {
         await this.props.logout(this.props.csrf_token);
         this.props.history.push("/")
-        console.log("hi")
       };
 
 
