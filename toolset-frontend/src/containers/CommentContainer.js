@@ -10,7 +10,6 @@ class CommentContainer extends Component {
 
     componentDidMount() {
         const attemptId = this.props.match.params.attemptId
-        console.log(attemptId)
         this.props.get_attempt_comments(this.props.csrf_token, attemptId)
     }
 
@@ -21,7 +20,6 @@ class CommentContainer extends Component {
 
     render() {
         const { attemptComments } = this.props
-        console.log(this.props)
         return(
             <div className="page">
                 <h1 className="headlines">FEEDBACK:</h1>

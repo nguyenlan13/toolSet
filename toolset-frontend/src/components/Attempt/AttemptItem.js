@@ -7,11 +7,14 @@ class AttemptItem extends Component {
 
 
     render(){
-        const {content, diagram, timeStamp, attemptId} = this.props
+        const {content, diagram, timeStamp, attemptId, attempt_number} = this.props
         return(
             <div>
                 <p>
+
                     {timeStamp}
+                    <br/>
+                    Attempt: #{attempt_number}
                      <br />
                      <Link className="link-color" to={`/attempts/${attemptId}/comments`}>
                     {content}

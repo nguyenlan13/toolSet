@@ -32,7 +32,6 @@ export const getAttempts = attempts => {
 
 
 export const addAttempt = (csrf_token, content, diagram, attempt_number, lessonId) => {
-    console.log(lessonId)
     return async function (dispatch) {
         try{
             let response = await fetch(baseURL + `lessons/${lessonId}/attempts`,{

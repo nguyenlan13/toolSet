@@ -47,7 +47,7 @@ export const addComment = (csrf_token, content, commentableId) => {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': csrf_token
                 },
-                body: JSON.stringify({comment: {content, commentableId}}),
+                body: JSON.stringify({comment: {content, commentable_id: commentableId}}),
                 credentials: 'include'
             })
             if(!response.ok){
@@ -75,7 +75,7 @@ export const editComment = (csrf_token, content, commentableId) => {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': csrf_token
                 },
-                body: JSON.stringify({comment: {content, commentableId}}),
+                body: JSON.stringify({comment: {content, commentable_id: commentableId}}),
                 credentials: 'include'
             })
             if(!response.ok){
