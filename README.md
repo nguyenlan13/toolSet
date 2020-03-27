@@ -33,4 +33,4 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/nguyen
 
 ## Code of Conduct
 
-Everyone interacting in the outLANdish_designs codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/nguyenlan13/toolSet/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the toolSet codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/nguyenlan13/toolSet/blob/master/CODE_OF_CONDUCT.md).
