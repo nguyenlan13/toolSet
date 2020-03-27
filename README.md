@@ -5,16 +5,16 @@ toolSet is a learning platform that utilizes a learning by teaching methodology 
 
 ## Built Using
 
--Ruby on Rails as an API for the back end. 
--HTML, CSS, React, and Redux for the front end.
--This project was bootstrapped with Create React App.
+1. Ruby on Rails as an API for the back end. 
+2. HTML, CSS, React, and Redux for the front end.
+3. This project was bootstrapped with Create React App.
 
 
 ## Features
 
--Session cookies for API authentication
--Create a lesson and multiple attempts with content and diagram
--Receive feedback from other users
+1. Session cookies for API authentication
+2. Create a lesson and multiple attempts with content and diagram
+3. Receive feedback from other users
 
 ## Usage
 
