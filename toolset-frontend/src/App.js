@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// import { connect } from 'react-redux'
+import { connect } from 'react-redux'
 import Layout from './components/Layout/Layout'
 import Navbar from "./components/Navbar";
 import About from "./components/About/About";
@@ -15,7 +15,7 @@ import CategoryContainer from "./containers/CategoryContainer";
 import CommentContainer from "./containers/CommentContainer";
 import LoginContainer from "./containers/LoginContainer";
 import SignupContainer from "./containers/SignupContainer";
-// import { getToken } from './actions/authSetup';
+import { getToken } from './actions/authSetup';
 import './App.css';
 import NotFound from './components//NotFound'
 // import { render } from 'react-dom';
@@ -23,9 +23,9 @@ import NotFound from './components//NotFound'
 
 class App extends Component {
 
-    // componentDidMount(){
-    //     this.props.getToken()
-    // }
+    componentDidMount(){
+        this.props.getToken()
+    }
 
 // function App() {
     render() {
@@ -76,9 +76,9 @@ class App extends Component {
 }
 
 
-// const mapDispatchToProps = dispatch => ({
-//     getToken: () => dispatch(getToken())
-// })
+const mapDispatchToProps = dispatch => ({
+    getToken: () => dispatch(getToken())
+})
 
-export default App;
-// export default connect(null, mapDispatchToProps)(App);
+// export default App;
+export default connect(null, mapDispatchToProps)(App);
