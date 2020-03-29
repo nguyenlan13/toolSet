@@ -5,6 +5,18 @@ import { Link } from 'react-router-dom'
 
 class AttemptItem extends Component {
 
+    state = {
+        upVote: 0
+    }
+
+
+    handleUpVote = () => {
+        this.setState(prevState => ({
+            upVote: prevState.upVote +1
+        })
+        )
+    }
+
     render(){
         const {content, diagram, timeStamp, attemptId, attempt_number} = this.props
         return(
@@ -21,7 +33,10 @@ class AttemptItem extends Component {
                     </Link>
                     <img src={diagram} alt="" height="350" width="300"/>
                     <br />
-
+                    <button onClick={this.handleUpVote}>
+                        Up Vote
+                    </button>
+                    {this.state.upVote}
                     {/* <CommentForm/> */}
                 </p>
             </div>
