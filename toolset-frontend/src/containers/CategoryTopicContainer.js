@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import { addTopic } from '../actions/topic'
 import { addCategoryTopic } from '../actions/topic'
 import TopicItem from '../components/Topic/TopicItem'
 import TopicForm from '../components/Topic/TopicForm'
 import { getCategoryTopics } from '../actions/topic'
 
-class TopicContainer extends Component {
+class CategoryTopicContainer extends Component {
 
     componentDidMount(){
         let categoryId = this.props.match.params.categoryId
@@ -14,7 +13,6 @@ class TopicContainer extends Component {
     }
     
     submitHandler = async (name) => {
-        // await this.props.add_topic(this.props.csrf_token, name)
         let categoryId = this.props.match.params.categoryId
         await this.props.add_category_topic(this.props.csrf_token, name, categoryId)
     }
@@ -51,10 +49,9 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = dispatch => ({
-    // add_topic: (csrf_token, name) => dispatch(addTopic(csrf_token, name)),
-    add_category_topic: (csrf_token, name, categoryId) => dispatch(addCategoryTopic(csrf_token, name, categoryId)),
-    get_category_topics: (csrf_token, categoryId) => dispatch(getCategoryTopics(csrf_token, categoryId))
+const mapDispatchToProps = (dispatch) => ({
+    get_category_topics: (csrf_token, categoryId) => dispatch(getCategoryTopics(csrf_token, categoryId)),
+    add_category_topic: (csrf_token, name, categoryId) => dispatch(addCategoryTopic(csrf_token, name, categoryId))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(TopicContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryTopicContainer)
