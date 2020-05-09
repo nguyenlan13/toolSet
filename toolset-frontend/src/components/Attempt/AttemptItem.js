@@ -9,7 +9,7 @@ class AttemptItem extends Component {
         upVote: 0
     }
 
-
+//upvote button
     handleUpVote = () => {
         this.setState(prevState => ({
             upVote: prevState.upVote +1
