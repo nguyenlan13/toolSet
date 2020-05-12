@@ -22,7 +22,7 @@ class Api::V1::ReactionsController < ApplicationController
     # end
 
     def update
-        authorize(comment)
+        authorize(reaction)
         if comment.update(comment_params)
             render json: { message: "Feedback successfully updated!", error: false}
         else
