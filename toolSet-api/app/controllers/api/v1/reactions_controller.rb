@@ -31,11 +31,11 @@ class Api::V1::ReactionsController < ApplicationController
     end
 
     def destroy
-        authorize(comment)
-        if comment.delete
-            render json: { message: "Feedback successfully deleted!", error: false}
+        authorize(reaction)
+        if reaction.delete
+            render json: { message: "Reaction successfully deleted!", error: false}
         else
-            render json: { message: "Sorry, feedback could was not deleted. Please try again.", error: true }
+            render json: { message: "Sorry, reaction could was not deleted. Please try again.", error: true }
         end
     end
 
