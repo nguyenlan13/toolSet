@@ -16,10 +16,6 @@ class Api::V1::ReactionsController < ApplicationController
         end
     end
 
-    # def edit
-    #     user = current_user
-    #     authorize(comment)
-    # end
 
     def update
         authorize(reaction)
@@ -41,6 +37,6 @@ class Api::V1::ReactionsController < ApplicationController
 
     def show
         # comment = Comment.find(params[:id])
-        render json: comment, status: 200
+        render json: reaction, status: 200
     end
 end
