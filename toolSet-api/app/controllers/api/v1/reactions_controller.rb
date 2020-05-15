@@ -19,7 +19,7 @@ class Api::V1::ReactionsController < ApplicationController
 
     def update
         authorize(reaction)
-        if comment.update(comment_params)
+        if reaction.update(reaction_params)
             render json: { message: "Feedback successfully updated!", error: false}
         else
             render json: { message: "Sorry, feedback could was not updated. Please try again.", error: true }
@@ -39,4 +39,13 @@ class Api::V1::ReactionsController < ApplicationController
         # comment = Comment.find(params[:id])
         render json: reaction, status: 200
     end
+
+
+    private
+
+    
+    def reaction_params
+        params.require(:reaction).permit(:user_id, :reactable_id, :reactable_type)
+    end
+
 end
