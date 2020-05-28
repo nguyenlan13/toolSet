@@ -17,14 +17,14 @@ class Api::V1::ReactionsController < ApplicationController
     end
 
 
-    def update
-        authorize(reaction)
-        if reaction.update(reaction_params)
-            render json: { message: "Feedback successfully updated!", error: false}
-        else
-            render json: { message: "Sorry, feedback could was not updated. Please try again.", error: true }
-        end
-    end
+    # def update
+    #     authorize(reaction)
+    #     if reaction.update(reaction_params)
+    #         render json: { message: "Feedback successfully updated!", error: false}
+    #     else
+    #         render json: { message: "Sorry, feedback could was not updated. Please try again.", error: true }
+    #     end
+    # end
 
     def destroy
         authorize(reaction)
@@ -35,17 +35,17 @@ class Api::V1::ReactionsController < ApplicationController
         end
     end
 
-    def show
-        # comment = Comment.find(params[:id])
-        render json: reaction, status: 200
-    end
+    # def show
+    #     # comment = Comment.find(params[:id])
+    #     render json: reaction, status: 200
+    # end
 
 
     private
 
     
     def reaction_params
-        params.require(:reaction).permit(:user_id, :reactable_id, :reactable_type)
+        params.require(:reaction).permit(:user_id, :reaction_type, :reactable_id, :reactable_type)
     end
 
 end
