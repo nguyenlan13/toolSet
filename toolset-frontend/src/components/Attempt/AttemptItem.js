@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom'
+import { ADD_REACTION } from '../../actions/reaction'
 // import CommentForm from '../Comment/CommentForm'
 // import CommentContainer from '../../containers/CommentContainer'
 
@@ -8,6 +9,12 @@ class AttemptItem extends Component {
     state = {
         upVote: 0
     }
+
+    componentDidMount(){
+        
+    }
+
+
 
 //upvote button
     handleUpVote = () => {
