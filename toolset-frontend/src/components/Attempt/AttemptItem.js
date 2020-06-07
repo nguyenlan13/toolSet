@@ -7,7 +7,8 @@ import { ADD_REACTION } from '../../actions/reaction'
 class AttemptItem extends Component {
 
     state = {
-        upVote: 0
+        upVote: 0,
+        downVote: 0
     }
 
     componentDidMount(){
@@ -20,6 +21,13 @@ class AttemptItem extends Component {
     handleUpVote = () => {
         this.setState(prevState => ({
             upVote: prevState.upVote +1
+        })
+        )
+    }
+
+    handleDownVote = () => {
+        this.setState(prevState => ({
+            upVote: prevState.downVote -1
         })
         )
     }
@@ -44,6 +52,11 @@ class AttemptItem extends Component {
                         Up Vote
                     </button>
                     {this.state.upVote}
+
+                    <button onClick={this.handleDownVote}>
+                        Down Vote
+                    </button>
+                    {this.state.downVote}
                     {/* <CommentForm/> */}
                 </p>
             </div>
