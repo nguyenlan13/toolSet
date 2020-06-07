@@ -6,10 +6,10 @@ import { ADD_REACTION } from '../../actions/reaction'
 class UpVote extends Component {
 
 
-    
-render(){
 
-}
+    render(){
+
+    }
 
 }
 
