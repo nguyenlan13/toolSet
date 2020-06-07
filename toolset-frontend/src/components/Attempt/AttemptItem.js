@@ -11,9 +11,9 @@ class AttemptItem extends Component {
         downVote: 0
     }
 
-    componentDidMount(){
+    // componentDidMount(){
         
-    }
+    // }
 
 
 
